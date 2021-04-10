@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "720648198342",
+    "firebase_url": "https://up-how-tos-ofc-default-rtdb.firebaseio.com",
+    "project_id": "up-how-tos-ofc",
+    "storage_bucket": "up-how-tos-ofc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720648198342:android:4e0966028f5a4bae295fc7",
+        "android_client_info": {
+          "package_name": "com.example.uphowtos1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720648198342-4f0imp8m5eqen2mqatc6rovj2s8ceu29.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uphowtos1",
+            "certificate_hash": "1f9718a88b98c6bc35a92940b66476d5663f956a"
+          }
+        },
+        {
+          "client_id": "720648198342-lgjt3vpod0j5r1n1pakrkthbo4l4544i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAozcQ0KvK7XJoJhjFw0rVKwBM6nVkoWxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720648198342-lgjt3vpod0j5r1n1pakrkthbo4l4544i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
