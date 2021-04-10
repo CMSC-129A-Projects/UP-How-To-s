@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">720648198342-lgjt3vpod0j5r1n1pakrkthbo4l4544i.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://up-how-tos-ofc-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">720648198342</string>
+    <string name="google_api_key" translatable="false">AIzaSyAozcQ0KvK7XJoJhjFw0rVKwBM6nVkoWxU</string>
+    <string name="google_app_id" translatable="false">1:720648198342:android:4e0966028f5a4bae295fc7</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAozcQ0KvK7XJoJhjFw0rVKwBM6nVkoWxU</string>
+    <string name="google_storage_bucket" translatable="false">up-how-tos-ofc.appspot.com</string>
+    <string name="project_id" translatable="false">up-how-tos-ofc</string>
+</resources>
