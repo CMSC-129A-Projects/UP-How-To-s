@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Hello World!')),
+        appBar: AppBar(title: Text('Please use UPmail!')),
         body: Column(children: <Widget>[
           Expanded(child: PostList(this.posts, widget.user)),
           TextInputWidget(this.newPost)

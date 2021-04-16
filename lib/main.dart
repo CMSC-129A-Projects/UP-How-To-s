@@ -5,14 +5,16 @@ void main() {
   runApp(MyApp());
 }
 
+final maroon = const Color(0xFF8A1538); // UP MAROON
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tims App',
+      title: 'UP How Tos',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primaryColor: maroon,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: LoginPage(),
