@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\The_Pc\\Documents\\GitHub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
+            "outputFile": "C:\\Users\\DeLL\\Documents\\GitHub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\The_Pc\\.gradle\\caches\\transforms-2\\files-2.1\\39d921845324917a2757bbe4714039dc\\core-1.1.0\\res\\values-en-rCA\\values-en-rCA.xml",
+                    "source": "C:\\Users\\DeLL\\.gradle\\caches\\transforms-2\\files-2.1\\39d921845324917a2757bbe4714039dc\\core-1.1.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
