@@ -1,7 +1,7 @@
 import 'package:uphowtos1/MyHomePage.dart';
-import 'package:uphowtos1/ScreenUI.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'admin.dart';
 import 'auth.dart';
 
 class LoginPage extends StatelessWidget {
@@ -34,7 +34,8 @@ class _BodyState extends State<Body> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => MyHomePage(user))) //admin version
+                      builder: (context) =>
+                          AdminHomePage(user))) //admin version
             }
           else
             {
@@ -43,7 +44,8 @@ class _BodyState extends State<Body> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => HomePage())) // student version
+                          builder: (context) =>
+                              MyHomePage(user))) // student version
                 }
               else
                 {
@@ -82,3 +84,4 @@ class _BodyState extends State<Body> {
     return Align(alignment: Alignment.center, child: googleLoginButton());
   }
 }
+
