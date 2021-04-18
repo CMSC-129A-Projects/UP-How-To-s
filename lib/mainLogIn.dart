@@ -1,12 +1,14 @@
-import 'package:uphowtos1/MyHomePage.dart';
+import 'package:uphowtos1/postHomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'auth.dart';
+import 'mainAuth.dart';
+import 'mainDashBoard.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text('Hello World!')), body: Body());
+    return Scaffold(
+        appBar: AppBar(title: Text('Please use UPmail.')), body: Body());
   }
 }
 
@@ -27,8 +29,31 @@ class _BodyState extends State<Body> {
   void click() {
     signInWithGoogle().then((user) => {
           this.user = user,
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => MyHomePage(user)))
+          if (user.email.contains("uphowtosofc@gmail.com"))
+            {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Home(user))) //admin version
+            }
+          else
+            {
+              if (user.email.contains("@up.edu.ph"))
+                {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              MyHomePage(user))) // student version
+                }
+              else
+                {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LoginPage())) // invalid emails
+                }
+            },
         });
   }
 

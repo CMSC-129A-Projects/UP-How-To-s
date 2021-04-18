@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/database.dart';
+import 'package:uphowtos1/postDatabase.dart';
 import 'post.dart';
 import 'postList.dart';
-import 'textInputWidget.dart';
+import 'postTextInputWidget.dart';
 
 class MyHomePage extends StatefulWidget {
   final FirebaseUser user;
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Hello World!')),
+        appBar: AppBar(title: Text('Please use UPmail!')),
         body: Column(children: <Widget>[
           Expanded(child: PostList(this.posts, widget.user)),
           TextInputWidget(this.newPost)

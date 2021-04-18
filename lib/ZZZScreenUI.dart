@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'DrawerDetails.dart';
-final maroon = const Color(0xFF8A1538); 
+import 'mainDrawerDetails.dart';
+import 'mainDashBoard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class HomePage extends StatefulWidget {
+final maroon = const Color(0xFF8A1538);
+
+class HomeFormsPage extends StatefulWidget {
   @override
-  HomePageState createState() => new HomePageState();
+  HomeFormsState createState() => new HomeFormsState();
 }
 
-class HomePageState extends State<HomePage> {
+class HomeFormsState extends State<HomeFormsPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -149,7 +152,7 @@ class SignUpPageState extends State<SignUpPage> {
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2.5),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, "/HomePage");
+                  Navigator.pushReplacementNamed(context, "/Home");
                 },
                 child: Text('Register'),
                 style: ElevatedButton.styleFrom(
@@ -168,6 +171,7 @@ class SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
 class LogInPage extends StatefulWidget {
   @override
   LogInPageState createState() => LogInPageState();
@@ -217,12 +221,13 @@ class LogInPageState extends State<LogInPage> {
                     hintText: "Password"),
               ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 25.0),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2.5),
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, "/HomePage");
+                  print("hello");
+                  Navigator.pushReplacementNamed(context, "/Home");
                 },
                 child: Text('Log-in'),
                 style: ElevatedButton.styleFrom(
