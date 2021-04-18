@@ -75,7 +75,8 @@ class GridDashboardState extends State<GridDashBoard> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => HomePage())); //go to forms page
+                          builder: (context) =>
+                              HomePage(user))); //go to forms page
                 }
               },
               child: Container(

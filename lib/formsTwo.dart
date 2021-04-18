@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'mainDrawerDetails.dart';
-import 'formsAcadNon.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'formsAN.dart';
 
 final maroon = const Color(0xFF8A1538);
 
 class HomePage extends StatefulWidget {
+  final FirebaseUser user;
+  HomePage(this.user);
   @override
   HomePageState createState() => new HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
+  FirebaseUser user;
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -50,14 +55,14 @@ class HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AcadsFormsPage()));
+                              builder: (context) => AcadsFormsPage(user)));
                     },
                   ),
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => AcadsFormsPage()));
+                            builder: (context) => AcadsFormsPage(user)));
                   }),
               ListTile(
                   title: Text('Non-Academic Forms',
@@ -77,14 +82,14 @@ class HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NonFormsPage()));
+                              builder: (context) => NonFormsPage(user)));
                     },
                   ),
                   onTap: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => NonFormsPage()));
+                            builder: (context) => NonFormsPage(user)));
                   }),
             ],
           ),
