@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'mainLogIn.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,3 +24,12 @@ class MyApp extends StatelessWidget {
 
 ///adawdawdawdw
 ///dawadawd
+/*
+        "/logInPage": (_) => new LogInPage(),
+        "/HomePage": (_) => new HomeFormsPage(),
+        "/SignUpPage": (_) => new SignUpPage(),
+        "/FormsPage": (_) => new FormsPage(),
+        "/FormsEdit": (_) => new FormsEdit(),
+        "/FormsAdd": (_) => new AddForms(),
+        "/Home": (_) => new Home(),
+        */
