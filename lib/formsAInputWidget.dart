@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'formsAHomePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -10,13 +11,16 @@ final gradientcolor2 = const Color(0xFFdc2430); // UP Spotblack
 
 class AcadsTInputWidget extends StatefulWidget {
   final Function(String, String, String) callback;
-  AcadsTInputWidget(this.callback);
+  AcadsTInputWidget(this.callback, this.user);
+
+  final FirebaseUser user;
 
   @override
   _AcadsTInputWidgetState createState() => _AcadsTInputWidgetState();
 }
 
 class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
+  FirebaseUser user;
   final title = TextEditingController();
   final body = TextEditingController();
   final url = TextEditingController();
@@ -102,7 +106,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                FormsAHomePage())); //go to forms page
+                                FormsAListPage(user))); //go to forms page
                   },
                   child: Text('Check Forms'),
                   style: ElevatedButton.styleFrom(
