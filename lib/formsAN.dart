@@ -193,7 +193,7 @@ class FormsActionsState extends State<FormsActions> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    FormsAHomePage())); //go to forms page
+                                    FormsAHomePage(user))); //go to forms page
                       }),
                       height: 150,
                       fit: BoxFit.cover,
