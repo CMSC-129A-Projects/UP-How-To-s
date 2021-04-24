@@ -19,6 +19,7 @@ Future<List<FormsA>> getAllFormsA() async {
     dataSnapshot.value.forEach((key, value) {
       FormsA formA = createFormsA(value);
       formA.setId(databaseReference.child('formsA/' + key));
+      print(key);
       formsA.add(formA);
     });
   }

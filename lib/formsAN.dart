@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'formsADatabase.dart';
 import 'formsAHomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'formsA.dart';
+import 'formsAList.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -8,13 +11,6 @@ final yellow = const Color(0xFFFFB81C); // UP YELLOW
 final spotblack = const Color(0xFF000000); // UP Spotblack
 final gradientcolor1 = const Color(0xFF7b4397); // UP YELLOW
 final gradientcolor2 = const Color(0xFFdc2430); // UP Spotblack
-
-class Form {
-  String formName;
-  String formDetails;
-  String img;
-  Form({this.formName, this.formDetails, this.img});
-}
 
 class FormsList extends StatefulWidget {
   @override
@@ -24,7 +20,7 @@ class FormsList extends StatefulWidget {
 class FormsListState extends State<FormsList> {
   List<Widget> _formTiles = [];
   final GlobalKey _listKey = GlobalKey();
-  List<Form> _forms;
+  List<FormsA> _forms;
   @override
   void initState() {
     super.initState();
@@ -44,7 +40,7 @@ class FormsListState extends State<FormsList> {
           img: ''),*/
     ];
 
-    _forms.forEach((Form form) {
+    _forms.forEach((FormsA form) {
       _formTiles.add(_buildTile(form));
     });
   }
@@ -53,15 +49,15 @@ class FormsListState extends State<FormsList> {
     _forms.remove(A);
   }*/
 
-  Widget _buildTile(Form form) {
+  Widget _buildTile(FormsA form) {
     return ListTile(
       dense: true,
       contentPadding: EdgeInsets.all(5),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(form.formName, style: TextStyle(fontSize: 20, color: maroon)),
-          Text('${form.formDetails}',
+          Text(form.title, style: TextStyle(fontSize: 20, color: maroon)),
+          Text('${form.body}',
               style: TextStyle(fontSize: 12, color: Colors.grey[600])),
         ],
       ),
@@ -104,24 +100,33 @@ class AcadsFormsPage extends StatefulWidget {
 
 class AcadsFormsPageState extends State<AcadsFormsPage> {
   FirebaseUser user;
+  List<FormsA> formsA = [];
+
+  void newFormsA(String title, String body, String url) {
+    var formA = new FormsA(title, body, url);
+    formA.setId(saveFormsA(formA));
+    this.setState(() {
+      formsA.add(formA);
+    });
+  }
+
+  void updateFormsA() {
+    getAllFormsA().then((formsA) => {
+          this.setState(() {
+            this.formsA = formsA;
+          })
+        });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    updateFormsA();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => FormsActions(user))); //g
-          },
-          icon: Icon(
-            Icons.edit,
-            color: Colors.white,
-          ),
-          label: Text('Update Forms'),
-          foregroundColor: Colors.orange,
-          backgroundColor: maroon,
-        ),
         backgroundColor: Colors.blueGrey[50],
         body: Container(
             padding: EdgeInsets.all(20),
@@ -146,9 +151,7 @@ class AcadsFormsPageState extends State<AcadsFormsPage> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                Flexible(
-                  child: FormsList(),
-                )
+                Expanded(child: FormsAList())
               ],
             )));
   }

@@ -18,6 +18,21 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FormsActions(user))); //g
+          },
+          icon: Icon(
+            Icons.edit,
+            color: Colors.white,
+          ),
+          label: Text('Update Forms'),
+          foregroundColor: Colors.orange,
+          backgroundColor: maroon,
+        ),
         drawer: DrawerDetails(),
         appBar: AppBar(
           title: Text("Up How To's"),
