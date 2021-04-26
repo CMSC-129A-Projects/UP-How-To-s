@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:uphowtos1/staffList.dart';
 import 'mainDrawerDetails.dart';
 import 'formsTwo.dart';
 
@@ -78,6 +79,13 @@ class GridDashboardState extends State<GridDashBoard> {
                           builder: (context) =>
                               HomePage(user))); //go to forms page
                 }
+                if (x == 2) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              StaffList())); //go to forms page
+                }
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -136,6 +144,9 @@ int getvalue(String title) {
   if (title == 'Forms') {
     print('hello');
     return 1;
+  }
+  if (title == 'Staff List') {
+    return 2;
   } else {
     return 0;
     // function invokes itself

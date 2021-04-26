@@ -23,7 +23,7 @@ class FormsA {
 }
 
 FormsA createFormsA(record) {
-  Map<String, dynamic> attributes = {'author': '', 'body': '', 'url': ''};
+  Map<String, dynamic> attributes = {'title': '', 'body': '', 'url': ''};
 
   record.forEach((key, value) => {attributes[key] = value});
 

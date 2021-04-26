@@ -21,9 +21,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-///adawdawdawdw
-///dawadawd
 /*
         "/logInPage": (_) => new LogInPage(),
         "/HomePage": (_) => new HomeFormsPage(),
@@ -32,11 +29,6 @@ class MyApp extends StatelessWidget {
         "/FormsEdit": (_) => new FormsEdit(),
         "/FormsAdd": (_) => new AddForms(),
         "/Home": (_) => new Home(),
-
-
-
-
-
 
         loginpage
           signinwithgoogle

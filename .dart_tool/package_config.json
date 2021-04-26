@@ -98,6 +98,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_staggered_grid_view",
+      "rootUri": "file:///C:/Users/DeLL/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_staggered_grid_view-0.3.4",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/src/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -156,6 +162,12 @@
       "rootUri": "file:///C:/Users/DeLL/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/matcher-0.12.10",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "material_floating_search_bar",
+      "rootUri": "file:///C:/Users/DeLL/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/material_floating_search_bar-0.2.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.8"
     },
     {
       "name": "meta",
@@ -302,7 +314,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-04-23T14:16:46.708885Z",
+  "generated": "2021-04-26T06:36:38.301197Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }
