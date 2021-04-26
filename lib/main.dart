@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'mainLogIn.dart';
+
+import 'package:uphowtos1/screens/LogIn/RegistrationPage.dart';
+// import 'package:uphowtos1/screens/LogIn/feLoginPage.dart';
+// import 'mainLogIn.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,16 +12,10 @@ final maroon = const Color(0xFF8A1538); // UP MAROON
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'UP How Tos',
-      theme: ThemeData(
-        primaryColor: maroon,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LoginPage(),
-    );
+    return MaterialApp(title: 'UP How Tos', home: RegPage());
   }
 }
 
@@ -32,11 +29,6 @@ class MyApp extends StatelessWidget {
         "/FormsEdit": (_) => new FormsEdit(),
         "/FormsAdd": (_) => new AddForms(),
         "/Home": (_) => new Home(),
-
-
-
-
-
 
         loginpage
           signinwithgoogle

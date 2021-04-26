@@ -1,23 +1,16 @@
-import 'package:uphowtos1/postHomePage.dart';
+import 'package:uphowtos1/screens/DiscussionBoard/postHomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'mainAuth.dart';
 import 'mainDashBoard.dart';
+import 'package:uphowtos1/screens/LogIn/LoginPage.dart';
 
-class LoginPage extends StatelessWidget {
+class gmailSignIn extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text('Please use UPmail.')), body: Body());
-  }
+  _gmailSignInState createState() => _gmailSignInState();
 }
 
-class Body extends StatefulWidget {
-  @override
-  _BodyState createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
+class _gmailSignInState extends State<gmailSignIn> {
   FirebaseUser user;
 
   @override
@@ -51,7 +44,7 @@ class _BodyState extends State<Body> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LoginPage())) // invalid emails
+                          builder: (context) => LogInPage())) // invalid emails
                 }
             },
         });
@@ -72,7 +65,7 @@ class _BodyState extends State<Body> {
                 Image(image: AssetImage('assets/google_logo.png'), height: 35),
                 Padding(
                     padding: EdgeInsets.only(left: 10),
-                    child: Text('Sign in with Google',
+                    child: Text('Sign up with Google',
                         style: TextStyle(color: Colors.grey, fontSize: 25)))
               ],
             )));
