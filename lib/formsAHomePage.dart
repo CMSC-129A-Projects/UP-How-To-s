@@ -94,7 +94,7 @@ class _FormsAListPageState extends State<FormsAListPage> {
     return Scaffold(
         appBar: AppBar(title: Text('Academic Forms')),
         body: Column(children: <Widget>[
-          Expanded(child: FormsList()),
+          Expanded(child: FormsAList()),
         ]));
   }
 }
