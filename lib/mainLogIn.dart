@@ -34,7 +34,7 @@ class _BodyState extends State<Body> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Home(user))) //admin version
+                      builder: (context) => Dashboard(user))) //admin version
             }
           else
             {

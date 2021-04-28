@@ -100,7 +100,7 @@ class _EditFormsAState extends State<EditFormsA> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                FormsAList())); //go to forms page
+                                FormsList())); //go to forms page
                   },
                   child: Text('Check Forms'),
                   style: ElevatedButton.styleFrom(
