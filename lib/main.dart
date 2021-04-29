@@ -16,7 +16,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'UP How Tos', home: StaffListPage());
+    return MaterialApp(
+      title: 'UP How Tos',
+      theme: ThemeData(
+        primaryColor: maroon,
+        scaffoldBackgroundColor: Colors.white70,
+      ),
+      home: StaffListPage(),
+    );
   }
 }
 
