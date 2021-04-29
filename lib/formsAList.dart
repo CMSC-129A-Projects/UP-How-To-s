@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:uphowtos1/formsA.dart';
 import 'formsAEdit.dart';
 import 'addFormsAdmin2.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
@@ -428,21 +429,20 @@ class SearchResultListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (searchTerm == null) return FormsAList();
-    return FormsBList(searchTerm);
+    if (searchTerm == null) return new FormsAList();
+    return new FormsBList(searchTerm);
   }
 }
 
 class FormsBList extends StatefulWidget {
-  final String term;
-  FormsBList(this.term);
-
+  final String searchTerm;
+  const FormsBList(this.searchTerm);
+  //FormsBList({this.searchTerm});
   @override
   _FormsBListState createState() => _FormsBListState();
 }
 
 class _FormsBListState extends State<FormsBList> {
-  String term;
   Query _ref;
   DatabaseReference reference =
       FirebaseDatabase.instance.reference().child('formsA');
@@ -459,7 +459,8 @@ class _FormsBListState extends State<FormsBList> {
     _ref = FirebaseDatabase.instance
         .reference()
         .child('formsA')
-        .orderByChild('title');
+        .orderByChild('title')
+        .equalTo(widget.searchTerm);
   }
 
   Widget _buildContactItem({Map contact}) {
@@ -627,18 +628,33 @@ class _FormsBListState extends State<FormsBList> {
           itemBuilder: (BuildContext context, DataSnapshot snapshot,
               Animation<double> animation, int index) {
             Map contact = snapshot.value;
-            //int c=0;
-            Map<dynamic, dynamic> con;
-            print(contact.entries);
-            Map.fromEntries(contact.entries);
-            /*contact.forEach((key, value) 
-              if (value.title== term) {con.putIfAbsent(key, () => value);
-            });*/
             contact['key'] = snapshot.key;
             return _buildContactItem(contact: contact);
           },
         ),
       ),
     );
+    /*
+    return Scaffold(
+      body: Container(
+        height: double.infinity,
+        child: FirebaseAnimatedList(
+          query: _ref,
+          itemBuilder: (BuildContext context, DataSnapshot snapshot,
+              Animation<double> animation, int index) {
+            Map contact = snapshot.value;
+            contact['key'] = snapshot.key;
+            for (var key in contact['key']) {
+              FormsA formsA =
+                  new FormsA(contact['title'], contact['body'], contact['url']);
+              if (formsA.title.contains('a')) {
+                contact.putIfAbsent(key, () => formsA.body);
+              }
+            }
+            return _buildContactItem(contact: contact);
+          },
+        ),
+      ),
+    );*/
   }
 }
