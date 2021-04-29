@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:uphowtos1/screens/LogIn/RegistrationPage.dart';
+// import 'package:uphowtos1/screens/LogIn/RegistrationPage.dart';
+import 'package:uphowtos1/screens/Stafflist/staffListPage.dart';
 // import 'package:uphowtos1/screens/LogIn/feLoginPage.dart';
 // import 'mainLogIn.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'UP How Tos', home: RegPage());
+    return MaterialApp(title: 'UP How Tos', home: StaffListPage());
   }
 }
 

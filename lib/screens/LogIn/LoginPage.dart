@@ -116,6 +116,7 @@ class AppTitle extends StatelessWidget {
     double logoDimensions = 110;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         ConstrainedBox(
             constraints: BoxConstraints(

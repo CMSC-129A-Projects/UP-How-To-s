@@ -19,39 +19,41 @@ class _RegPageState extends State<RegPage> {
       body: Center(
           child: SingleChildScrollView(
               child: Padding(
-                  padding: EdgeInsets.all(32),
+                  padding: EdgeInsets.all(16),
                   child: Column(children: <Widget>[
                     AppTitle(),
                     spacing(0, spc),
                     authorizationCheck(),
-                    spacing(spc,0)
+                    spacing(0, spc),
+                    gmailSignIn()
                   ])))),
     ));
   }
 
-  Widget authorizationCheck() => Row(
-        children: <Widget>[
-          Checkbox(
-              value: this.authCheck,
-              onChanged: (bool value) => {
-                    setState(() {
-                      this.authCheck = value;
-                    })
-                  }),
-          Flexible(
-            child: Text(
-              'I will use my UP mail upon creating an account',
-              style: TextStyle(
-                  fontSize: 18, 
-                  fontFamily: 'Helvetica-Light'
-              )
-            ),
-        )
-        ],
+  Widget authorizationCheck() => Padding(
+        padding: EdgeInsets.all(5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Checkbox(
+                value: this.authCheck,
+                onChanged: (bool value) => {
+                      setState(() {
+                        this.authCheck = value;
+                      })
+                    }),
+            Flexible(
+              child: Text('I will use my UP mail upon creating an account',
+                  style:
+                      TextStyle(fontSize: 15, fontFamily: 'Helvetica-Light')),
+            )
+          ],
+        ),
       );
 
   Widget spacing(double x, double y) => SizedBox(
         height: y,
         width: x,
       );
+
 }
