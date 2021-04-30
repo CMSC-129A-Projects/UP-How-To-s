@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'formsAHomePage.dart';
+import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'mainDrawerDetails.dart';
@@ -12,7 +12,7 @@ final gradientcolor1 = const Color(0xFF7b4397); // UP YELLOW
 final gradientcolor2 = const Color(0xFFdc2430); // UP Spotblack
 
 class AcadsTInputWidget extends StatefulWidget {
-  final Function(String, String, String) callback;
+  final Function(String, List<String>, String) callback;
   AcadsTInputWidget(this.callback, this.user);
 
   final FirebaseUser user;
@@ -22,25 +22,35 @@ class AcadsTInputWidget extends StatefulWidget {
 }
 
 class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
-  //final _formKey = GlobalKey<FormState>();
   FirebaseUser user;
-  //static List<String> stepsList = [null];
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _nameController;
+  static List<String> stepsList = [
+    null
+  ]; //this is where the list of steps is placed, manipulate this para masulod/makakuha from the database
+
   final title = TextEditingController();
-  final body = TextEditingController();
   final url = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+  }
+
   @override
   void dispose() {
     super.dispose();
     title.dispose();
-    body.dispose();
     url.dispose();
+    _nameController.dispose();
   }
 
   void click() {
-    widget.callback(title.text, body.text, url.text);
+    widget.callback(title.text, stepsList, url.text);
     FocusScope.of(context).unfocus();
     title.clear();
-    body.clear();
+    _nameController.clear();
     url.clear();
   }
 
@@ -49,103 +59,164 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
     return Scaffold(
       drawer: DrawerDetails(),
       appBar: AppBar(
-        centerTitle: true,
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Add Forms',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontFamily: 'Helvetica',
-              ),
-            ),
-            Text(
-              'Administrator',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: maroon,
-        elevation: 4.0,
-      ),
-        body: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          centerTitle: true,
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextField(
-                controller: this.title,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: maroon),
-                  ),
-                  labelStyle: TextStyle(color: maroon),
-                  labelText: 'Enter Form Name',
+              Text(
+                'Add Forms',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontFamily: 'Helvetica',
                 ),
               ),
-              SizedBox(height: 15),
-              TextField(
-                controller: this.body,
-                keyboardType: TextInputType.multiline,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: maroon),
-                  ),
-                  labelStyle: TextStyle(color: maroon),
-                  labelText: 'Enter Steps Here',
-                ),
-                maxLines: null,
-              ),
-              SizedBox(height: 15),
-              TextField(
-                controller: this.url,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: maroon),
-                  ),
-                  labelStyle: TextStyle(color: maroon),
-                  labelText: 'Enter Form Hyperlink Here',
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(25),
-                child: ElevatedButton(
-                  onPressed: this.click,
-                  child: Text('Add Form'),
-                  style: ElevatedButton.styleFrom(
-                      primary: maroon,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                      textStyle: TextStyle(fontWeight: FontWeight.bold)),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(25),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                FormsAListPage(user))); //go to forms page
-                  },
-                  child: Text('Check Forms'),
-                  style: ElevatedButton.styleFrom(
-                      primary: maroon,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                      textStyle: TextStyle(fontWeight: FontWeight.bold)),
+              Text(
+                'Administrator',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
                 ),
               ),
             ],
           ),
-        ));
+          backgroundColor: maroon,
+          elevation: 4.0),
+      body: SingleChildScrollView(
+        child: Column(
+          key: _formKey,
+          children: <Widget>[
+            Row(
+              //Form Name
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20, right: 10),
+                  child: Text(
+                    "Form Name:",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20, right: 20),
+                    child: Container(
+                      height: 30,
+                      child: TextFormField(
+                          controller: this.title,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(50),
+                          ],
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(8, 0, 8, 2),
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter step here';
+                            return null;
+                          }),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Steps Row
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Steps: ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            ..._getSteps(),
+            Row(
+              //Download Forms Text
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Download Form Links Here: ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Download Forms Textbox
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: Container(
+                      child: TextFormField(
+                          controller: this.url,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                            border: OutlineInputBorder(),
+                            hintText: 'https...',
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter step here';
+                            return null;
+                          }),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Submit Button
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, right: 20),
+                  child: TextButton(
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all<Color>(maroon),
+                      backgroundColor: MaterialStateProperty.all<Color>(maroon),
+                    ),
+                    onPressed: () {
+                      this.click();
+                      final snackBar =
+                          SnackBar(content: Text('Submitted, maybe'));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
-  /*
+
   List<Widget> _getSteps() {
     List<Widget> stepsTextFields = [];
     for (int i = 0; i < stepsList.length; i++) {
@@ -239,4 +310,4 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
           return null;
         });
   }
-  */
+}

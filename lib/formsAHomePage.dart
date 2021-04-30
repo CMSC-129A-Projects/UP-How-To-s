@@ -16,7 +16,7 @@ class _FormsAHomePageState extends State<FormsAHomePage> {
   FirebaseUser user;
   List<FormsA> formsA = [];
 
-  void newFormsA(String title, String body, String url) {
+  void newFormsA(String title, List<String> body, String url) {
     var formA = new FormsA(title, body, url);
     formA.setId(saveFormsA(formA));
     this.setState(() {
@@ -67,7 +67,7 @@ class _FormsAListPageState extends State<FormsAListPage> {
   FirebaseUser user;
   List<FormsA> formsA = [];
 
-  void newFormsA(String title, String body, String url) {
+  void newFormsA(String title, List<String> body, String url) {
     var formA = new FormsA(title, body, url);
     formA.setId(saveFormsA(formA));
     this.setState(() {

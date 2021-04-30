@@ -40,9 +40,9 @@ class _FormsAListState extends State<FormsAList> {
 
   Widget _buildContactItem({Map contact}) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.all(10),
-      height: 130,
+      margin: EdgeInsets.symmetric(vertical: 5),
+      padding: EdgeInsets.all(5),
+      height: 100,
       color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -66,43 +66,6 @@ class _FormsAListState extends State<FormsAList> {
                     fontWeight: FontWeight.w600),
               ),
             ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.pages,
-                color: Theme.of(context).accentColor,
-                size: 20,
-              ),
-              SizedBox(
-                width: 6,
-              ),
-              Text(
-                contact['body'],
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).accentColor,
-                    fontWeight: FontWeight.w600),
-              ),
-              SizedBox(width: 15),
-              Icon(
-                Icons.group_work,
-                size: 20,
-              ),
-              SizedBox(
-                width: 6,
-              ),
-              Text(
-                contact['url'],
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

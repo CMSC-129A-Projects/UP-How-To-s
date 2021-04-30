@@ -102,7 +102,7 @@ class AcadsFormsPageState extends State<AcadsFormsPage> {
   FirebaseUser user;
   List<FormsA> formsA = [];
 
-  void newFormsA(String title, String body, String url) {
+  void newFormsA(String title, List<String> body, String url) {
     var formA = new FormsA(title, body, url);
     formA.setId(saveFormsA(formA));
     this.setState(() {

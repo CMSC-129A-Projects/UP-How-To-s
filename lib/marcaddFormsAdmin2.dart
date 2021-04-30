@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
@@ -96,6 +96,7 @@ class _AddFormsState extends State<AddForms> {
                     child: Container(
                       height: 30,
                       child: TextFormField(
+                        controller: this.title,
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(50),
                         ],
@@ -152,6 +153,7 @@ class _AddFormsState extends State<AddForms> {
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
                       child: TextFormField(
+                        controller: this.url,
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
                         decoration: InputDecoration(
@@ -295,4 +297,4 @@ TextEditingController _nameController;
       }
     );
   }
-}
+} */
