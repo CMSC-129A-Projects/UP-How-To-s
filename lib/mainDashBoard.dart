@@ -88,7 +88,7 @@ class _DashboardState extends State<Dashboard> {
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         children: <Widget>[
           myItems('https://i.imgur.com/NdSHMGZ.png', "Forms",
-              MaterialPageRoute(builder: (context) => FormsAdmin())),
+              MaterialPageRoute(builder: (context) => FormsAList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Staff List",
               MaterialPageRoute(builder: (context) => FormsAList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Discussion Board",

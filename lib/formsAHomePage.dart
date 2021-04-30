@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'formsA.dart';
 import 'formsADatabase.dart';
-import 'formsAInputWidget.dart';
+import 'formsAdd.dart';
 import 'formsAList.dart';
 
 class FormsAHomePage extends StatefulWidget {

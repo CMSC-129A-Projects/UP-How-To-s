@@ -1,14 +1,16 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/formsA.dart';
+import 'package:uphowtos1/formsAHomePage.dart';
+import 'package:uphowtos1/formsAdd.dart';
+import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'formsAEdit.dart';
-import 'addFormsAdmin2.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 
 class FormsAList extends StatefulWidget {
+  //final FirebaseUser user;
   FormsAList();
 
   @override
@@ -16,6 +18,7 @@ class FormsAList extends StatefulWidget {
 }
 
 class _FormsAListState extends State<FormsAList> {
+  FirebaseUser user;
   Query _ref;
   DatabaseReference reference =
       FirebaseDatabase.instance.reference().child('formsA');
@@ -193,6 +196,43 @@ class _FormsAListState extends State<FormsAList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerDetails(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Forms',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontFamily: 'Helvetica',
+              ),
+            ),
+            Text(
+              'Administrator',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: maroon,
+        elevation: 4.0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add_circle_outline),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FormsAHomePage(user)));
+            }, //insert go to addforms here
+          ),
+        ],
+      ),
       body: Container(
         height: double.infinity,
         child: FirebaseAnimatedList(
@@ -208,7 +248,7 @@ class _FormsAListState extends State<FormsAList> {
     );
   }
 }
-
+/*
 class FormsAdmin extends StatefulWidget {
   @override
   _FormsAdminState createState() => _FormsAdminState();
@@ -658,3 +698,4 @@ class _FormsBListState extends State<FormsBList> {
     );*/
   }
 }
+*/
