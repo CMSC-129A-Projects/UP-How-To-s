@@ -3,14 +3,16 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:uphowtos1/formsAHomePage.dart';
 import 'package:uphowtos1/formsAdd.dart';
+import 'formsADatabase.dart';
 import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'formsAEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+//import 'editdis.dart';
+import 'formsA.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 
 class FormsAList extends StatefulWidget {
-  //final FirebaseUser user;
   FormsAList();
 
   @override
@@ -20,14 +22,9 @@ class FormsAList extends StatefulWidget {
 class _FormsAListState extends State<FormsAList> {
   FirebaseUser user;
   Query _ref;
+  List<FormsA> formsA = [];
   DatabaseReference reference =
       FirebaseDatabase.instance.reference().child('formsA');
-
-  void like(Function callBack) {
-    this.setState(() {
-      callBack();
-    });
-  }
 
   @override
   void initState() {
@@ -76,6 +73,8 @@ class _FormsAListState extends State<FormsAList> {
                       context,
                       MaterialPageRoute(
                           builder: (_) => EditFormsA(
+                                newFormsA,
+                                user,
                                 contactKey: contact['key'],
                               )));
                 },
@@ -128,6 +127,14 @@ class _FormsAListState extends State<FormsAList> {
         ],
       ),
     );
+  }
+
+  void newFormsA(String title, List<String> body, String url) {
+    var formA = new FormsA(title, body, url);
+    formA.setId(saveFormsA(formA));
+    this.setState(() {
+      formsA.add(formA);
+    });
   }
 
   _showDeleteDialog({Map contact}) {
