@@ -7,7 +7,6 @@ import 'formsADatabase.dart';
 import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'formsAEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'editdis.dart';
 import 'formsA.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON

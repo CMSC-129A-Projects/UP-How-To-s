@@ -1,8 +1,6 @@
-import 'package:uphowtos1/postHomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'mainAuth.dart';
-import 'mainDashBoard.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -31,20 +29,15 @@ class _BodyState extends State<Body> {
           this.user = user,
           if (user.email.contains("uphowtosofc@gmail.com"))
             {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Dashboard(user))) //admin version
+              Navigator.of(context)
+                  .pushNamed('/dashboard', arguments: user), //admin version
             }
           else
             {
               if (user.email.contains("@up.edu.ph"))
                 {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              MyHomePage(user))) // student version
+                  Navigator.of(context).pushNamed('/dashboard',
+                      arguments: user), // student version
                 }
               else
                 {

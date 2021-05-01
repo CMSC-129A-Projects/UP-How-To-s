@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'mainLogIn.dart';
+import 'mainroute_generator.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,11 +18,15 @@ class MyApp extends StatelessWidget {
         primaryColor: maroon,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
 /*
+
+Navigator.of(context).pushNamed('/second, arguments: 'dsdsdsd');
+
         "/logInPage": (_) => new LogInPage(),
         "/HomePage": (_) => new HomeFormsPage(),
         "/SignUpPage": (_) => new SignUpPage(),
