@@ -87,6 +87,7 @@ class _EditFormsAState extends State<EditFormsA> {
     _ref = FirebaseDatabase.instance.reference().child('formsA');
     title = TextEditingController();
     url = TextEditingController();
+
     _nameController = TextEditingController();
     getFormsDetail();
   }
@@ -234,12 +235,12 @@ class _EditFormsAState extends State<EditFormsA> {
                     ),
                     onPressed: () {
                       this.click();
+                      stepsList = [];
                       _ref
                           .child(widget.contactKey)
                           .remove()
                           .whenComplete(() => Navigator.pop(context));
-                      final snackBar =
-                          SnackBar(content: Text('Submitted, maybe'));
+                      final snackBar = SnackBar(content: Text('Form edited'));
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     child: Text(
@@ -312,6 +313,10 @@ class _EditFormsAState extends State<EditFormsA> {
 
     title.text = contact['title'];
     url.text = contact['url'];
+    List<dynamic> word = contact['body'];
+    for (int i = 0; i < word.length; i++) {
+      stepsList.add(word[i]);
+    }
   }
 
   void click() {
