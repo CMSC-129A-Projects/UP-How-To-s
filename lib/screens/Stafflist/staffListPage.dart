@@ -1,6 +1,9 @@
+//great source material for popupmenubutton
+//https://www.youtube.com/watch?v=TczSxNJB1gU&t=125s
+
 import 'package:flutter/material.dart';
 import 'package:uphowtos1/screens/Stafflist/staffItem.dart';
-// import 'package:uphowtos1/screens/Stafflist/newStaffItem.dart';
+import 'package:uphowtos1/screens/Stafflist/newStaffItem.dart';
 
 class StaffListPage extends StatefulWidget {
   @override
@@ -26,7 +29,9 @@ class _StaffListPageState extends State<StaffListPage> {
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                _addNewStaff(context);
+              },
               icon: Icon(
                 Icons.add,
                 color: Colors.white70,
@@ -39,29 +44,26 @@ class _StaffListPageState extends State<StaffListPage> {
       ),
       drawer: Drawer(),
       body: Container(
-        //color only used to see content limits
-        // color: Colors.amber,
         width: double.infinity,
         margin: EdgeInsets.all(10.0),
         child: Column(
-          children: <Widget>[
-            StaffItem(
-              name: 'Ethan',
-              position: 'developer',
-              location: 'Talisay',
-              description: '3rd Year',
-            ),
-            StaffItem(),
-            StaffItem(),
-          ],
+          children: staff.map((StaffItem) => buildItem(context, StaffItem)).toList(),
         ),
       ),
-      // ListView.separated(
-      //   itemCount: staff.length,
-      //   itemBuilder: (context, index) {},
-      //   separatorBuilder: (BuildContext context, index) =>
-      //       SizedBox(height: 10.0),
-      // ),
     );
   }
+
+  Widget buildItem(BuildContext context, StaffItem item){
+    return item;
+  }
+
+  void _addNewStaff(BuildContext context) async {
+    final s = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => NewStaffItem()),
+    );
+    setState(() {
+      staff.add(s);
+    });
+  }  
 }

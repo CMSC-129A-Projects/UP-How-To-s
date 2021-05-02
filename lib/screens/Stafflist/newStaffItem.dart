@@ -7,8 +7,6 @@ class NewStaffItem extends StatefulWidget {
 }
 
 class _NewStaffItemState extends State<NewStaffItem> {
-  StaffItem s;
-
   final nameController = TextEditingController();
   final positionController = TextEditingController();
   final locationController = TextEditingController();
@@ -19,50 +17,67 @@ class _NewStaffItemState extends State<NewStaffItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(children: <Widget>[
+      appBar: AppBar(),
+      body: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          children: <Widget>[
             TextFormField(
-                controller: nameController,
-                decoration: InputDecoration(
-                  hintText: 'Name',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.name,
-                textInputAction: TextInputAction.done),
-            SizedBox(height: 10.0),
+              controller: nameController,
+              decoration: InputDecoration(
+                hintText: 'Name',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.name,
+              textInputAction: TextInputAction.done,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
             TextFormField(
-                controller: positionController,
-                decoration: InputDecoration(
-                  hintText: 'Position',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.name,
-                textInputAction: TextInputAction.done),
-            SizedBox(height: 10.0),
+              controller: positionController,
+              decoration: InputDecoration(
+                hintText: 'Position',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.name,
+              textInputAction: TextInputAction.done,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
             TextFormField(
-                controller: locationController,
-                decoration: InputDecoration(
-                  hintText: 'Office At',
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.name,
-                textInputAction: TextInputAction.done),
+              controller: locationController,
+              decoration: InputDecoration(
+                hintText: 'Office At',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.name,
+              textInputAction: TextInputAction.done,
+            ),
             SizedBox(height: 10.0),
             ElevatedButton(
-                child: Text('Submit',
-                    style: TextStyle(
-                      fontFamily: 'Helvetica',
-                      fontSize: 15.0,
-                    )),
-                onPressed: () {
-                  s.updateStaff(positionController.text, nameController.text,
-                      locationController.text);
-                  Navigator.pop(context, s);
-                })
-          ]),
-        ));
+              child: Text(
+                'Submit',
+                style: TextStyle(
+                  fontFamily: 'Helvetica',
+                  fontSize: 15.0,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(
+                  context,
+                  StaffItem(
+                    name: nameController.text,
+                    position: positionController.text,
+                    location: locationController.text,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
