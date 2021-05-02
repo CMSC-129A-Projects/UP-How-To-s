@@ -70,7 +70,8 @@ class EditFormsA extends StatefulWidget {
 class _EditFormsAState extends State<EditFormsA> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _nameController;
-  static List<String> stepsList = [null];
+  List<dynamic> word = [null];
+  static List<String> stepsList;
   //this is where the list of steps is placed, manipulate this para masulod/makakuha from the database
 
   TextEditingController title = TextEditingController();
@@ -80,13 +81,13 @@ class _EditFormsAState extends State<EditFormsA> {
   @override
   void initState() {
     super.initState();
-
+    stepsList = [null];
     _ref = FirebaseDatabase.instance.reference().child('formsA');
     title = TextEditingController();
     url = TextEditingController();
-
     _nameController = TextEditingController();
     getFormsDetail();
+    setState(() {});
   }
 
   @override
@@ -231,8 +232,13 @@ class _EditFormsAState extends State<EditFormsA> {
                       backgroundColor: MaterialStateProperty.all<Color>(maroon),
                     ),
                     onPressed: () {
+                      for (int ctr = 0; ctr < stepsList.length; ctr++) {
+                        if (stepsList[ctr] == null) {
+                          stepsList.removeAt(ctr);
+                          setState(() {});
+                        }
+                      }
                       this.click();
-                      //stepsList = [];
                       _ref.child(widget.contactKey).remove();
                       Navigator.of(context).pushNamed('/forms'); //admin version
 
@@ -258,8 +264,9 @@ class _EditFormsAState extends State<EditFormsA> {
 
   List<Widget> _getSteps() {
     List<Widget> stepsTextFields = [];
+
     print(stepsList.length);
-    for (int i = 0; i < stepsList.length; i++) {
+    for (int i = 1; i < stepsList.length; i++) {
       stepsTextFields.add(
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -309,9 +316,12 @@ class _EditFormsAState extends State<EditFormsA> {
     Map contact = snapshot.value;
     title.text = contact['title'];
     url.text = contact['url'];
-    List<dynamic> word = contact['body'];
+    word = contact['body'];
     for (int i = 0; i < word.length; i++) {
-      stepsList.add(word[i]);
+      if (word[i] != '') {
+        stepsList.add(word[i]);
+        setState(() {});
+      }
     }
     //_getSteps();
   }
