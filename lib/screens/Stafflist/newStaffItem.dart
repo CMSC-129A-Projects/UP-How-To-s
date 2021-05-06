@@ -17,7 +17,9 @@ class _NewStaffItemState extends State<NewStaffItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Add New Staff'),
+      ),
       body: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(
@@ -57,6 +59,9 @@ class _NewStaffItemState extends State<NewStaffItem> {
             ),
             SizedBox(height: 10.0),
             ElevatedButton(
+              style: ButtonStyle(
+                // backgroundColor: Theme.of(context).primaryColor,
+              ),
               child: Text(
                 'Submit',
                 style: TextStyle(

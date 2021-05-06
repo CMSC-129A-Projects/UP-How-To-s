@@ -47,13 +47,20 @@ class _StaffListPageState extends State<StaffListPage> {
         width: double.infinity,
         margin: EdgeInsets.all(10.0),
         child: Column(
-          children: staff.map((StaffItem) => buildItem(context, StaffItem)).toList(),
+          children:
+              staff.map((StaffItem) => buildItem(context, StaffItem)).toList(),
         ),
       ),
     );
   }
 
-  Widget buildItem(BuildContext context, StaffItem item){
+  Widget buildItem(BuildContext context, StaffItem item) {
+    if (item.toRemove == true) {
+      setState(() {
+        staff.remove(item);
+      });
+      return null;
+    }
     return item;
   }
 
@@ -62,8 +69,20 @@ class _StaffListPageState extends State<StaffListPage> {
       context,
       MaterialPageRoute(builder: (context) => NewStaffItem()),
     );
-    setState(() {
-      staff.add(s);
-    });
-  }  
+    if (s != null) {
+      setState(() {
+        staff.add(s);
+      });
+    }
+  }
+
+  void _removeStaff(Key k) {
+    for (StaffItem x in staff) {
+      if (k == x.key) {
+        setState(() {
+          staff.remove(x);
+        });
+      }
+    }
+  }
 }

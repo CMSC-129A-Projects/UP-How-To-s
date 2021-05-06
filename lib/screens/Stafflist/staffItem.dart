@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:uphowtos1/screens/Stafflist/staffListPage.dart';
 
 class StaffItem extends StatelessWidget {
-  final String name;
-  final String position;
-  final String location;
+  String name;
+  String position;
+  String location;
+  VoidCallback toRemove;
+  // bool toRemove = false;
 
-  StaffItem(
-      {Key key, this.name, this.position, this.location})
+  StaffItem({Key key, this.name, this.position, this.location})
       : super(key: key);
 
   @override
@@ -61,7 +63,7 @@ class StaffItem extends StatelessWidget {
         bottom: 5.0,
       ),
       decoration: BoxDecoration(
-        color: Colors.white38,
+        color: Colors.white70,
         borderRadius: BorderRadius.all(
           Radius.circular(10.0),
         ),
@@ -96,23 +98,6 @@ class StaffItem extends StatelessWidget {
     );
   }
 
-  Container buildButton(BuildContext context) {
-    return Container(
-      // color: Colors.blue,
-      child: IconButton(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(5.0),
-        icon: Icon(
-          Icons.more_vert_outlined,
-          color: Theme.of(context).primaryColor,
-        ),
-        splashColor: Colors.white24,
-        splashRadius: 20.0,
-        onPressed: () => {},
-      ),
-    );
-  }
-
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
@@ -120,6 +105,7 @@ class StaffItem extends StatelessWidget {
         break;
       case 1:
         //Remove Item
+        // toRemove = true;
         break;
     }
   }
