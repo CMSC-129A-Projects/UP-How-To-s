@@ -9,7 +9,7 @@ class StaffItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // context.watch<StaffList>() is used to connect the instatiated staffList  
+    // context.watch<StaffList>() is used to connect the instatiated staffList
     // which can be found in main.dart
     final staff = context.watch<StaffList>();
 
@@ -18,14 +18,13 @@ class StaffItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
       margin: EdgeInsets.only(bottom: 5.0),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10.0),
-        ),
-        boxShadow: [
-          BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-        ]
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+          boxShadow: [
+            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
+          ]),
       child: Row(
         children: <Widget>[
           Expanded(flex: 8, child: _staffDetailPortion(staff, context)),
@@ -101,13 +100,17 @@ class StaffItem extends StatelessWidget {
       case 0:
         //Edit Item
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => NewStaffItem.fromStaff(
-                    staff.staff[index].name,
-                    staff.staff[index].position,
-                    staff.staff[index].location,
-                    staff.staff[index].contacts)));
+          context,
+          MaterialPageRoute(
+            builder: (context) => NewStaffItem.fromStaff(
+              name: staff.staff[index].name,
+              position: staff.staff[index].position,
+              location: staff.staff[index].location,
+              contacts: staff.staff[index].contacts,
+              index: this.index,
+            ),
+          ),
+        );
         break;
       case 1:
         //Remove Item

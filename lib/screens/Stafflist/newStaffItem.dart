@@ -14,13 +14,18 @@ class NewStaffItem extends StatelessWidget {
   String position;
   String location;
   String contacts;
+  int index;
 
   // NewStaffItem has two constructors:
   // NewStaffItem() empty constructor for adding new staff item
   // NewStaffItem.fromStaff() editing existing staff members
   NewStaffItem();
   NewStaffItem.fromStaff(
-      this.name, this.position, this.location, this.contacts);
+      {this.name,
+      this.position,
+      this.location,
+      this.contacts,
+      this.index,});
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +76,24 @@ class NewStaffItem extends StatelessWidget {
       ),
       onPressed: () {
         // calls stafflist.add and add new staff
-        staff.add(Staff(nameController.text, positionController.text,
-            locationController.text, contactsController.text));
+        if (this.name != null) {
+          staff.edit(
+            index: index,
+            name: nameController.text,
+            position: positionController.text,
+            location: locationController.text,
+            contacts: contactsController.text,
+          );
+        } else {
+          staff.add(
+            Staff(
+              nameController.text,
+              positionController.text,
+              locationController.text,
+              contactsController.text,
+            ),
+          );
+        }
         // pops the current screen from the materialroutestack which leads back
         // to staffLisPage
         Navigator.pop(context);

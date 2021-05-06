@@ -14,8 +14,8 @@ class StaffList extends ChangeNotifier {
     notifyListeners();
   }
 
-  void edit(int index, String name, String position, String location,
-      String contacts) {
+  void edit({int index, String name, String position, String location,
+      String contacts}) {
     staff[index].changeValues(name, position, location, contacts);
     notifyListeners();
   }

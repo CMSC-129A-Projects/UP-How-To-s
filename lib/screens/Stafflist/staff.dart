@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-class Staff{
+class Staff {
   String _name;
   String get name => _name;
   String _position;
