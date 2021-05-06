@@ -2,8 +2,10 @@
 //https://www.youtube.com/watch?v=TczSxNJB1gU&t=125s
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uphowtos1/screens/Stafflist/staffItem.dart';
 import 'package:uphowtos1/screens/Stafflist/newStaffItem.dart';
+import 'package:uphowtos1/screens/Stafflist/staffList.dart';
 
 class StaffListPage extends StatefulWidget {
   @override
@@ -11,12 +13,18 @@ class StaffListPage extends StatefulWidget {
 }
 
 class _StaffListPageState extends State<StaffListPage> {
-  List<StaffItem> staff = [];
 
   @override
   Widget build(BuildContext context) {
+    final staff = context.watch<StaffList>();
     return Scaffold(
-      appBar: AppBar(
+      appBar: _myAppBar(context, staff),
+      drawer: Drawer(),
+      body: _myBody(context, staff),
+    );
+  }
+
+  Widget _myAppBar(BuildContext context, StaffList staff) => AppBar(
         title: Text('Staff List'),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -30,7 +38,10 @@ class _StaffListPageState extends State<StaffListPage> {
             padding: EdgeInsets.only(right: 20.0),
             child: IconButton(
               onPressed: () {
-                _addNewStaff(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NewStaffItem()),
+                );
               },
               icon: Icon(
                 Icons.add,
@@ -41,48 +52,17 @@ class _StaffListPageState extends State<StaffListPage> {
             ),
           ),
         ],
-      ),
-      drawer: Drawer(),
-      body: Container(
+      );
+
+  Widget _myBody(BuildContext context, StaffList staff) => Container(
         width: double.infinity,
         margin: EdgeInsets.all(10.0),
-        child: Column(
-          children:
-              staff.map((StaffItem) => buildItem(context, StaffItem)).toList(),
+        child: ListView.separated(
+          itemCount: staff.staff.length,
+          itemBuilder: (context, index) {
+            return StaffItem(index: index);
+          },
+          separatorBuilder: (context,_) => SizedBox(height: 10.0),
         ),
-      ),
-    );
-  }
-
-  Widget buildItem(BuildContext context, StaffItem item) {
-    if (item.toRemove == true) {
-      setState(() {
-        staff.remove(item);
-      });
-      return null;
-    }
-    return item;
-  }
-
-  void _addNewStaff(BuildContext context) async {
-    final s = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => NewStaffItem()),
-    );
-    if (s != null) {
-      setState(() {
-        staff.add(s);
-      });
-    }
-  }
-
-  void _removeStaff(Key k) {
-    for (StaffItem x in staff) {
-      if (k == x.key) {
-        setState(() {
-          staff.remove(x);
-        });
-      }
-    }
-  }
+      );
 }

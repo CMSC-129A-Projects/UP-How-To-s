@@ -122,16 +122,18 @@ class AppTitle extends StatelessWidget {
             constraints: BoxConstraints(
                 maxHeight: logoDimensions, maxWidth: logoDimensions),
             child: Image(image: AssetImage('assets/UP_Cebu_logo_1.png'))),
-        Text("UP\nHow To's",
-            style: TextStyle(
-                fontFamily: 'Helvetica-Bold',
-                fontSize: 45,
-                fontWeight: FontWeight.w800,
-                color: maroon,
-                shadows: [
-                  Shadow(
-                      color: Colors.grey, blurRadius: 6, offset: Offset(0, 4))
-                ])),
+        Text(
+          "UP\nHow To's",
+          style: TextStyle(
+            fontFamily: 'Helvetica-Bold',
+            fontSize: 45,
+            fontWeight: FontWeight.w800,
+            color: maroon,
+            shadows: [
+              Shadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4))
+            ],
+          ),
+        ),
       ],
     );
   }

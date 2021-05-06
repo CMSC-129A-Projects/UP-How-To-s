@@ -10,7 +10,7 @@ class Staff{
   String _contacts;
   String get contacts => _contacts;
 
-  Staff(this._name, this._position, this._location);
+  Staff(this._name, this._position, this._location, this._contacts);
 
   void changeValues(String n, String p, String l, String c) {
     _name = n;
