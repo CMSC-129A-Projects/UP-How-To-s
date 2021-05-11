@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:uphowtos1/screens/stafflist/staffListPage.dart';
 import 'formsAList.dart';
 import 'mainDrawerDetails.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'staffList.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 
@@ -87,7 +89,7 @@ class _DashboardState extends State<Dashboard> {
           myItems('https://i.imgur.com/NdSHMGZ.png', "Forms",
               MaterialPageRoute(builder: (context) => FormsAList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Staff List",
-              MaterialPageRoute(builder: (context) => FormsAList())),
+              MaterialPageRoute(builder: (context) => StaffList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Discussion Board",
               MaterialPageRoute(builder: (context) => FormsAList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Organization Board",

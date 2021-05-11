@@ -241,7 +241,6 @@ class _EditFormsAState extends State<EditFormsA> {
                       this.click();
                       _ref.child(widget.contactKey).remove();
                       Navigator.of(context).pushNamed('/forms'); //admin version
-
                       //   .whenComplete(() => Navigator.pop(context));
                       final snackBar = SnackBar(content: Text('Form edited'));
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);

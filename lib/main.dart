@@ -1,6 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uphowtos1/screens/stafflist/staffListPage.dart';
+import 'package:uphowtos1/screens/Stafflist/staffList.dart';
+// import 'package:uphowtos1/screens/LogIn/RegistrationPage.dart';
+// import 'package:uphowtos1/screens/LogIn/feLoginPage.dart';
+// import 'mainLogIn.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+final maroon = const Color(0xFF8A1538); // UP MAROON
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+
+  @override
+  Widget build(BuildContext context) {
+    // ChangeNotifierProvider is a state management feature in flutter
+    // I used this kind of provider since it the data always changes and i need
+    // to rebuild it everytime a change is made
+    return ChangeNotifierProvider(
+      // create instantiates a StaffList which makes all the children of main
+      // have access to StaffList
+      create: (BuildContext context) => StaffList(),
+      child: MaterialApp(
+        title: 'UP How Tos',
+        theme: ThemeData(
+          primaryColor: maroon,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        home: StaffListPage(),
+      ),
+    );
+  }
+} /*import 'package:flutter/material.dart';
 import 'mainLogIn.dart';
 import 'mainroute_generator.dart';
+import 'package:provider/provider.dart';
+import 'package:uphowtos1/screens/Stafflist/staffListPage.dart';
+import 'package:uphowtos1/staffList.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +61,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
-}
+}*/
 /*
 
 Navigator.of(context).pushNamed('/second, arguments: 'dsdsdsd');
