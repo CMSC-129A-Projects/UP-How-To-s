@@ -330,16 +330,6 @@ class _EditFormsState extends State<EditForms> {
   }
 
   void click() {
-    /*bool flag = false;
-    if (stepsList.isEmpty) flag = true;
-    for (int i = 0; i < stepsList.length; i++) {
-      if (stepsList[i] == null) flag = true;
-    }
-    if (title.text == '' || url.text == '' || flag == true) {
-      final snackBar = SnackBar(
-          content: Text('Please fill empty fields or remove empty steps'));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    } else {*/
     widget.callback(title.text, stepsList, url.text);
     FocusScope.of(context).unfocus();
     title.clear();

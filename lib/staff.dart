@@ -3,13 +3,14 @@ import 'staffDatabase.dart';
 
 class Staff {
   String name;
-  String department;
-  String emailadd;
-  String where;
+  String location;
   String position;
+  String email;
+  String department;
+
   DatabaseReference _id;
 
-  Staff(this.name, this.department, this.emailadd, this.where, this.position);
+  Staff(this.name, this.location, this.position, this.email, this.department);
 
   void update() {
     updateStaff(this, this._id);
@@ -22,10 +23,10 @@ class Staff {
   Map<String, dynamic> toJson() {
     return {
       'name': this.name,
-      'department': this.department,
-      'emailadd': this.emailadd,
-      'where': this.where,
-      'position': this.position
+      'location': this.location,
+      'position': this.position,
+      'email': this.email,
+      'department': this.department
     };
   }
 }
@@ -33,15 +34,14 @@ class Staff {
 Staff createStaff(record) {
   Map<String, dynamic> attributes = {
     'name': '',
-    'department': '',
-    'emailadd': '',
-    'where': '',
-    'position': ''
+    'location': '',
+    'position': '',
+    'email': '',
+    'department': ''
   };
-
   record.forEach((key, value) => {attributes[key] = value});
 
-  Staff staff = new Staff(attributes['name'], attributes['department'],
-      attributes['emailadd'], attributes['where'], attributes['position']);
+  Staff staff = new Staff(attributes['name'], attributes['location'],
+      attributes['position'], attributes['email'], attributes['department']);
   return staff;
 }

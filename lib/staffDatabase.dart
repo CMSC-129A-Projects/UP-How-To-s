@@ -19,7 +19,6 @@ Future<List<Staff>> getAllStaff() async {
     dataSnapshot.value.forEach((key, value) {
       Staff staff = createStaff(value);
       staff.setId(databaseReference.child('staff/' + key));
-      print(key);
       staffs.add(staff);
     });
   }

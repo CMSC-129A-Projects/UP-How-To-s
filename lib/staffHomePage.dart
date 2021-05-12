@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'staff.dart';
 import 'staffDatabase.dart';
-import 'staffInputWidget.dart';
+import 'staffAdd.dart';
 import 'staffList.dart';
 
 class StaffHomePage extends StatefulWidget {
@@ -16,9 +16,9 @@ class _StaffHomePageState extends State<StaffHomePage> {
   FirebaseUser user;
   List<Staff> staffs = [];
 
-  void newStaff(String name, String department, String position, String where,
-      String emailadd) {
-    var staff = new Staff(name, department, position, where, emailadd);
+  void newStaff(String name, String location, String position, String email,
+      String department) {
+    var staff = new Staff(name, location, position, email, department);
     staff.setId(saveStaff(staff));
     this.setState(() {
       staffs.add(staff);
@@ -41,7 +41,7 @@ class _StaffHomePageState extends State<StaffHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return StaffTInputWidget(this.newStaff, this.user);
+    return StaffInputWidget(this.newStaff, this.user);
   }
 }
 
@@ -56,9 +56,9 @@ class _StaffListPageState extends State<StaffListPage> {
   FirebaseUser user;
   List<Staff> staffs = [];
 
-  void newStaff(String name, String department, String position, String where,
-      String emailadd) {
-    var staff = new Staff(name, department, position, where, emailadd);
+  void newStaff(String name, String location, String position, String email,
+      String department) {
+    var staff = new Staff(name, location, position, email, department);
     staff.setId(saveStaff(staff));
     this.setState(() {
       staffs.add(staff);
@@ -82,7 +82,7 @@ class _StaffListPageState extends State<StaffListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('UPC Staff')),
+        appBar: AppBar(title: Text('Personnel Diretory')),
         body: Column(children: <Widget>[
           Expanded(child: StaffList()),
         ]));

@@ -89,7 +89,7 @@ class _DashboardState extends State<Dashboard> {
           myItems('https://i.imgur.com/NdSHMGZ.png', "Forms",
               MaterialPageRoute(builder: (context) => FormsList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Staff List",
-              MaterialPageRoute(builder: (context) => StaffListPage())),
+              MaterialPageRoute(builder: (context) => StaffList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Discussion Board",
               MaterialPageRoute(builder: (context) => FormsList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Organization Board",
