@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uphowtos1/screens/stafflist/staffListPage.dart';
 import 'package:uphowtos1/screens/Stafflist/staffList.dart';
@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-} /*import 'package:flutter/material.dart';
+}
+*/
+import 'package:flutter/material.dart';
 import 'mainLogIn.dart';
 import 'mainroute_generator.dart';
 import 'package:provider/provider.dart';
@@ -61,7 +63,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
-}*/
+}
 /*
 
 Navigator.of(context).pushNamed('/second, arguments: 'dsdsdsd');

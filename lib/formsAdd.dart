@@ -47,11 +47,24 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
   }
 
   void click() {
-    widget.callback(title.text, stepsList, url.text);
-    FocusScope.of(context).unfocus();
-    title.clear();
-    _nameController.clear();
-    url.clear();
+    bool flag = false;
+    for (int i = 0; i < stepsList.length; i++) {
+      if (stepsList[i] == null) flag = true;
+    }
+    if (title.text == '' || url.text == '' || flag == true) {
+      final snackBar = SnackBar(
+          content: Text('Please fill empty fields or remove empty steps'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } else {
+      widget.callback(title.text, stepsList, url.text);
+      FocusScope.of(context).unfocus();
+      title.clear();
+      _nameController.clear();
+      url.clear();
+      Navigator.of(context).pushNamed('/forms');
+      final snackBar = SnackBar(content: Text('Form added'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   @override
@@ -197,9 +210,6 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                     ),
                     onPressed: () {
                       this.click();
-                      final snackBar =
-                          SnackBar(content: Text('Submitted, maybe'));
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     child: Text(
                       'Submit',

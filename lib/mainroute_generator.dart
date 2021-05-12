@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/formsAList.dart';
+import 'package:uphowtos1/formsList.dart';
 import 'package:uphowtos1/mainDashBoard.dart';
-import 'formsAEdit.dart';
+import 'formsEdit.dart';
 import 'package:uphowtos1/mainLogIn.dart';
 import 'mainDashBoard.dart';
 import 'mainLogIn.dart';
@@ -22,7 +22,7 @@ class RouteGenerator {
         }
         return _errorRoute();
       case '/forms':
-        return MaterialPageRoute(builder: (context) => FormsAList());
+        return MaterialPageRoute(builder: (context) => FormsList());
       case '/edit':
         return MaterialPageRoute(builder: (context) => LoginPage());
       case '/add':

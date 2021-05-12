@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uphowtos1/screens/stafflist/staffListPage.dart';
-import 'formsAList.dart';
+import 'formsList.dart';
 import 'mainDrawerDetails.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'staffList.dart';
@@ -87,15 +87,15 @@ class _DashboardState extends State<Dashboard> {
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         children: <Widget>[
           myItems('https://i.imgur.com/NdSHMGZ.png', "Forms",
-              MaterialPageRoute(builder: (context) => FormsAList())),
+              MaterialPageRoute(builder: (context) => FormsList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Staff List",
-              MaterialPageRoute(builder: (context) => StaffList())),
+              MaterialPageRoute(builder: (context) => StaffListPage())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Discussion Board",
-              MaterialPageRoute(builder: (context) => FormsAList())),
+              MaterialPageRoute(builder: (context) => FormsList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "Organization Board",
-              MaterialPageRoute(builder: (context) => FormsAList())),
+              MaterialPageRoute(builder: (context) => FormsList())),
           myItems('https://i.imgur.com/NdSHMGZ.png', "UPC Map",
-              MaterialPageRoute(builder: (context) => FormsAList())),
+              MaterialPageRoute(builder: (context) => FormsList())),
         ],
         staggeredTiles: [
           StaggeredTile.extent(2, 150.0),
