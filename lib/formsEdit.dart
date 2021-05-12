@@ -330,7 +330,7 @@ class _EditFormsState extends State<EditForms> {
   }
 
   void click() {
-    bool flag = false;
+    /*bool flag = false;
     if (stepsList.isEmpty) flag = true;
     for (int i = 0; i < stepsList.length; i++) {
       if (stepsList[i] == null) flag = true;
@@ -339,16 +339,15 @@ class _EditFormsState extends State<EditForms> {
       final snackBar = SnackBar(
           content: Text('Please fill empty fields or remove empty steps'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    } else {
-      widget.callback(title.text, stepsList, url.text);
-      FocusScope.of(context).unfocus();
-      title.clear();
-      _nameController.clear();
-      url.clear();
-      _ref.child(widget.contactKey).remove();
-      Navigator.of(context).pushNamed('/forms');
-      final snackBar = SnackBar(content: Text('Form edited'));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
+    } else {*/
+    widget.callback(title.text, stepsList, url.text);
+    FocusScope.of(context).unfocus();
+    title.clear();
+    _nameController.clear();
+    url.clear();
+    _ref.child(widget.contactKey).remove();
+    Navigator.of(context).pushNamed('/forms');
+    final snackBar = SnackBar(content: Text('Form edited'));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
