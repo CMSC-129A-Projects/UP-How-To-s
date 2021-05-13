@@ -1,5 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
-
 class Staff {
   String _name;
   String get name => _name;

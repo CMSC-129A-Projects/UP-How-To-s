@@ -35,93 +35,85 @@ class _StaffListState extends State<StaffList> {
 
   Widget _buildContactItem({Map contact}) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.all(5),
-      height: 100,
-      color: Colors.white,
+      margin: EdgeInsets.only(bottom: 5.0),
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
+          ),
+          boxShadow: [
+            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
+          ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(
-                Icons.pages_sharp,
-                color: Theme.of(context).primaryColor,
-                size: 20,
-              ),
-              SizedBox(
-                width: 6,
-              ),
-              Text(
-                contact['name'],
-                style: TextStyle(
-                    fontSize: 16,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600),
-              ),
-            ],
+          Align(
+              alignment: Alignment.topRight,
+              child: Expanded(
+                flex: 1,
+                child: PopupMenuButton<int>(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  ),
+                  onSelected: (item) {
+                    switch (item) {
+                      case 0:
+                        //Edit Item
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => EditStaff(
+                                      newStaff,
+                                      user,
+                                      contactKey: contact['key'],
+                                    )));
+                        break;
+                      case 1:
+                        //Remove Item
+                        _showDeleteDialog(contact: contact);
+                        break;
+                    }
+                  },
+                  itemBuilder: (context) => [
+                    PopupMenuItem<int>(
+                      value: 0,
+                      child: Text('Edit'),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 1,
+                      child: Text('Remove'),
+                    ),
+                  ],
+                ),
+              )),
+          Text(
+            contact['name'],
+            style: TextStyle(
+              fontSize: 18.0,
+              fontFamily: 'Helvetica-Bold',
+              color: Theme.of(context).primaryColor,
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => EditStaff(
-                                newStaff,
-                                user,
-                                contactKey: contact['key'],
-                              )));
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.edit,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text('Edit',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w600)),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              GestureDetector(
-                onTap: () {
-                  _showDeleteDialog(contact: contact);
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.delete,
-                      color: Colors.red[700],
-                    ),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text('Delete Staff',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.red[700],
-                            fontWeight: FontWeight.w600)),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-            ],
-          )
+          Text(
+            contact['department'],
+            style: TextStyle(
+              fontSize: 12.0,
+              fontFamily: 'Helvetica-Bold',
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+          SizedBox(height: 2.0),
+          Text(
+            contact['position'],
+            style: TextStyle(
+              fontSize: 12.0,
+              fontFamily: 'Helvetica-Bold',
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
         ],
       ),
     );
@@ -175,7 +167,7 @@ class _StaffListState extends State<StaffList> {
               'Personnel Directory',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 25,
+                fontSize: 23,
                 fontFamily: 'Helvetica',
               ),
             ),
@@ -188,19 +180,37 @@ class _StaffListState extends State<StaffList> {
             ),
           ],
         ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          ),
+        ),
         backgroundColor: maroon,
         elevation: 4.0,
         actions: [
-          IconButton(
-            icon: Icon(Icons.add_circle_outline),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => StaffHomePage(user)));
-            }, //insert go to addforms here
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => StaffHomePage(user)));
+              },
+              icon: Icon(
+                Icons.add_circle_outline,
+                color: Colors.white70,
+              ),
+              splashRadius: 24.0,
+              tooltip: 'Add Staff',
+            ),
           ),
         ],
       ),
       body: Container(
+        width: double.infinity,
+        margin: EdgeInsets.all(10.0),
         height: double.infinity,
         child: FirebaseAnimatedList(
           query: _ref,

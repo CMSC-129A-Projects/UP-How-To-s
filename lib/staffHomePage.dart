@@ -82,9 +82,9 @@ class _StaffListPageState extends State<StaffListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Personnel Diretory')),
+        //appBar: AppBar(title: Text('Personnel Directory')),
         body: Column(children: <Widget>[
-          Expanded(child: StaffList()),
-        ]));
+      Expanded(child: StaffList()),
+    ]));
   }
 }
