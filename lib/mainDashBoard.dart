@@ -18,9 +18,10 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   FirebaseUser user;
-  Material myItems(String image, String heading, MaterialPageRoute route) {
+  Material myItems(
+      String image, String heading, String desc, MaterialPageRoute route) {
     return Material(
-      borderRadius: BorderRadius.circular(24.0),
+      borderRadius: BorderRadius.circular(15.0),
       child: GestureDetector(
         onTap: () {
           Navigator.push(context, route);
@@ -28,11 +29,11 @@ class _DashboardState extends State<Dashboard> {
         child: Material(
           color: maroon,
           elevation: 14.0,
-          borderRadius: BorderRadius.circular(24.0),
+          borderRadius: BorderRadius.circular(15.0),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
+              padding: const EdgeInsets.all(1.0),
+              child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Column(children: <Widget>[
@@ -45,7 +46,15 @@ class _DashboardState extends State<Dashboard> {
                         heading,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 15,
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        desc,
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -106,30 +115,48 @@ class _DashboardState extends State<Dashboard> {
         ),
         preferredSize: Size.fromHeight(60.0),
       ),
-      body: StaggeredGridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 12.0,
-        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        children: <Widget>[
-          myItems('https://i.imgur.com/NdSHMGZ.png', "Forms",
-              MaterialPageRoute(builder: (context) => FormsList())),
-          myItems('https://i.imgur.com/NdSHMGZ.png', "Staff List",
-              MaterialPageRoute(builder: (context) => StaffList())),
-          myItems('https://i.imgur.com/NdSHMGZ.png', "Discussion Board",
-              MaterialPageRoute(builder: (context) => FormsList())),
-          myItems('https://i.imgur.com/NdSHMGZ.png', "Organization Board",
-              MaterialPageRoute(builder: (context) => FormsList())),
-          myItems('https://i.imgur.com/NdSHMGZ.png', "User Profile",
-              MaterialPageRoute(builder: (context) => FormsList())),
-        ],
-        staggeredTiles: [
-          StaggeredTile.extent(2, 150.0),
-          StaggeredTile.extent(1, 150.0),
-          StaggeredTile.extent(1, 150.0),
-          StaggeredTile.extent(1, 150.0),
-          StaggeredTile.extent(1, 150.0),
-        ],
+      body: Padding(
+        padding: EdgeInsets.only(top: 12.0),
+        child: StaggeredGridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 12.0,
+          mainAxisSpacing: 12.0,
+          padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+          children: <Widget>[
+            myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Forms",
+                "Find formats and guides for academic and non academic forms here.",
+                MaterialPageRoute(builder: (context) => FormsList())),
+            myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Personnel Directory",
+                "Get to know our very own UPC people.",
+                MaterialPageRoute(builder: (context) => StaffList())),
+            myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Discussion Board",
+                "Got questionds? See our discussion board for answers and more!",
+                MaterialPageRoute(builder: (context) => FormsList())),
+            myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Organization Board",
+                "Check out existing organizations and what they have in store!",
+                MaterialPageRoute(builder: (context) => FormsList())),
+            myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "User Profile",
+                "Manage your account and past posts.",
+                MaterialPageRoute(builder: (context) => FormsList())),
+          ],
+          staggeredTiles: [
+            StaggeredTile.extent(2, 150.0),
+            StaggeredTile.extent(1, 150.0),
+            StaggeredTile.extent(1, 150.0),
+            StaggeredTile.extent(1, 150.0),
+            StaggeredTile.extent(1, 150.0),
+          ],
+        ),
       ),
     );
   }
