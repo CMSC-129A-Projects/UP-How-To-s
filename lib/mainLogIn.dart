@@ -2,11 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'mainAuth.dart';
 
+final maroon = const Color(0xFF8A1538); // UP MAROON
+final green = const Color(0xFF228b22); // UP GREEN
+final yellow = const Color(0xFFFFB81C); // UP YELLOW
+final spotblack = const Color(0xFF000000); // UP Spotblack
+
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text('Please use UPmail.')), body: Body());
+    return Scaffold(backgroundColor: Colors.black, body: Body());
   }
 }
 
@@ -53,9 +57,7 @@ class _BodyState extends State<Body> {
   Widget googleLoginButton() {
     return OutlinedButton(
         onPressed: this.click,
-        /*shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
-        splashColor: Colors.grey,
-        borderSide: BorderSide(color: Colors.grey),*/
+        style: OutlinedButton.styleFrom(backgroundColor: Colors.white),
         child: Padding(
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Row(
@@ -73,6 +75,28 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Align(alignment: Alignment.center, child: googleLoginButton());
+    return Container(
+        child: Column(
+      mainAxisAlignment:
+          MainAxisAlignment.center, //Center Row contents horizontally,
+      crossAxisAlignment:
+          CrossAxisAlignment.center, //Center Row contents vertically,
+      children: [
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            "UP How To's is a student-made application.\nYou can only access the beta version of this app by signing in using your UPmail.\nYour words and actions always leave traces.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18.0,
+              fontFamily: 'Helvetica',
+              color: Colors.white,
+            ),
+          ),
+        ),
+        SizedBox(height: 10.0),
+        Align(alignment: Alignment.bottomCenter, child: googleLoginButton()),
+      ],
+    ));
   }
 }

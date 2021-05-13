@@ -9,8 +9,6 @@ final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
 final yellow = const Color(0xFFFFB81C); // UP YELLOW
 final spotblack = const Color(0xFF000000); // UP Spotblack
-final gradientcolor1 = const Color(0xFF7b4397); // UP YELLOW
-final gradientcolor2 = const Color(0xFFdc2430); // UP Spotblack
 
 class StepsTextFields extends StatefulWidget {
   final int index;
