@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/mainDrawerDetails.dart';
+//import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'mainDrawerDetails.dart';
+//import 'mainDrawerDetails.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -12,7 +12,7 @@ final gradientcolor1 = const Color(0xFF7b4397); // UP YELLOW
 final gradientcolor2 = const Color(0xFFdc2430); // UP Spotblack
 
 class AcadsTInputWidget extends StatefulWidget {
-  final Function(String, List<String>, String) callback;
+  final Function(String, List<String>, String, String) callback;
   AcadsTInputWidget(this.callback, this.user);
 
   final FirebaseUser user;
@@ -31,6 +31,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
 
   final title = TextEditingController();
   final url = TextEditingController();
+  final desc = TextEditingController();
 
   @override
   void initState() {
@@ -43,6 +44,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
     super.dispose();
     title.dispose();
     url.dispose();
+    desc.dispose();
     _nameController.dispose();
   }
 
@@ -51,16 +53,17 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
     for (int i = 0; i < stepsList.length; i++) {
       if (stepsList[i] == null) flag = true;
     }
-    if (title.text == '' || url.text == '' || flag == true) {
+    if (title.text == '' || url.text == '' || desc.text == '' || flag == true) {
       final snackBar = SnackBar(
           content: Text('Please fill empty fields or remove empty steps'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } else {
-      widget.callback(title.text, stepsList, url.text);
+      widget.callback(title.text, stepsList, url.text, desc.text);
       FocusScope.of(context).unfocus();
       title.clear();
       _nameController.clear();
       url.clear();
+      desc.clear();
       Navigator.of(context).pushNamed('/forms');
       final snackBar = SnackBar(content: Text('Form added'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -70,66 +73,161 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerDetails(),
-      appBar: AppBar(
-          centerTitle: true,
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Add Forms',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontFamily: 'Helvetica',
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 2.0),
+              blurRadius: 4.0,
+            )
+          ]),
+          child: AppBar(
+            shadowColor: Colors.grey,
+            elevation: 12.0,
+            centerTitle: true,
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Add New Form",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontFamily: 'Helvetica',
+                  ),
                 ),
-              ),
-              Text(
-                'Administrator',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
+                Text(
+                  'Administrator Mode',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                  ),
                 ),
+              ],
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
               ),
-            ],
+            ),
+            backgroundColor: maroon,
           ),
-          backgroundColor: maroon,
-          elevation: 4.0),
+        ),
+        preferredSize: Size.fromHeight(60.0),
+      ),
       body: SingleChildScrollView(
         child: Column(
           key: _formKey,
           children: <Widget>[
             Row(
-              //Form Name
+              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 20, left: 20, right: 10),
+                  padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    "Form Name:",
+                    'Form Name:',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Download Forms Textbox
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: Container(
+                      child: TextFormField(
+                          controller: this.title,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText:
+                                "Sample: UP Cebu OUR Online Request Slip",
+                            fillColor: Colors.white,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter form description here';
+                            return null;
+                          }),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Download Forms Text
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Brief Form Description:',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ],
+            ),
+            Row(
+              //Download Forms Textbox
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 20, right: 20),
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
-                      height: 30,
                       child: TextFormField(
-                          controller: this.title,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(50),
-                          ],
+                          controller: this.desc,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(8, 0, 8, 2),
-                            border: OutlineInputBorder(),
+                            labelText:
+                                "Sample: Form for getting Official Transcript of Records",
+                            fillColor: Colors.grey,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
                           ),
                           validator: (v) {
                             if (v.trim().isEmpty)
-                              return 'Please enter step here';
+                              return 'Please enter form description here';
                             return null;
                           }),
                     ),
@@ -179,17 +277,30 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
                       child: TextFormField(
-                          controller: this.url,
+                          controller: this.desc,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                            border: OutlineInputBorder(),
-                            hintText: 'https...',
+                            labelText:
+                                'Sample: https://www.cognitoforms.com/ OfficeOfTheCollegeSecretaryAndRegistrarUPCebu/UPCebuOUROnlineRequestSlip',
+                            fillColor: Colors.grey,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
                           ),
                           validator: (v) {
                             if (v.trim().isEmpty)
-                              return 'Please enter step here';
+                              return 'Please enter steps here';
                             return null;
                           }),
                     ),
@@ -212,7 +323,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                       this.click();
                     },
                     child: Text(
-                      'Submit',
+                      'Add New Form',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -239,7 +350,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                 child: Container(child: StepsTextFields(i)),
               ),
               SizedBox(
-                width: 10,
+                width: 20,
               ),
               _addRemoveButton(i == stepsList.length - 1, i),
             ],
@@ -311,9 +422,25 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
         maxLines: null,
         onChanged: (v) => _AcadsTInputWidgetState.stepsList[widget.index] = v,
         decoration: InputDecoration(
+          labelText:
+              "Sample: Fill up Request Slip for Official Transcript of Records",
+          fillColor: Colors.white,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: spotblack,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(
+              color: maroon,
+              width: 2.0,
+            ),
+          ),
           contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-          border: OutlineInputBorder(),
-          hintText: 'Step n',
+          //border: OutlineInputBorder(),
+          //hintText: 'Step n',
         ),
         validator: (v) {
           if (v.trim().isEmpty) return 'Please enter step here';

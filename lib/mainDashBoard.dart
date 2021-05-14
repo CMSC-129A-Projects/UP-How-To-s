@@ -18,13 +18,13 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   FirebaseUser user;
-  Material myItems(String image, String heading, String desc, int sasa,
-      MaterialPageRoute route) {
+  Material myItems(
+      String image, String heading, String desc, int sasa, String route) {
     return Material(
       borderRadius: BorderRadius.circular(15.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context, route);
+          Navigator.of(context).pushNamed(route);
         },
         child: Material(
           color: Colors.white,
@@ -113,7 +113,6 @@ class _DashboardState extends State<Dashboard> {
           child: AppBar(
             shadowColor: Colors.grey,
             elevation: 12.0,
-            automaticallyImplyLeading: false,
             centerTitle: true,
             title: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -155,42 +154,48 @@ class _DashboardState extends State<Dashboard> {
           padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
           children: <Widget>[
             myItems(
-                'https://i.imgur.com/NdSHMGZ.png',
-                "Forms & Processes",
-                "Find formats and guides for academic and non academic forms here.",
-                1,
-                MaterialPageRoute(builder: (context) => FormsList())),
+              'https://i.imgur.com/NdSHMGZ.png',
+              "Forms & Processes",
+              "Find formats and guides for academic and non academic forms here.",
+              1,
+              "/forms",
+            ),
             myItems(
-                'https://i.imgur.com/NdSHMGZ.png',
-                "Discussion Board",
-                "Got questionds? See our discussion board for answers and more!",
-                3,
-                MaterialPageRoute(builder: (context) => FormsList())),
+              'https://i.imgur.com/NdSHMGZ.png',
+              "Discussion Board",
+              "Got questionds? See our discussion board for answers and more!",
+              3,
+              "/staff",
+            ),
             myItems(
-                'https://i.imgur.com/NdSHMGZ.png',
-                "Personnel Directory",
-                "Get to know our very own UPC people.",
-                2,
-                MaterialPageRoute(builder: (context) => StaffList())),
+              'https://i.imgur.com/NdSHMGZ.png',
+              "Personnel Directory",
+              "Get to know our very own UPC people.",
+              2,
+              "/staff",
+            ),
             myItems(
-                'https://i.imgur.com/NdSHMGZ.png',
-                "Organization Board",
-                "Check out existing organizations and what they have in store!",
-                4,
-                MaterialPageRoute(builder: (context) => FormsList())),
+              'https://i.imgur.com/NdSHMGZ.png',
+              "Organization Board",
+              "Check out existing organizations and what they have in store!",
+              4,
+              "/staff",
+            ),
             myItems(
-                'https://i.imgur.com/NdSHMGZ.png',
-                "User Profile",
-                "Manage your account and past posts.",
-                5,
-                MaterialPageRoute(builder: (context) => FormsList())),
+              'https://i.imgur.com/NdSHMGZ.png',
+              "User Profile",
+              "Manage your account and past posts.",
+              5,
+              //MaterialPageRoute(builder: (context) => FormsList()))
+              "/staff",
+            )
           ],
           staggeredTiles: [
-            StaggeredTile.extent(1, 200.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 200.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(2, 130.0),
+            StaggeredTile.extent(1, 170.0),
+            StaggeredTile.extent(1, 170.0),
+            StaggeredTile.extent(1, 170.0),
+            StaggeredTile.extent(1, 170.0),
+            StaggeredTile.extent(2, 170.0),
           ],
         ),
       ),

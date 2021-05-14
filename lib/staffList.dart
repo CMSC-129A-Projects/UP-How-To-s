@@ -3,7 +3,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:uphowtos1/staffHomePage.dart';
 import 'staffDatabase.dart';
-import 'package:uphowtos1/mainDrawerDetails.dart';
+//import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'staffEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'staff.dart';
@@ -163,7 +163,7 @@ class _StaffListState extends State<StaffList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerDetails(),
+      //drawer: DrawerDetails(),
       appBar: PreferredSize(
         child: Container(
           decoration: BoxDecoration(boxShadow: [

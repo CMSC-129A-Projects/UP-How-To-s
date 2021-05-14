@@ -1,9 +1,9 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/mainDrawerDetails.dart';
+//import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'mainDrawerDetails.dart';
+//import 'mainDrawerDetails.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -46,31 +46,51 @@ class _EditStaffState extends State<EditStaff> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerDetails(),
-      appBar: AppBar(
-          centerTitle: true,
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Edit Staff',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontFamily: 'Helvetica',
+      //drawer: DrawerDetails(),
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 2.0),
+              blurRadius: 4.0,
+            )
+          ]),
+          child: AppBar(
+            shadowColor: Colors.grey,
+            elevation: 12.0,
+            centerTitle: true,
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Edit Existing Staff Record",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontFamily: 'Helvetica',
+                  ),
                 ),
-              ),
-              Text(
-                'Administrator Mode',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
+                Text(
+                  'Administrator Mode',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                  ),
                 ),
+              ],
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
               ),
-            ],
+            ),
+            backgroundColor: maroon,
           ),
-          backgroundColor: maroon,
-          elevation: 4.0),
+        ),
+        preferredSize: Size.fromHeight(60.0),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

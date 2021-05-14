@@ -3,7 +3,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:uphowtos1/formsHomePage.dart';
 import 'formsDatabase.dart';
-import 'package:uphowtos1/mainDrawerDetails.dart';
+//import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'formsEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'forms.dart';
@@ -63,7 +63,7 @@ class _FormsListState extends State<FormsList> {
                   ),
                 ),
                 Text(
-                  contact['url'],
+                  contact['desc'],
                   style: TextStyle(
                     fontSize: 12.0,
                     fontFamily: 'Helvetica',
@@ -114,8 +114,8 @@ class _FormsListState extends State<FormsList> {
     );
   }
 
-  void newForms(String title, List<String> body, String url) {
-    var form = new Forms(title, body, url);
+  void newForms(String title, List<String> body, String url, String desc) {
+    var form = new Forms(title, body, url, desc);
     form.setId(saveForms(form));
     this.setState(() {
       forms.add(form);
@@ -151,7 +151,7 @@ class _FormsListState extends State<FormsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerDetails(),
+      //drawer: DrawerDetails(),
       appBar: PreferredSize(
         child: Container(
           decoration: BoxDecoration(boxShadow: [

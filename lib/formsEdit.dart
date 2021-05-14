@@ -1,9 +1,9 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/mainDrawerDetails.dart';
+//import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'mainDrawerDetails.dart';
+//import 'mainDrawerDetails.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -57,7 +57,7 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
 
 class EditForms extends StatefulWidget {
   String contactKey;
-  final Function(String, List<String>, String) callback;
+  final Function(String, List<String>, String, String) callback;
   final FirebaseUser user;
   EditForms(this.callback, this.user, {this.contactKey});
 
@@ -74,6 +74,7 @@ class _EditFormsState extends State<EditForms> {
 
   TextEditingController title = TextEditingController();
   TextEditingController url = TextEditingController();
+  TextEditingController desc = TextEditingController();
   DatabaseReference _ref;
 
   @override
@@ -83,6 +84,7 @@ class _EditFormsState extends State<EditForms> {
     _ref = FirebaseDatabase.instance.reference().child('forms');
     title = TextEditingController();
     url = TextEditingController();
+    desc = TextEditingController();
     _nameController = TextEditingController();
     getFormsDetail();
     setState(() {});
@@ -91,31 +93,51 @@ class _EditFormsState extends State<EditForms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerDetails(),
-      appBar: AppBar(
-          centerTitle: true,
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Edit Forms',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontFamily: 'Helvetica',
+      //drawer: DrawerDetails(),
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 2.0),
+              blurRadius: 4.0,
+            )
+          ]),
+          child: AppBar(
+            shadowColor: Colors.grey,
+            elevation: 12.0,
+            centerTitle: true,
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Edit Existing Form",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontFamily: 'Helvetica',
+                  ),
                 ),
-              ),
-              Text(
-                'Administrator',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
+                Text(
+                  'Administrator Mode',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                  ),
                 ),
+              ],
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
               ),
-            ],
+            ),
+            backgroundColor: maroon,
           ),
-          backgroundColor: maroon,
-          elevation: 4.0),
+        ),
+        preferredSize: Size.fromHeight(60.0),
+      ),
       body: SingleChildScrollView(
         child: Column(
           key: _formKey,
@@ -317,6 +339,7 @@ class _EditFormsState extends State<EditForms> {
     Map contact = snapshot.value;
     title.text = contact['title'];
     url.text = contact['url'];
+    desc.text = contact['desc'];
     word = contact['body'];
     for (int i = 0; i < word.length; i++) {
       if (word[i] != '') {
@@ -328,11 +351,12 @@ class _EditFormsState extends State<EditForms> {
   }
 
   void click() {
-    widget.callback(title.text, stepsList, url.text);
+    widget.callback(title.text, stepsList, url.text, desc.text);
     FocusScope.of(context).unfocus();
     title.clear();
     _nameController.clear();
     url.clear();
+    desc.clear();
     _ref.child(widget.contactKey).remove();
     Navigator.of(context).pushNamed('/forms');
     final snackBar = SnackBar(content: Text('Form edited'));
