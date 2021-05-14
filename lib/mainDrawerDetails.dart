@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-final maroon = const Color(0xFF8A1538); 
+
+final maroon = const Color(0xFF8A1538);
 
 class DrawerDetails extends StatelessWidget {
   @override
@@ -49,16 +50,7 @@ class DrawerDetails extends StatelessWidget {
               Icons.account_circle_rounded,
             ),
             title: Text(
-              "Profile",
-              style: TextStyle(fontWeight: FontWeight.bold, color: maroon),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.settings,
-            ),
-            title: Text(
-              "Setting",
+              "User Profile",
               style: TextStyle(fontWeight: FontWeight.bold, color: maroon),
             ),
           ),
@@ -67,7 +59,7 @@ class DrawerDetails extends StatelessWidget {
               Icons.file_copy,
             ),
             title: Text(
-              "Forms and Processes",
+              "Forms & Processes",
               style: TextStyle(fontWeight: FontWeight.bold, color: maroon),
             ),
           ),
@@ -82,15 +74,6 @@ class DrawerDetails extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.group,
-            ),
-            title: Text(
-              "Organization Board",
-              style: TextStyle(fontWeight: FontWeight.bold, color: maroon),
-            ),
-          ),
-          ListTile(
-            leading: Icon(
               Icons.forum,
             ),
             title: Text(
@@ -100,10 +83,10 @@ class DrawerDetails extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.map_outlined,
+              Icons.group,
             ),
             title: Text(
-              "UPC Map",
+              "Organization Board",
               style: TextStyle(fontWeight: FontWeight.bold, color: maroon),
             ),
           ),

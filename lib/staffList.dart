@@ -15,7 +15,6 @@ final spotblack = const Color(0xFF000000); // UP Spotblack
 
 class StaffList extends StatefulWidget {
   StaffList();
-
   @override
   _StaffListState createState() => _StaffListState();
 }
@@ -165,55 +164,68 @@ class _StaffListState extends State<StaffList> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerDetails(),
-      appBar: AppBar(
-        centerTitle: true,
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Personnel Directory',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 23,
-                fontFamily: 'Helvetica',
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 2.0),
+              blurRadius: 4.0,
+            )
+          ]),
+          child: AppBar(
+            shadowColor: Colors.grey,
+            elevation: 12.0,
+            centerTitle: true,
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Personnel Directory",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontFamily: 'Helvetica',
+                  ),
+                ),
+                Text(
+                  'Administrator Mode',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StaffHomePage(user)));
+                  },
+                  icon: Icon(
+                    Icons.add_circle_outline,
+                    color: Colors.white,
+                  ),
+                  splashRadius: 24.0,
+                  tooltip: 'Add Staff',
+                ),
+              ),
+            ],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
               ),
             ),
-            Text(
-              'Administrator Mode',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(10.0),
-            bottomRight: Radius.circular(10.0),
+            backgroundColor: maroon,
           ),
         ),
-        backgroundColor: maroon,
-        elevation: 4.0,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => StaffHomePage(user)));
-              },
-              icon: Icon(
-                Icons.add_circle_outline,
-                color: Colors.white70,
-              ),
-              splashRadius: 24.0,
-              tooltip: 'Add Staff',
-            ),
-          ),
-        ],
+        preferredSize: Size.fromHeight(60.0),
       ),
       body: Container(
         width: double.infinity,

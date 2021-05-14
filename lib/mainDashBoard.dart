@@ -18,8 +18,8 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   FirebaseUser user;
-  Material myItems(
-      String image, String heading, String desc, MaterialPageRoute route) {
+  Material myItems(String image, String heading, String desc, int sasa,
+      MaterialPageRoute route) {
     return Material(
       borderRadius: BorderRadius.circular(15.0),
       child: GestureDetector(
@@ -27,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
           Navigator.push(context, route);
         },
         child: Material(
-          color: maroon,
+          color: Colors.white,
           elevation: 14.0,
           borderRadius: BorderRadius.circular(15.0),
           child: Center(
@@ -37,21 +37,52 @@ class _DashboardState extends State<Dashboard> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Column(children: <Widget>[
-                      Image.network(
+                      if (sasa == 1)
+                        Icon(
+                          Icons.file_copy,
+                          color: maroon,
+                          size: 55,
+                        ),
+                      if (sasa == 2)
+                        Icon(
+                          Icons.person_search,
+                          color: maroon,
+                          size: 55,
+                        ),
+                      if (sasa == 3)
+                        Icon(
+                          Icons.forum,
+                          color: green,
+                          size: 55,
+                        ),
+                      if (sasa == 4)
+                        Icon(
+                          Icons.group,
+                          color: green,
+                          size: 55,
+                        ),
+                      if (sasa == 5)
+                        Icon(
+                          Icons.account_circle_rounded,
+                          color: yellow,
+                          size: 55,
+                        ),
+                      /*Image.network(
                         image,
                         height: 80,
                         width: 80,
-                      ),
+                      ),*/
                       Text(
                         heading,
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 19,
+                          color: spotblack,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         desc,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 10,
@@ -116,45 +147,50 @@ class _DashboardState extends State<Dashboard> {
         preferredSize: Size.fromHeight(60.0),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 12.0),
+        padding: EdgeInsets.only(top: 20.0),
         child: StaggeredGridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: 12.0,
-          mainAxisSpacing: 12.0,
-          padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+          padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
           children: <Widget>[
             myItems(
                 'https://i.imgur.com/NdSHMGZ.png',
-                "Forms",
+                "Forms & Processes",
                 "Find formats and guides for academic and non academic forms here.",
+                1,
+                MaterialPageRoute(builder: (context) => FormsList())),
+            myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Discussion Board",
+                "Got questionds? See our discussion board for answers and more!",
+                3,
                 MaterialPageRoute(builder: (context) => FormsList())),
             myItems(
                 'https://i.imgur.com/NdSHMGZ.png',
                 "Personnel Directory",
                 "Get to know our very own UPC people.",
+                2,
                 MaterialPageRoute(builder: (context) => StaffList())),
-            myItems(
-                'https://i.imgur.com/NdSHMGZ.png',
-                "Discussion Board",
-                "Got questionds? See our discussion board for answers and more!",
-                MaterialPageRoute(builder: (context) => FormsList())),
             myItems(
                 'https://i.imgur.com/NdSHMGZ.png',
                 "Organization Board",
                 "Check out existing organizations and what they have in store!",
+                4,
                 MaterialPageRoute(builder: (context) => FormsList())),
             myItems(
                 'https://i.imgur.com/NdSHMGZ.png',
                 "User Profile",
                 "Manage your account and past posts.",
+                5,
                 MaterialPageRoute(builder: (context) => FormsList())),
           ],
           staggeredTiles: [
-            StaggeredTile.extent(2, 150.0),
+            StaggeredTile.extent(1, 200.0),
             StaggeredTile.extent(1, 150.0),
+            StaggeredTile.extent(1, 200.0),
             StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
-            StaggeredTile.extent(1, 150.0),
+            StaggeredTile.extent(2, 130.0),
           ],
         ),
       ),
