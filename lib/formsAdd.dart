@@ -123,7 +123,6 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
           key: _formKey,
           children: <Widget>[
             Row(
-              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
@@ -140,7 +139,6 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
@@ -180,7 +178,6 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
@@ -189,6 +186,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                     'Brief Form Description:',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -196,7 +194,6 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
@@ -236,7 +233,6 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
               ],
             ),
             Row(
-              //Steps Row
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
@@ -245,6 +241,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                     'Steps: ',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -262,6 +259,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                     'Download Form Links Here: ',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -269,7 +267,6 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
@@ -277,7 +274,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
                       child: TextFormField(
-                          controller: this.desc,
+                          controller: this.url,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           decoration: InputDecoration(
@@ -325,6 +322,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
                     child: Text(
                       'Add New Form',
                       style: TextStyle(
+                        fontFamily: 'Helvetica',
                         color: Colors.white,
                       ),
                     ),
@@ -438,7 +436,7 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
               width: 2.0,
             ),
           ),
-          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+          contentPadding: EdgeInsets.fromLTRB(10, 20, 10, 20),
           //border: OutlineInputBorder(),
           //hintText: 'Step n',
         ),

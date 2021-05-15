@@ -143,36 +143,112 @@ class _EditFormsState extends State<EditForms> {
           key: _formKey,
           children: <Widget>[
             Row(
-              //Form Name
+              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 20, left: 20, right: 10),
+                  padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    "Form Name:",
+                    'Form Name:',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ],
+            ),
+            Row(
+              //Download Forms Textbox
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 20, right: 20),
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
-                      height: 30,
                       child: TextFormField(
                           controller: this.title,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(50),
-                          ],
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(8, 0, 8, 2),
-                            border: OutlineInputBorder(),
+                            labelText:
+                                "Sample: UP Cebu OUR Online Request Slip",
+                            fillColor: Colors.white,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
                           ),
                           validator: (v) {
                             if (v.trim().isEmpty)
-                              return 'Please enter step here';
+                              return 'Please enter form description here';
+                            return null;
+                          }),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Download Forms Text
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Brief Form Description:',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Download Forms Textbox
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                    child: Container(
+                      child: TextFormField(
+                          controller: this.desc,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText:
+                                "Sample: Form for getting Official Transcript of Records",
+                            fillColor: Colors.grey,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter form description here';
                             return null;
                           }),
                     ),
@@ -190,6 +266,7 @@ class _EditFormsState extends State<EditForms> {
                     'Steps: ',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -207,6 +284,7 @@ class _EditFormsState extends State<EditForms> {
                     'Download Form Links Here: ',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -226,13 +304,26 @@ class _EditFormsState extends State<EditForms> {
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                            border: OutlineInputBorder(),
-                            hintText: 'https...',
+                            labelText:
+                                'Sample: https://www.cognitoforms.com/ OfficeOfTheCollegeSecretaryAndRegistrarUPCebu/UPCebuOUROnlineRequestSlip',
+                            fillColor: Colors.grey,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
                           ),
                           validator: (v) {
                             if (v.trim().isEmpty)
-                              return 'Please enter step here';
+                              return 'Please enter steps here';
                             return null;
                           }),
                     ),
@@ -252,27 +343,10 @@ class _EditFormsState extends State<EditForms> {
                       backgroundColor: MaterialStateProperty.all<Color>(maroon),
                     ),
                     onPressed: () {
-                      int notempty = 0;
-                      for (int ctr = 0; ctr < stepsList.length; ctr++) {
-                        if (stepsList[ctr] != null) notempty = notempty + 1;
-                      }
-                      if (notempty > 0) {
-                        for (int ctr = 0; ctr < stepsList.length; ctr++) {
-                          if (stepsList[ctr] == null) {
-                            stepsList.removeAt(ctr);
-                            setState(() {});
-                          }
-                        }
-                        this.click();
-                      } else {
-                        final snackBar = SnackBar(
-                            content: Text(
-                                'Please fill empty fields or remove empty steps'));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
+                      this.click();
                     },
                     child: Text(
-                      'Submit',
+                      'Edit Existing Form',
                       style: TextStyle(
                         color: Colors.white,
                       ),

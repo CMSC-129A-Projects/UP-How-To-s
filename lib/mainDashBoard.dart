@@ -170,7 +170,7 @@ class _DashboardState extends State<Dashboard> {
             myItems(
               'https://i.imgur.com/NdSHMGZ.png',
               "Personnel Directory",
-              "Get to know our very own UPC people.",
+              "Get to know our very own UPC people here.",
               2,
               "/staff",
             ),
@@ -186,16 +186,15 @@ class _DashboardState extends State<Dashboard> {
               "User Profile",
               "Manage your account and past posts.",
               5,
-              //MaterialPageRoute(builder: (context) => FormsList()))
               "/staff",
             )
           ],
           staggeredTiles: [
-            StaggeredTile.extent(1, 170.0),
-            StaggeredTile.extent(1, 170.0),
-            StaggeredTile.extent(1, 170.0),
-            StaggeredTile.extent(1, 170.0),
-            StaggeredTile.extent(2, 170.0),
+            StaggeredTile.extent(1, 165.0),
+            StaggeredTile.extent(1, 165.0),
+            StaggeredTile.extent(1, 165.0),
+            StaggeredTile.extent(1, 165.0),
+            StaggeredTile.extent(2, 165.0),
           ],
         ),
       ),

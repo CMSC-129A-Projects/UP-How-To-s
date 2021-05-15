@@ -64,8 +64,6 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[350],
-      //drawer: DrawerDetails(),
       appBar: PreferredSize(
         child: Container(
           decoration: BoxDecoration(boxShadow: [
@@ -113,16 +111,16 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            //FOR NAME
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    'Name',
+                    'Name:',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -130,7 +128,6 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
@@ -138,23 +135,37 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
                       child: TextFormField(
-                        controller: this.name,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          border: OutlineInputBorder(),
-                          hintText: 'Dr. Juanita dela Cruz',
-                        ),
-                      ),
+                          controller: this.name,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: "Sample: Dr. Juanita Cruz",
+                            fillColor: Colors.white,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter staff name here';
+                            return null;
+                          }),
                     ),
                   ),
                 ),
               ],
             ),
-            //FOR LOCATION
             Row(
-              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
@@ -163,6 +174,7 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                     'Department:',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -170,31 +182,44 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    child: Container(
-                      child: TextFormField(
-                        controller: this.department,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          border: OutlineInputBorder(),
-                          hintText: 'Department of Computer Science',
-                        ),
-                      ),
-                    ),
-                  ),
+                      padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      child: Container(
+                        child: TextFormField(
+                            controller: this.department,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                              labelText:
+                                  "Sample: Department of Computer Science",
+                              fillColor: Colors.grey,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(
+                                  color: spotblack,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide(
+                                  color: maroon,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                            validator: (v) {
+                              if (v.trim().isEmpty)
+                                return 'Please enter staff department here';
+                              return null;
+                            }),
+                      )),
                 ),
               ],
             ),
-            //FOR DETAILS
             Row(
-              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
@@ -203,6 +228,7 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                     'Position:',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -210,7 +236,6 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
@@ -218,23 +243,37 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
                       child: TextFormField(
-                        controller: this.position,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          border: OutlineInputBorder(),
-                          hintText: 'College Secretary',
-                        ),
-                      ),
+                          controller: this.position,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: "Sample: College Secretary",
+                            fillColor: Colors.grey,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter position here';
+                            return null;
+                          }),
                     ),
                   ),
                 ),
               ],
             ),
-            //FOR DEPARTMENT
             Row(
-              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
@@ -243,6 +282,7 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                     'Office Location:',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -250,7 +290,6 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
@@ -258,31 +297,46 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
                       child: TextFormField(
-                        controller: this.location,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          border: OutlineInputBorder(),
-                          hintText: 'AS Hall Left Wing Room 100',
-                        ),
-                      ),
+                          controller: this.location,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: 'Sample: AS Hall Left Wing Room 100',
+                            fillColor: Colors.grey,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter office location here';
+                            return null;
+                          }),
                     ),
                   ),
                 ),
               ],
             ),
-            //POSTIION
             Row(
-              //Download Forms Text
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    'UP email',
+                    'UP Email:',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: 'Helvetica',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -290,7 +344,6 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
               ],
             ),
             Row(
-              //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
@@ -298,15 +351,31 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                     padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                     child: Container(
                       child: TextFormField(
-                        controller: this.email,
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          border: OutlineInputBorder(),
-                          hintText: 'jzdelacruz@up.edu.ph',
-                        ),
-                      ),
+                          controller: this.email,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: 'Sample: jdcruz@up.edu.ph',
+                            fillColor: Colors.grey,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                color: spotblack,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                              borderSide: BorderSide(
+                                color: maroon,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          validator: (v) {
+                            if (v.trim().isEmpty)
+                              return 'Please enter email here';
+                            return null;
+                          }),
                     ),
                   ),
                 ),
@@ -327,8 +396,9 @@ class _StaffInputWidgetState extends State<StaffInputWidget> {
                       this.click();
                     },
                     child: Text(
-                      'Add Staff',
+                      'Add New Staff Record',
                       style: TextStyle(
+                        fontFamily: 'Helvetica',
                         color: Colors.white,
                       ),
                     ),

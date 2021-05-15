@@ -3,7 +3,6 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:uphowtos1/formsHomePage.dart';
 import 'formsDatabase.dart';
-//import 'package:uphowtos1/mainDrawerDetails.dart';
 import 'formsEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'forms.dart';
@@ -38,8 +37,8 @@ class _FormsListState extends State<FormsList> {
   Widget _buildContactItem({Map contact}) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
-      margin: EdgeInsets.only(bottom: 5.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(
@@ -131,18 +130,22 @@ class _FormsListState extends State<FormsList> {
             content: Text('Are you sure you want to delete?'),
             actions: [
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('Cancel')),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Cancel'),
+                style: ElevatedButton.styleFrom(primary: maroon),
+              ),
               ElevatedButton(
-                  onPressed: () {
-                    reference
-                        .child(contact['key'])
-                        .remove()
-                        .whenComplete(() => Navigator.pop(context));
-                  },
-                  child: Text('Delete'))
+                onPressed: () {
+                  reference
+                      .child(contact['key'])
+                      .remove()
+                      .whenComplete(() => Navigator.pop(context));
+                },
+                child: Text('Delete'),
+                style: ElevatedButton.styleFrom(primary: maroon),
+              )
             ],
           );
         });
@@ -215,19 +218,18 @@ class _FormsListState extends State<FormsList> {
         ),
         preferredSize: Size.fromHeight(60.0),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Container(
-          height: double.infinity,
-          child: FirebaseAnimatedList(
-            query: _ref,
-            itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                Animation<double> animation, int index) {
-              Map contact = snapshot.value;
-              contact['key'] = snapshot.key;
-              return _buildContactItem(contact: contact);
-            },
-          ),
+      body: Container(
+        height: double.infinity,
+        margin: EdgeInsets.only(top: 6.0),
+        width: double.infinity,
+        child: FirebaseAnimatedList(
+          query: _ref,
+          itemBuilder: (BuildContext context, DataSnapshot snapshot,
+              Animation<double> animation, int index) {
+            Map contact = snapshot.value;
+            contact['key'] = snapshot.key;
+            return _buildContactItem(contact: contact);
+          },
         ),
       ),
     );

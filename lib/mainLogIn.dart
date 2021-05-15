@@ -40,7 +40,7 @@ class _BodyState extends State<Body> {
             {
               if (user.email.contains("@up.edu.ph"))
                 {
-                  Navigator.of(context).pushNamed('/dashboard',
+                  Navigator.of(context).pushNamed('/userdashboard',
                       arguments: user), // student version
                 }
               else

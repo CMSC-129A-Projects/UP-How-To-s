@@ -6,6 +6,12 @@ import 'staffList.dart';
 import 'package:uphowtos1/mainLogIn.dart';
 import 'mainDashBoard.dart';
 import 'mainLogIn.dart';
+import 'userformsList.dart';
+import 'userformsView.dart';
+import 'usermainDashboard.dart';
+import 'userstaffList.dart';
+import 'userstaffView.dart';
+import 'marcformsAdmin.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -21,6 +27,14 @@ class RouteGenerator {
           );
         }
         return _errorRoute();
+      case '/userdashboard':
+        {}
+        if (args is FirebaseUser) {
+          return MaterialPageRoute(
+            builder: (context) => UserDashboard(args),
+          );
+        }
+        return _errorRoute();
       case '/forms':
         return MaterialPageRoute(builder: (context) => FormsList());
       case '/edit':
@@ -29,6 +43,14 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => LoginPage());
       case '/staff':
         return MaterialPageRoute(builder: (context) => StaffList());
+      case '/userforms':
+        return MaterialPageRoute(builder: (context) => UserFormsList());
+      case '/userstaff':
+        return MaterialPageRoute(builder: (context) => UserStaffList());
+      case '/userformsview':
+        return MaterialPageRoute(builder: (context) => UserFormsList());
+      case '/userstaffview':
+        return MaterialPageRoute(builder: (context) => UserStaffList());
         return _errorRoute();
       default:
         return _errorRoute();
