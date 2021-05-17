@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\DeLL\\Documents\\GitHub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
+            "outputFile": "C:\\flutter proj\\UP-How-To-s_01\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DeLL\\.gradle\\caches\\transforms-2\\files-2.1\\39d921845324917a2757bbe4714039dc\\core-1.1.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\Ethel\\.gradle\\caches\\transforms-2\\files-2.1\\39d921845324917a2757bbe4714039dc\\core-1.1.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
