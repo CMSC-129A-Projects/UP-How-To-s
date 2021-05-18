@@ -119,7 +119,7 @@ class _UserStaffListState extends State<UserStaffList> {
           selectedTerm ?? 'Search',
           style: Theme.of(context).textTheme.headline6,
         ),
-        hint: 'Search the Form Name',
+        hint: 'Search Staff Name',
         actions: [
           FloatingSearchBarAction.searchToClear(),
         ],

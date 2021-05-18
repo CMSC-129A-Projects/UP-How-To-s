@@ -6,11 +6,11 @@ INJECTED from C:\Users\DeLL\Documents\GitHub\UP-How-To-s\android\app\src\main\An
 INJECTED from C:\Users\DeLL\Documents\GitHub\UP-How-To-s\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from C:\Users\DeLL\Documents\GitHub\UP-How-To-s\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:firebase_database] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:path_provider] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_sign_in] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:firebase_core] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:flutter_custom_dialog] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\flutter_custom_dialog\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-analytics:18.0.3] C:\Users\DeLL\.gradle\caches\transforms-2\files-2.1\704967b973607d8933a090fe6bea7ce1\jetified-firebase-analytics-18.0.3\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\DeLL\.gradle\caches\transforms-2\files-2.1\c8650704a99ff74c18bf71dcc7636f51\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-auth:20.0.4] C:\Users\DeLL\.gradle\caches\transforms-2\files-2.1\87f82a28246fe02b3f1bed0c4dce49fe\jetified-firebase-auth-20.0.4\AndroidManifest.xml:17:1-83:12
@@ -84,6 +84,8 @@ application
 ADDED from C:\Users\DeLL\Documents\GitHub\UP-How-To-s\android\app\src\main\AndroidManifest.xml:3:4-40:19
 MERGED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:firebase_database] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_database] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
@@ -184,6 +186,8 @@ INJECTED from C:\Users\DeLL\Documents\GitHub\UP-How-To-s\android\app\src\main\An
 INJECTED from C:\Users\DeLL\Documents\GitHub\UP-How-To-s\android\app\src\main\AndroidManifest.xml
 MERGED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_database] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_database] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -192,8 +196,6 @@ MERGED from [:google_sign_in] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\g
 MERGED from [:google_sign_in] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_custom_dialog] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\flutter_custom_dialog\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_custom_dialog] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\flutter_custom_dialog\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:18.0.3] C:\Users\DeLL\.gradle\caches\transforms-2\files-2.1\704967b973607d8933a090fe6bea7ce1\jetified-firebase-analytics-18.0.3\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:18.0.3] C:\Users\DeLL\.gradle\caches\transforms-2\files-2.1\704967b973607d8933a090fe6bea7ce1\jetified-firebase-analytics-18.0.3\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\DeLL\.gradle\caches\transforms-2\files-2.1\c8650704a99ff74c18bf71dcc7636f51\multidex-2.0.0\AndroidManifest.xml:20:5-43
@@ -356,6 +358,14 @@ ADDED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\fir
 		ADDED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_auth] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar
 ADDED from [:firebase_database] C:\Users\DeLL\Documents\GitHub\UP-How-To-s\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value

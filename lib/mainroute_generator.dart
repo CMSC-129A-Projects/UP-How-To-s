@@ -7,11 +7,8 @@ import 'package:uphowtos1/mainLogIn.dart';
 import 'mainDashBoard.dart';
 import 'mainLogIn.dart';
 import 'userformsList.dart';
-import 'userformsView.dart';
 import 'usermainDashboard.dart';
 import 'userstaffList.dart';
-import 'userstaffView.dart';
-import 'marcformsAdmin.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -48,9 +45,13 @@ class RouteGenerator {
       case '/userstaff':
         return MaterialPageRoute(builder: (context) => UserStaffList());
       case '/userformsview':
-        return MaterialPageRoute(builder: (context) => UserFormsList());
+        return MaterialPageRoute(
+            builder: (context) => ViewForms(
+                  contact: args,
+                ));
       case '/userstaffview':
         return MaterialPageRoute(builder: (context) => UserStaffList());
+
         return _errorRoute();
       default:
         return _errorRoute();

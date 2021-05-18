@@ -305,7 +305,7 @@ class _EditFormsState extends State<EditForms> {
                           maxLines: null,
                           decoration: InputDecoration(
                             labelText:
-                                'Sample: https://www.cognitoforms.com/ OfficeOfTheCollegeSecretaryAndRegistrarUPCebu/UPCebuOUROnlineRequestSlip',
+                                'Note: Start with https:// like https://www.cognitoforms.com/',
                             fillColor: Colors.grey,
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
