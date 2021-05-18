@@ -111,7 +111,7 @@ class _EditFormsState extends State<EditForms> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Edit Existing Form",
+                  "Update Existing Form",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 23,
@@ -206,7 +206,7 @@ class _EditFormsState extends State<EditForms> {
                 Padding(
                   padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    'Brief Form Description:',
+                    'Form Description:',
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Helvetica',

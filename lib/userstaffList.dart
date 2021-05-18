@@ -1,10 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/staffHomePage.dart';
-import 'staffDatabase.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'staff.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
@@ -23,6 +19,19 @@ class _UserStaffListState extends State<UserStaffList> {
   List<String> _searchHistory = [];
   List<String> filteredSearchHistory;
   String selectedTerm;
+  FloatingSearchBarController controller;
+  @override
+  void initState() {
+    super.initState();
+    controller = FloatingSearchBarController();
+    filteredSearchHistory = filterSearchTerms(filter: null);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   List<String> filterSearchTerms({
     @required String filter,
@@ -57,81 +66,6 @@ class _UserStaffListState extends State<UserStaffList> {
   void putSearchTermFirst(String term) {
     deleteSearchTerm(term);
     addSearchTerm(term);
-  }
-
-  FloatingSearchBarController controller;
-  /*
-  FirebaseUser user;
-  Query _ref;
-  List<Staff> staffs = [];
-  DatabaseReference reference =
-      FirebaseDatabase.instance.reference().child('staff');
-
-  Widget _buildContactItem({Map contact}) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-          ]),
-      child: Row(children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  contact['name'],
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: 'Helvetica-Bold',
-                    color: maroon,
-                  ),
-                ),
-                Text(
-                  contact['department'],
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
-                  ),
-                ),
-                SizedBox(height: 2.0),
-                Text(
-                  contact['position'],
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
-                  ),
-                ),
-              ]),
-        ),
-      ]),
-    );
-  }
-*/
-  @override
-  void initState() {
-    super.initState();
-    controller = FloatingSearchBarController();
-    filteredSearchHistory = filterSearchTerms(filter: null);
-    /*_ref = FirebaseDatabase.instance
-        .reference()
-        .child('staff')
-        .orderByChild('name');*/
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 
   @override
@@ -175,20 +109,7 @@ class _UserStaffListState extends State<UserStaffList> {
       body: FloatingSearchBar(
         controller: controller,
         body: FloatingSearchBarScrollNotifier(
-          child:
-              /*Container(
-            margin: EdgeInsets.only(top: 60.0),
-            width: double.infinity,
-            child: FirebaseAnimatedList(
-              query: _ref,
-              itemBuilder: (BuildContext context, DataSnapshot snapshot,
-                  Animation<double> animation, int index) {
-                Map contact = snapshot.value;
-                contact['key'] = snapshot.key;
-                return _buildContactItem(contact: contact);
-              },
-            ), */
-              SearchResultListView(
+          child: SearchResultListView(
             searchTerm: selectedTerm,
           ),
         ),
@@ -289,152 +210,6 @@ class _UserStaffListState extends State<UserStaffList> {
   }
 }
 
-class SearchResultListView extends StatefulWidget {
-  //SearchResultListView(String searchTerm);
-  @override
-  final String searchTerm;
-
-  SearchResultListView({
-    Key key,
-    @required this.searchTerm,
-  }) : super(key: key);
-
-  _SearchResultListViewState createState() => _SearchResultListViewState();
-}
-
-class _SearchResultListViewState extends State<SearchResultListView> {
-  String searchTerm;
-  FirebaseUser user;
-  Query _ref;
-  List<Staff> staffs = [];
-  DatabaseReference reference =
-      FirebaseDatabase.instance.reference().child('staff');
-
-  @override
-  void initState() {
-    searchTerm = this.searchTerm;
-    super.initState();
-    _ref = FirebaseDatabase.instance
-        .reference()
-        .child('staff')
-        .orderByChild('name');
-  }
-
-  Widget _buildContactItem({Map contact}) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-          ]),
-      child: Row(children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  contact['name'],
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: 'Helvetica-Bold',
-                    color: maroon,
-                  ),
-                ),
-                Text(
-                  contact['department'],
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
-                  ),
-                ),
-                SizedBox(height: 2.0),
-                Text(
-                  contact['position'],
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
-                  ),
-                ),
-              ]),
-        ),
-      ]),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final fsb = FloatingSearchBar.of(context);
-    if (searchTerm == null) {
-      return Container(
-        margin: EdgeInsets.only(top: 60.0),
-        width: double.infinity,
-        child: FirebaseAnimatedList(
-          query: _ref,
-          itemBuilder: (BuildContext context, DataSnapshot snapshot,
-              Animation<double> animation, int index) {
-            Map contact = snapshot.value;
-            contact['key'] = snapshot.key;
-            return _buildContactItem(contact: contact);
-          },
-        ),
-      );
-      /*return Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [ 
-            Icon(
-              Icons.search,
-              size: 64,
-            ),
-            Text(
-              'Search the Form Name',
-              style: Theme.of(context).textTheme.headline5,
-            ),
-          ],
-        ),
-      );*/
-    }
-
-/*
-return Container(
-        margin: EdgeInsets.only(top: 60.0),
-        width: double.infinity,
-        child: FirebaseAnimatedList(
-          query: _ref,
-          itemBuilder: (BuildContext context, DataSnapshot snapshot,
-              Animation<double> animation, int index) {
-            Map contact = snapshot.value;
-            contact['key'] = snapshot.key;
-            return _buildContactItem(contact: contact);
-          },
-        ),
-      ),*/
-
-    return Center(
-        child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          Icons.search,
-          size: 64,
-        ),
-        Text(
-          'Search the Form Name',
-          style: Theme.of(context).textTheme.headline5,
-        ),
-      ],
-    ));
-  }
-/*
 class SearchResultListView extends StatelessWidget {
   final String searchTerm;
 
@@ -443,42 +218,46 @@ class SearchResultListView extends StatelessWidget {
     @required this.searchTerm,
   }) : super(key: key);
 
-  FirebaseUser user;
-  Query _ref;
-  List<Staff> staffs = [];
-  DatabaseReference reference =
-      FirebaseDatabase.instance.reference().child('staff');
-
-  @override
-  void initState() {
-    super.initState();
-    _ref = FirebaseDatabase.instance
-        .reference()
-        .child('staff')
-        .orderByChild('name');
-  }
-
-  Widget _buildContactItem({Map contact}) {
-    return Container(
-      //width: double.infinity,
-      //padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-          ]),
-      child: Row(children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+  _showStaffInfo(context, {Map contact}) {
+    showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            scrollable: true,
+            elevation: 6.0,
+            backgroundColor: Colors.white,
+            title: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Staff Information',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      fontFamily: 'Helvetica-Bold',
+                      color: maroon,
+                    ),
+                  ),
+                ]),
+            content: Column(
+              children: [
+                Text(
+                  'Name: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
                 Text(
                   contact['name'],
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica',
+                    color: spotblack,
+                  ),
+                ),
+                Text(
+                  'Department: ',
                   style: TextStyle(
                     fontSize: 18.0,
                     fontFamily: 'Helvetica-Bold',
@@ -488,62 +267,135 @@ class SearchResultListView extends StatelessWidget {
                 Text(
                   contact['department'],
                   style: TextStyle(
-                    fontSize: 12.0,
+                    fontSize: 18.0,
                     fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
+                    color: spotblack,
                   ),
                 ),
-                SizedBox(height: 2.0),
+                Text(
+                  'Position: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
                 Text(
                   contact['position'],
                   style: TextStyle(
-                    fontSize: 12.0,
+                    fontSize: 18.0,
                     fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
+                    color: spotblack,
                   ),
                 ),
-              ]),
-        ),
-      ]),
+                Text(
+                  'Office Location: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
+                Text(
+                  contact['location'],
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica',
+                    color: spotblack,
+                  ),
+                ),
+                Text(
+                  'UP Email: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
+                Text(
+                  contact['email'],
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica',
+                    color: spotblack,
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  Widget _buildContactItem(BuildContext context, {Map contact}) {
+    return InkWell(
+      onTap: () {
+        _showStaffInfo(context, contact: contact);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
+            ]),
+        child: Row(children: <Widget>[
+          Expanded(
+            flex: 8,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    contact['name'],
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: 'Helvetica-Bold',
+                      color: maroon,
+                    ),
+                  ),
+                  Text(
+                    contact['department'],
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontFamily: 'Helvetica',
+                      color: Colors.grey[850],
+                    ),
+                  ),
+                  SizedBox(height: 2.0),
+                  Text(
+                    contact['position'],
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontFamily: 'Helvetica',
+                      color: Colors.grey[850],
+                    ),
+                  ),
+                ]),
+          ),
+        ]),
+      ),
     );
+  }
+
+  Widget _buildEmpty({Map contact}) {
+    return Container(
+        //very important, makes us dodge errors hahahah
+        ///FILLER BUILDER
+        );
   }
 
   @override
   Widget build(BuildContext context) {
-    final fsb = FloatingSearchBar.of(context);
     if (searchTerm == null) {
+      Query _ref = FirebaseDatabase.instance
+          .reference()
+          .child('staff')
+          .orderByChild('name');
       return Container(
-        //margin: EdgeInsets.only(top: 60.0),
-        //width: double.infinity,
-        child: FirebaseAnimatedList(
-          query: _ref,
-          itemBuilder: (BuildContext context, DataSnapshot snapshot,
-              Animation<double> animation, int index) {
-            Map contact = snapshot.value;
-            contact['key'] = snapshot.key;
-            return _buildContactItem(contact: contact);
-          },
-        ),
-      );
-      /*return Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [ 
-            Icon(
-              Icons.search,
-              size: 64,
-            ),
-            Text(
-              'Search the Form Name',
-              style: Theme.of(context).textTheme.headline5,
-            ),
-          ],
-        ),
-      );*/
-    }
-
-/*
-return Container(
         margin: EdgeInsets.only(top: 60.0),
         width: double.infinity,
         child: FirebaseAnimatedList(
@@ -552,24 +404,34 @@ return Container(
               Animation<double> animation, int index) {
             Map contact = snapshot.value;
             contact['key'] = snapshot.key;
-            return _buildContactItem(contact: contact);
+            return _buildContactItem(context, contact: contact);
           },
         ),
-      ),*/
+      );
+    }
+
+    Query dsds = FirebaseDatabase.instance
+        .reference()
+        .child('staff')
+        .orderByChild("name")
+        .equalTo(searchTerm);
     return Container(
-      //margin: EdgeInsets.only(top: 60.0),
-      // width: double.infinity,
+      margin: EdgeInsets.only(top: 60.0),
+      width: double.infinity,
       child: FirebaseAnimatedList(
-        query: _ref,
+        query: dsds,
         itemBuilder: (BuildContext context, DataSnapshot snapshot,
             Animation<double> animation, int index) {
           Map contact = snapshot.value;
           contact['key'] = snapshot.key;
-          return _buildContactItem(contact: contact);
+          String small = contact["name"].toLowerCase();
+          String smaller = searchTerm.toLowerCase();
+          if (small.contains(smaller))
+            return _buildContactItem(context, contact: contact);
+          else
+            return _buildEmpty(contact: contact);
         },
       ),
     );
   }
-}
-*/
 }

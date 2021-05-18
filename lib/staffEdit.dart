@@ -63,7 +63,7 @@ class _EditStaffState extends State<EditStaff> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Edit Existing Staff Record",
+                  "Update Existing Staff Record",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 23,
