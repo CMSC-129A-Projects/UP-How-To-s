@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 
-class CommentData {
+class CommentData{
   String description;
-  bool edited = false;
   int popularity = 0;
+  bool edited = false;
   DateTime latest = DateTime.now();
   final Key author;
+  final String authorName;
 
-  CommentData(this.description, this.author);
+  CommentData(this.authorName, this.description, this.author);
 
-  void update(String dscrptn) {
+  void update(String dscrptn){
     this.description = dscrptn;
     this.edited = true;
     this.latest = DateTime.now();
   }
 
-  void increase() {
+  void increase(){
     this.popularity++;
   }
 
-  void decrease() {
+  void decrease(){
     this.popularity--;
   }
 }

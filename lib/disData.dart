@@ -6,9 +6,10 @@ class DiscussionData{
   bool edited = false;
   int popularity = 0;
   DateTime latest = DateTime.now();
+  String authorName;
   final Key author;
 
-  DiscussionData(this.title, this.description, this.author);
+  DiscussionData(this.authorName, this.title, this.description, this.author);
 
   void update(String ttl, String dscrptn){
     this.title = ttl;

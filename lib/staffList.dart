@@ -226,7 +226,7 @@ class _StaffListState extends State<StaffList> {
             backgroundColor: maroon,
           ),
         ),
-        preferredSize: Size.fromHeight(60.0),
+        preferredSize: Size.fromHeight(60.0), 
       ),
       body: Container(
         height: double.infinity,
