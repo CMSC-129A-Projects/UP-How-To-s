@@ -40,6 +40,8 @@ import 'package:flutter/material.dart';
 import 'mainroute_generator.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+// await Firebase.initializeApp();
   runApp(MyApp());
 }
 

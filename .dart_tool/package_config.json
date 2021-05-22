@@ -116,6 +116,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///C:/Users/DeLL/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/fluttertoast-8.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "google_fonts",
       "rootUri": "file:///C:/Users/DeLL/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/google_fonts-2.0.0",
       "packageUri": "lib/",
@@ -362,7 +368,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-05-22T06:43:27.545454Z",
+  "generated": "2021-05-22T08:34:28.711632Z",
   "generator": "pub",
   "generatorVersion": "2.12.3"
 }

@@ -11,13 +11,15 @@ import 'usermainDashboard.dart';
 import 'userstaffList.dart';
 import 'orgsList.dart';
 import 'postList.dart';
+import 'mainnewLogin.dart';
+import 'mainregister.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (context) => LoginPage());
+        return MaterialPageRoute(builder: (context) => LogInPage());
       case '/dashboard':
         {}
         if (args is FirebaseUser) {
@@ -48,6 +50,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => UserStaffList());
       case '/orgs':
         return MaterialPageRoute(builder: (context) => OrgsList());
+      case '/reg':
+        return MaterialPageRoute(builder: (context) => RegPage());
       /*case '/disc':
         return MaterialPageRoute(builder: (context) => PostList());*/
       case '/userformsview':
