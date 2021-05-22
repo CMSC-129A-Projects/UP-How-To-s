@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'formsList.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'staffList.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -67,11 +65,6 @@ class _DashboardState extends State<Dashboard> {
                           color: yellow,
                           size: 55,
                         ),
-                      /*Image.network(
-                        image,
-                        height: 80,
-                        width: 80,
-                      ),*/
                       Text(
                         heading,
                         style: TextStyle(
@@ -165,7 +158,7 @@ class _DashboardState extends State<Dashboard> {
               "Discussion Board",
               "Got questionds? See our discussion board for answers and more!",
               3,
-              "/staff",
+              "/disc",
             ),
             myItems(
               'https://i.imgur.com/NdSHMGZ.png',
@@ -179,7 +172,7 @@ class _DashboardState extends State<Dashboard> {
               "Organization Board",
               "Check out existing organizations and what they have in store!",
               4,
-              "/staff",
+              "/orgs",
             ),
             myItems(
               'https://i.imgur.com/NdSHMGZ.png',

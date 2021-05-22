@@ -9,6 +9,8 @@ import 'mainLogIn.dart';
 import 'userformsList.dart';
 import 'usermainDashboard.dart';
 import 'userstaffList.dart';
+import 'orgsList.dart';
+import 'postList.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -44,6 +46,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => UserFormsList());
       case '/userstaff':
         return MaterialPageRoute(builder: (context) => UserStaffList());
+      case '/orgs':
+        return MaterialPageRoute(builder: (context) => OrgsList());
+      /*case '/disc':
+        return MaterialPageRoute(builder: (context) => PostList());*/
       case '/userformsview':
         return MaterialPageRoute(
             builder: (context) => ViewForms(
