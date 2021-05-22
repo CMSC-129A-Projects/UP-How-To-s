@@ -16,12 +16,12 @@ class DiscussionBlock{
     this.comments[index].update(description);
   }
 
-  void upvoteData(){
-    this.data.increase();
+  void upvoteData(Key key){
+    this.data.increase(key);
   }
 
-  void downvoteData(){
-    this.data.decrease();
+  void downvoteData(Key key){
+    this.data.decrease(key);
   }
 
   void addComments(CommentData d){
@@ -32,11 +32,11 @@ class DiscussionBlock{
     this.comments.removeAt(index);
   }
 
-  void upvoteComment(int index){
-    this.comments[index].increase();
+  void upvoteComment(int index, Key key){
+    this.comments[index].increase(key);
   }
 
-  void downvoteComment(int index){
-    this.comments[index].decrease();
+  void downvoteComment(int index, Key key){
+    this.comments[index].decrease(key);
   }
 }

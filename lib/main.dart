@@ -55,15 +55,15 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
         create: (context) => new DiscussionList(),
         child: MaterialApp(
-        title: 'UP How Tos',
-        theme: ThemeData(
-          primaryColor: maroon,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+          title: 'UP How Tos',
+          theme: ThemeData(
+            primaryColor: maroon,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: DiscussionPage(),
+          // initialRoute: '/',
+          // onGenerateRoute: RouteGenerator.generateRoute,
         ),
-        home: DiscussionPage(),
-        // initialRoute: '/',
-        // onGenerateRoute: RouteGenerator.generateRoute,
-      ),
     );
   }
 }
