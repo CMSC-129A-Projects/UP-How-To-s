@@ -5,6 +5,7 @@ import 'package:uphowtos1/disData.dart';
 import 'package:uphowtos1/disList.dart';
 import 'package:uphowtos1/pseudoUser.dart';
 import 'package:uphowtos1/copy.dart';
+import 'package:uphowtos1/projTextStyles.dart';
 
 // ignore: must_be_immutable
 class DiscussionAddPost extends StatelessWidget { 
@@ -57,7 +58,7 @@ class DiscussionAddPost extends StatelessWidget {
     return ElevatedButton(
           child: Text(
             "UPDATE",
-            style: _subHeader01(), 
+            style: subHeader01(), 
           ),
           onPressed: () {
             print("ASD");
@@ -89,7 +90,7 @@ class DiscussionAddPost extends StatelessWidget {
   TextField _descriptionInput() {
     return TextField(
         controller: dscrp..text = des,
-        style: _bodyText(),
+        style: bodyText(),
         maxLines: null,
         decoration: InputDecoration(
           hintText: "What is it about?",
@@ -104,7 +105,7 @@ class DiscussionAddPost extends StatelessWidget {
   TextField _titleInput() {
     return TextField(
           controller: title..text = ttl,
-          style: _header01(),
+          style: header01(),
           maxLines: null,
           decoration: InputDecoration(
             hintText: "Title",
@@ -136,13 +137,13 @@ class DiscussionAddPost extends StatelessWidget {
                     children: <Widget> [
                       Text(
                         user.name,
-                        style: _subHeader01(),
+                        style: subHeader01(),
                         maxLines: null,
                       ),
                       SizedBox(height:10),
                       Text(
                         DateTime.now().toString(),
-                        style: _subHeader02(),
+                        style: subHeader02(),
                       ),
                     ]
                   ),
@@ -151,29 +152,4 @@ class DiscussionAddPost extends StatelessWidget {
             ),
     );
   }
-
-  TextStyle _subHeader01() => TextStyle(
-    fontFamily: 'Helvetica',
-    fontSize: 15,
-    color: maroon,
-  );
-
-  TextStyle _subHeader02() => TextStyle(
-    fontFamily: 'Helvetica-Oblique',
-    fontSize: 15,
-    color: maroon,
-  );
-
-  TextStyle _bodyText() => TextStyle(
-    fontFamily: 'Helvetica-Light',
-    fontSize: 15,
-    color: maroon,
-  );
-
-  TextStyle _header01() => TextStyle(
-    fontFamily: 'Helvetica-Bold',
-    fontSize: 30,
-    color: maroon,
-  );
-
 }

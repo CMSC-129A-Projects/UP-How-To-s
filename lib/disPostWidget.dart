@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:uphowtos1/disList.dart';
 import 'package:uphowtos1/pseudoUser.dart';
 import 'package:uphowtos1/copy.dart';
+import 'package:uphowtos1/projTextStyles.dart';
 
 class PostWidget extends StatelessWidget {
 
@@ -17,7 +18,7 @@ class PostWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
-      margin: EdgeInsets.only(bottom: 5.0),
+      margin: EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
         color: maroon,
         borderRadius: BorderRadius.all(
@@ -31,10 +32,9 @@ class PostWidget extends StatelessWidget {
           ),
         ],
       ),
-      color: maroon,
       child: Row(
         children: <Widget> [
-          _vote(discussion),
+          // _vote(discussion),
           _details(discussion),
         ],
       ),
@@ -56,21 +56,14 @@ class PostWidget extends StatelessWidget {
         Text(
           discussion.discussions[index].data.popularity.toString(),
         ),
-        IconButton(
-          icon: Icon(
-            Icons.arrow_downward
-          ), 
-          onPressed: () => {
-            discussion.discussions[index].downvoteData(user.key)
-          }
-        )
       ],
     );
   }
 
-  Column _details(DiscussionList discussion) {
+  Widget _details(DiscussionList discussion) {
     double spacing = 5;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget> [
         Text(
           discussion.discussions[index].data.title,
@@ -84,6 +77,7 @@ class PostWidget extends StatelessWidget {
         SizedBox(height: spacing),
         Text(
           "by" + discussion.discussions[index].data.authorName,
+          maxLines: null,
           style: TextStyle(
             fontFamily: 'Helvetica-Light',
             fontSize: 14,
@@ -93,6 +87,7 @@ class PostWidget extends StatelessWidget {
         SizedBox(height: spacing),
         Text(
           discussion.discussions[index].data.edited ? "Edited " + discussion.discussions[index].data.latest.toString() : discussion.discussions[index].data.latest.toString(),
+          maxLines: null,
           style: TextStyle(
             fontFamily: 'Helvetica-Light',
             fontSize: 14,

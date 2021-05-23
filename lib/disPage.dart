@@ -94,28 +94,29 @@ class _DiscussionPageState extends State<DiscussionPage> {
     );
 
   Container _searchTab() => Container(
-      child: TextFormField(
-        controller: searchCtrl,
-        decoration: InputDecoration(
-          isDense: true,
-          filled: true,
-          fillColor: Colors.white,
-          contentPadding: EdgeInsets.symmetric(vertical: 0),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(40.0),),
-            gapPadding: 0,
-          ),
-          hintText: "Search",
-          hintStyle: TextStyle(
-            fontFamily: 'Helvetica'
-          ),
-          prefixIcon: Icon(
-            Icons.search, 
-            color: Colors.grey.shade300,
-          ),
+    margin: EdgeInsets.only(bottom: 10.0),
+    child: TextFormField(
+      controller: searchCtrl,
+      decoration: InputDecoration(
+        isDense: true,
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: EdgeInsets.symmetric(vertical: 0),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(40.0),),
+          gapPadding: 0,
         ),
-      )
-    );
+        hintText: "Search",
+        hintStyle: TextStyle(
+          fontFamily: 'Helvetica'
+        ),
+        prefixIcon: Icon(
+          Icons.search, 
+          color: Colors.grey.shade300,
+        ),
+      ),
+    )
+  );
 
   Widget _body(BuildContext context, DiscussionList discussion) => Container(
     width: double.infinity,
