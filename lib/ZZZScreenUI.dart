@@ -1,3 +1,7 @@
+// #firebase_core: ^0.4.0
+
+//#firebase_auth: ^0.14.0+5
+//  #firebase_database: 3.1.6
 /*import 'package:flutter/material.dart';
 import 'mainDrawerDetails.dart';
 import 'mainDashBoard.dart';

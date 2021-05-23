@@ -6,14 +6,14 @@ import 'staffAdd.dart';
 import 'staffList.dart';
 
 class StaffHomePage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
   StaffHomePage(this.user);
   @override
   _StaffHomePageState createState() => _StaffHomePageState();
 }
 
 class _StaffHomePageState extends State<StaffHomePage> {
-  FirebaseUser user;
+  User user;
   List<Staff> staffs = [];
 
   void newStaff(String name, String location, String position, String email,
@@ -46,14 +46,14 @@ class _StaffHomePageState extends State<StaffHomePage> {
 }
 
 class StaffListPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
   StaffListPage(this.user);
   @override
   _StaffListPageState createState() => _StaffListPageState();
 }
 
 class _StaffListPageState extends State<StaffListPage> {
-  FirebaseUser user;
+  User user;
   List<Staff> staffs = [];
 
   void newStaff(String name, String location, String position, String email,

@@ -97,9 +97,11 @@ class _LogInPageState extends State<LogInPage> {
           spacing(0, spc),
           ElevatedButton(
             onPressed: () {
+              print("dsdsdsdsdsdsdsssssssssssssssssssssssssssssssssssssssssss");
               loginAndAunthenticate(context);
+              print("yoahit");
             },
-            child: Text('Log In'),
+            child: Text('Log In?'),
           ),
           spacing(0, spc),
           Expanded(child: Divider(color: Colors.grey)),
@@ -115,13 +117,25 @@ class _LogInPageState extends State<LogInPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   void loginAndAunthenticate(BuildContext context) async {
-    final FirebaseUser user = (await user.SignInWithEmailAndPassword(
+    print("yoooo88");
+
+    final User user = (await auth.signInWithEmailAndPassword(
             email: emailController.text, password: passController.text))
         .user;
+    print(emailController.text);
+    print(passController.text);
     if (user != null) {
-      usersRef.child(user.uid).once().then((value) => (DataSnapshot snap) {
-            if (snap.value != null) {}
-          });
+      usersRef.child(user.uid).once().then((DataSnapshot snap) {
+        print("yoooo");
+        if (snap.value != null) {
+          print(
+              "=================================================================");
+          Navigator.of(context)
+              .pushNamed('/dashboard', arguments: user); //); // student version
+        }
+      });
+      print("yoooossss");
+      //Navigator.of(context).pushNamed('/dashboard', arguments: user);
     } else {
       auth.signOut();
     }
@@ -135,10 +149,10 @@ class AppTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double logoDimensions = 110;
+    double logoDimensions = 100;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      //mainAxisSize: MainAxisSize.min,
       children: [
         ConstrainedBox(
             constraints: BoxConstraints(

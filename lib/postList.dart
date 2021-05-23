@@ -4,7 +4,7 @@ import 'post.dart';
 
 class PostList extends StatefulWidget {
   final List<Post> listItems;
-  final FirebaseUser user;
+  final User user;
 
   PostList(this.listItems, this.user);
 

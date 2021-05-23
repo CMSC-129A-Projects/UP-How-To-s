@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+/*import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'mainAuth.dart';
 
@@ -20,7 +20,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  FirebaseUser user;
+  User user;
 
   @override
   void initState() {
@@ -100,3 +100,4 @@ class _BodyState extends State<Body> {
     ));
   }
 }
+*/

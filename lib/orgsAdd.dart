@@ -14,14 +14,14 @@ class OrgsInputWidget extends StatefulWidget {
   final Function(String, List<String>, String, String) callback;
   OrgsInputWidget(this.callback, this.user);
 
-  final FirebaseUser user;
+  final User user;
 
   @override
   _OrgsInputWidgetState createState() => _OrgsInputWidgetState();
 }
 
 class _OrgsInputWidgetState extends State<OrgsInputWidget> {
-  FirebaseUser user;
+  User user;
   final _formKey = GlobalKey<FormState>();
   TextEditingController _nameController;
   static List<String> officersList = [

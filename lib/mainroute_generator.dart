@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:uphowtos1/formsList.dart';
 import 'package:uphowtos1/mainDashBoard.dart';
 import 'staffList.dart';
-import 'package:uphowtos1/mainLogIn.dart';
 import 'mainDashBoard.dart';
-import 'mainLogIn.dart';
 import 'userformsList.dart';
 import 'usermainDashboard.dart';
 import 'userstaffList.dart';
 import 'orgsList.dart';
-import 'postList.dart';
 import 'mainnewLogin.dart';
 import 'mainregister.dart';
 
@@ -22,7 +19,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => LogInPage());
       case '/dashboard':
         {}
-        if (args is FirebaseUser) {
+        if (args is User) {
           return MaterialPageRoute(
             builder: (context) => Dashboard(args),
           );
@@ -30,7 +27,7 @@ class RouteGenerator {
         return _errorRoute();
       case '/userdashboard':
         {}
-        if (args is FirebaseUser) {
+        if (args is User) {
           return MaterialPageRoute(
             builder: (context) => UserDashboard(args),
           );
@@ -38,10 +35,10 @@ class RouteGenerator {
         return _errorRoute();
       case '/forms':
         return MaterialPageRoute(builder: (context) => FormsList());
-      case '/edit':
+      /* case '/edit':
         return MaterialPageRoute(builder: (context) => LoginPage());
       case '/add':
-        return MaterialPageRoute(builder: (context) => LoginPage());
+        return MaterialPageRoute(builder: (context) => LoginPage());*/
       case '/staff':
         return MaterialPageRoute(builder: (context) => StaffList());
       case '/userforms':
@@ -52,7 +49,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => OrgsList());
       case '/reg':
         return MaterialPageRoute(builder: (context) => RegPage());
-      /*case '/disc':
+      case '/login':
+        return MaterialPageRoute(builder: (context) => LogInPage());
+      /*
+      case '/disc':
         return MaterialPageRoute(builder: (context) => PostList());*/
       case '/userformsview':
         return MaterialPageRoute(

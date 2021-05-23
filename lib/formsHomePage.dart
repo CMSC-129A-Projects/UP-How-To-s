@@ -6,14 +6,14 @@ import 'formsAdd.dart';
 import 'formsList.dart';
 
 class FormsHomePage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
   FormsHomePage(this.user);
   @override
   _FormsHomePageState createState() => _FormsHomePageState();
 }
 
 class _FormsHomePageState extends State<FormsHomePage> {
-  FirebaseUser user;
+  User user;
   List<Forms> forms = [];
 
   void newForms(String title, List<String> body, String url, String desc) {
@@ -45,14 +45,14 @@ class _FormsHomePageState extends State<FormsHomePage> {
 }
 
 class FormsListPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
   FormsListPage(this.user);
   @override
   _FormsListPageState createState() => _FormsListPageState();
 }
 
 class _FormsListPageState extends State<FormsListPage> {
-  FirebaseUser user;
+  User user;
   List<Forms> forms = [];
 
   void newForms(String title, List<String> body, String url, String desc) {

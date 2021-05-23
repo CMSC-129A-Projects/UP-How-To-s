@@ -57,7 +57,7 @@ class _OrgsTextFieldsState extends State<OrgsTextFields> {
 class EditOrgs extends StatefulWidget {
   String contactKey;
   final Function(String, List<String>, String, String) callback;
-  final FirebaseUser user;
+  final User user;
   EditOrgs(this.callback, this.user, {this.contactKey});
 
   @override

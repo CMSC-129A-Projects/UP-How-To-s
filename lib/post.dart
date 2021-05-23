@@ -69,7 +69,7 @@ class Post {
 
   Post(this.title, this.body, this.author, this.date, this.edit, this.comments);
 
-  void likePost(FirebaseUser user) {
+  void likePost(User user) {
     if (this.usersLiked.contains(user.uid)) {
       this.usersLiked.remove(user.uid);
     } else {

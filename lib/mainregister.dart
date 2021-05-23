@@ -1,10 +1,8 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'mainnewLogin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-
-// WidgetsFlutterBinding.ensureInitialized();
-// await Firebase.initializeApp();
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegPage extends StatefulWidget {
   @override
@@ -12,7 +10,8 @@ class RegPage extends StatefulWidget {
 }
 
 class _RegPageState extends State<RegPage> {
-  DatabaseReference usersRef = FirebaseDatabase.instance.reference().child("users");
+  DatabaseReference usersRef =
+      FirebaseDatabase.instance.reference().child("users");
   bool authCheck = false;
   double spc = 15;
   final emailController = TextEditingController();
@@ -35,6 +34,8 @@ class _RegPageState extends State<RegPage> {
                     emailInput(),
                     spacing(0, spc),
                     passwordInput(),
+                    spacing(0, spc),
+                    loginButton()
                   ])))),
     ));
   }
@@ -71,17 +72,14 @@ class _RegPageState extends State<RegPage> {
           spacing(0, spc),
           ElevatedButton(
             onPressed: () {
-              if(passController.text.length < 7){
-              displayToastMessage("password must be greater than 7 characters",context);
-
-              }
-              else if(!emailController.text.contains("@")){
-                displayToastMessage("Invalid Password",context);
-              }
-              else{
+              if (passController.text.length < 7) {
+                displayToastMessage(
+                    "password must be greater than 7 characters", context);
+              } else if (!emailController.text.contains("@")) {
+                displayToastMessage("Invalid Password", context);
+              } else {
                 registerNewUser(context);
               }
-
             },
             child: Text('Register'),
           ),
@@ -91,27 +89,25 @@ class _RegPageState extends State<RegPage> {
       );
 
   final FirebaseAuth auth = FirebaseAuth.instance;
-  void registerNewUser(BuildContext context){
-    final User user = (await_firebaseAuth.createUserWithEmailAndPassword(email:emailController.text,password:passController.text)).user;
-    if(user!=NULL){
-      Map userDataMap{
-        "email" = emailController.text.trim();
-        "password" = passController.text.trim();
-      }
+  void registerNewUser(BuildContext context) async {
+    final User user = (await auth.createUserWithEmailAndPassword(
+            email: emailController.text, password: passController.text))
+        .user;
+    if (user != null) {
+      Map userDataMap = {
+        "email": emailController.text.trim(),
+        "password": passController.text.trim()
+      };
       usersRef.child(user.uid).set(userDataMap);
+      Navigator.of(context).pushNamed('/login'); // student version
     }
-    else{
-
-    }
-
   }
 
-  displayToastMessage(string Message, BuildContext context){
-    FlutterToast.showToast(msg:Message);
+  displayToastMessage(String message, BuildContext context) {
+    Fluttertoast.showToast(msg: message);
   }
 
-
-   Widget emailInput() => TextField(
+  Widget emailInput() => TextField(
         controller: emailController,
         decoration: InputDecoration(
             hintText: 'Email',
@@ -125,7 +121,7 @@ class _RegPageState extends State<RegPage> {
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.done,
       );
-
+  bool isPasswordVisible = true;
   Widget passwordInput() => TextField(
         controller: passController,
         decoration: InputDecoration(
@@ -141,5 +137,4 @@ class _RegPageState extends State<RegPage> {
         keyboardType: TextInputType.visiblePassword,
         obscureText: isPasswordVisible,
       );
-
-}*/
+}

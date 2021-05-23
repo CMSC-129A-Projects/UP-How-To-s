@@ -6,14 +6,14 @@ import 'orgsAdd.dart';
 import 'orgsList.dart';
 
 class OrgsHomePage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
   OrgsHomePage(this.user);
   @override
   _OrgsHomePageState createState() => _OrgsHomePageState();
 }
 
 class _OrgsHomePageState extends State<OrgsHomePage> {
-  FirebaseUser user;
+  User user;
   List<Orgs> orgs = [];
 
   void newOrgs(
@@ -46,14 +46,14 @@ class _OrgsHomePageState extends State<OrgsHomePage> {
 }
 
 class OrgsListPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
   OrgsListPage(this.user);
   @override
   _OrgsListPageState createState() => _OrgsListPageState();
 }
 
 class _OrgsListPageState extends State<OrgsListPage> {
-  FirebaseUser user;
+  User user;
   List<Orgs> orgs = [];
 
   void newOrgs(

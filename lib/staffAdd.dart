@@ -14,13 +14,13 @@ final gradientcolor2 = const Color(0xFFdc2430); // UP Spotblack
 class StaffInputWidget extends StatefulWidget {
   final Function(String, String, String, String, String) callback;
   StaffInputWidget(this.callback, this.user);
-  final FirebaseUser user;
+  final User user;
   @override
   _StaffInputWidgetState createState() => _StaffInputWidgetState();
 }
 
 class _StaffInputWidgetState extends State<StaffInputWidget> {
-  FirebaseUser user;
+  User user;
   final name = TextEditingController();
   final position = TextEditingController();
   final location = TextEditingController();

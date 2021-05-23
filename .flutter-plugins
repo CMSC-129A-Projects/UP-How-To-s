@@ -1,7 +1,9 @@
 # This is a generated file; do not edit or check into version control.
-firebase_auth=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_auth-0.14.0+9\\
-firebase_core=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_core-0.4.2+2\\
-firebase_database=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_database-3.1.6\\
+firebase_auth=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_auth-1.2.0\\
+firebase_auth_web=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_auth_web-1.1.3\\
+firebase_core=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_core-1.2.0\\
+firebase_core_web=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_core_web-1.1.0\\
+firebase_database=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\firebase_database-6.1.2\\
 fluttertoast=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\fluttertoast-8.0.7\\
 google_sign_in=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\google_sign_in-4.5.1\\
 google_sign_in_web=C:\\Users\\DeLL\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\google_sign_in_web-0.9.1+1\\

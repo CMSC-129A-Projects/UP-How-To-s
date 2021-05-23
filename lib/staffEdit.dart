@@ -15,7 +15,7 @@ final gradientcolor2 = const Color(0xFFdc2430); // UP Spotblack
 class EditStaff extends StatefulWidget {
   String contactKey;
   final Function(String, String, String, String, String) callback;
-  final FirebaseUser user;
+  final User user;
   EditStaff(this.callback, this.user, {this.contactKey});
 
   @override

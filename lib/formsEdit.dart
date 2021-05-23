@@ -58,7 +58,7 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
 class EditForms extends StatefulWidget {
   String contactKey;
   final Function(String, List<String>, String, String) callback;
-  final FirebaseUser user;
+  final User user;
   EditForms(this.callback, this.user, {this.contactKey});
 
   @override

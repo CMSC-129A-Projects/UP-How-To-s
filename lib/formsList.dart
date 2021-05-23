@@ -19,7 +19,7 @@ class FormsList extends StatefulWidget {
 }
 
 class _FormsListState extends State<FormsList> {
-  FirebaseUser user;
+  User user;
   Query _ref;
   List<Forms> forms = [];
   DatabaseReference reference =

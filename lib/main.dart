@@ -38,10 +38,11 @@ class MyApp extends StatelessWidget {
 */
 import 'package:flutter/material.dart';
 import 'mainroute_generator.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-// await Firebase.initializeApp();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

@@ -12,7 +12,7 @@ class Comment {
 
   Comment(this.body, this.author, this.date, this.edit);
 
-  void likePost(FirebaseUser user) {
+  void likePost(User user) {
     if (this.usersLiked.contains(user.uid)) {
       this.usersLiked.remove(user.uid);
     } else {

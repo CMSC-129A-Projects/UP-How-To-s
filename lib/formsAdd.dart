@@ -15,14 +15,14 @@ class AcadsTInputWidget extends StatefulWidget {
   final Function(String, List<String>, String, String) callback;
   AcadsTInputWidget(this.callback, this.user);
 
-  final FirebaseUser user;
+  final User user;
 
   @override
   _AcadsTInputWidgetState createState() => _AcadsTInputWidgetState();
 }
 
 class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
-  FirebaseUser user;
+  User user;
   final _formKey = GlobalKey<FormState>();
   TextEditingController _nameController;
   static List<String> stepsList = [

@@ -19,7 +19,7 @@ class StaffList extends StatefulWidget {
 }
 
 class _StaffListState extends State<StaffList> {
-  FirebaseUser user;
+  User user;
   Query _ref;
   List<Staff> staffs = [];
   DatabaseReference reference =

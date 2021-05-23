@@ -19,7 +19,7 @@ class OrgsList extends StatefulWidget {
 }
 
 class _OrgsListState extends State<OrgsList> {
-  FirebaseUser user;
+  User user;
   Query _ref;
   List<Orgs> orgs = [];
   DatabaseReference reference =

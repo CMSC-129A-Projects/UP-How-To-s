@@ -8,14 +8,14 @@ final yellow = const Color(0xFFFFB81C); // UP YELLOW
 final spotblack = const Color(0xFF000000); // UP Spotblack
 
 class UserDashboard extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
   UserDashboard(this.user);
   @override
   _UserDashboardState createState() => _UserDashboardState();
 }
 
 class _UserDashboardState extends State<UserDashboard> {
-  FirebaseUser user;
+  User user;
   Material myItems(
       String image, String heading, String desc, int sasa, String route) {
     return Material(
