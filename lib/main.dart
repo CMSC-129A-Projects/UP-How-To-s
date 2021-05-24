@@ -40,6 +40,7 @@ import 'package:flutter/material.dart';
 import 'mainroute_generator.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+final maroon = const Color(0xFF8A1538); // UP MAROON
 /*
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,17 +55,9 @@ void main() async {
 }*/
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-<<<<<<< Updated upstream
-  Firebase.initializeApp(); //deleted await, just testing -Marc
-=======
-  await Firebase.initializeApp();
-  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
->>>>>>> Stashed changes
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   runApp(MyApp());
 }
-
-final maroon = const Color(0xFF8A1538); // UP MAROON
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
