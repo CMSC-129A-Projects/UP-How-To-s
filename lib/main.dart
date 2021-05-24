@@ -40,9 +40,27 @@ import 'package:flutter/material.dart';
 import 'mainroute_generator.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+/*
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}*/
+/*
+void main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp();
+   runApp(MyApp());
+}*/
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+<<<<<<< Updated upstream
   Firebase.initializeApp(); //deleted await, just testing -Marc
+=======
+  await Firebase.initializeApp();
+  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+>>>>>>> Stashed changes
   runApp(MyApp());
 }
 
