@@ -51,6 +51,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => RegPage());
       case '/login':
         return MaterialPageRoute(builder: (context) => LogInPage());
+      case '/orgs':
+        return MaterialPageRoute(builder: (context) => OrgsList());
       /*
       case '/disc':
         return MaterialPageRoute(builder: (context) => PostList());*/

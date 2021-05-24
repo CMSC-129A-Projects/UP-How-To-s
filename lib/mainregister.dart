@@ -74,9 +74,10 @@ class _RegPageState extends State<RegPage> {
             onPressed: () {
               if (passController.text.length < 7) {
                 displayToastMessage(
-                    "password must be greater than 7 characters", context);
-              } else if (!emailController.text.contains("@")) {
-                displayToastMessage("Invalid Password", context);
+                    "Password must be greater than 7 characters", context);
+              } else if (!emailController.text.contains("@up.edu.ph") &&
+                  emailController.text.toString() != "uphowtosofc@gmail.com") {
+                displayToastMessage("Use UPMail", context);
               } else {
                 registerNewUser(context);
               }
@@ -90,8 +91,12 @@ class _RegPageState extends State<RegPage> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   void registerNewUser(BuildContext context) async {
-    final User user = (await auth.createUserWithEmailAndPassword(
-            email: emailController.text, password: passController.text))
+    final User user = (await auth
+            .createUserWithEmailAndPassword(
+                email: emailController.text, password: passController.text)
+            .catchError((errMsg) {
+      displayToastMessage("Error: " + errMsg.toString(), context);
+    }))
         .user;
     if (user != null) {
       Map userDataMap = {

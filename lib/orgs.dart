@@ -6,7 +6,6 @@ class Orgs {
   String name;
   String desc;
   String contactinfo;
-
   DatabaseReference _id;
 
   Orgs(this.name, this.officers, this.contactinfo, this.desc);

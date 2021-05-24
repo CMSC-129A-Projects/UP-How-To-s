@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:async';
 
 Color maroon = Color(0xFF8A1538);
 
@@ -18,7 +20,7 @@ class _LogInPageState extends State<LogInPage> {
   final passController = TextEditingController();
 
   bool isPasswordVisible = true;
-  bool hasSubmitted = false;
+  bool hasSubmitted = true;
   String password = "";
   double spc = 10;
 
@@ -75,7 +77,7 @@ class _LogInPageState extends State<LogInPage> {
         decoration: InputDecoration(
             hintText: 'Password',
             border: OutlineInputBorder(),
-            errorText: 'Wrong password. Try Again',
+            errorText: validatePassword(passController.text),
             suffixIcon: IconButton(
                 icon: isPasswordVisible
                     ? Icon(Icons.visibility_off)
@@ -85,6 +87,16 @@ class _LogInPageState extends State<LogInPage> {
         keyboardType: TextInputType.visiblePassword,
         obscureText: isPasswordVisible,
       );
+  String validatePassword(String value) {
+    if (!(value.length > 8) && value.isNotEmpty) {
+      return "Password should contain more than 7 characters";
+    }
+    return null;
+  }
+
+  displayToastMessage(String message, BuildContext context) {
+    Fluttertoast.showToast(msg: message);
+  }
 
   Widget spacing(double x, double y) => SizedBox(
         height: x,
@@ -97,9 +109,14 @@ class _LogInPageState extends State<LogInPage> {
           spacing(0, spc),
           ElevatedButton(
             onPressed: () {
-              print("dsdsdsdsdsdsdsssssssssssssssssssssssssssssssssssssssssss");
-              loginAndAunthenticate(context);
-              print("yoahit");
+              if (passController.text.length < 7 || emailController == null) {
+                displayToastMessage("Invalid email or password.", context);
+              } else if ((!emailController.text.contains("@up.edu.ph")) &&
+                  !(emailController.text == "uphowtosofc@gmail.com")) {
+                displayToastMessage("Use UPmail", context);
+              } else {
+                loginAndAunthenticate(context);
+              }
             },
             child: Text('Log In?'),
           ),
@@ -117,28 +134,45 @@ class _LogInPageState extends State<LogInPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   void loginAndAunthenticate(BuildContext context) async {
-    print("yoooo88");
+    /* final User _user = (await auth
+            .signInWithEmailAndPassword(
+                email: emailController.text, password: passController.text)
+            .catchError((errMsg) {
+      displayToastMessage("Error: " + errMsg.toString(), context);
+      print(errMsg.toString() + "sssssssssssssssssssssssssss");
+    }))
+        .user;*/
+    User _user;
+    try {
+      //Create Get Firebase Auth User
+      await auth.signInWithEmailAndPassword(
+          email: emailController.text, password: passController.text);
 
-    final User user = (await auth.signInWithEmailAndPassword(
-            email: emailController.text, password: passController.text))
-        .user;
-    print(emailController.text);
-    print(passController.text);
-    if (user != null) {
-      usersRef.child(user.uid).once().then((DataSnapshot snap) {
-        print("yoooo");
+      //Success
+      Navigator.of(context)
+          .pushNamed('/dashboard', arguments: _user); //); // student version
+
+    } on FirebaseAuthException catch (error) {
+      displayToastMessage("Error: " + error.toString(), context);
+    }
+
+    /*
+    .catch((error)=> {
+            console.error('Error signInWithEmailAndPassword', email, password, error.name, error.message);
+            throw new Error(error.message);
+        });
+    */
+/*
+    if (_user != null) {
+      usersRef.child(_user.uid).once().then((DataSnapshot snap) {
         if (snap.value != null) {
-          print(
-              "=================================================================");
-          Navigator.of(context)
-              .pushNamed('/dashboard', arguments: user); //); // student version
+          Navigator.of(context).pushNamed('/dashboard',
+              arguments: _user); //); // student version
         }
       });
-      print("yoooossss");
-      //Navigator.of(context).pushNamed('/dashboard', arguments: user);
     } else {
       auth.signOut();
-    }
+    }*/
   }
 }
 

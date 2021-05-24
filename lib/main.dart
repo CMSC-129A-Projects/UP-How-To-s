@@ -41,23 +41,18 @@ import 'mainroute_generator.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
-/*
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
-}*/
+}
 /*
-void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp();
-   runApp(MyApp());
-}*/
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   runApp(MyApp());
-}
+}*/
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
