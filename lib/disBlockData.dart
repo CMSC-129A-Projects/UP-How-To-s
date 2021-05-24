@@ -2,41 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:uphowtos1/disData.dart';
 import 'package:uphowtos1/disComData.dart';
 
-class DiscussionBlock{
+class DiscussionBlock {
   DiscussionData data;
-  List<CommentData> comments;
+  List<CommentData> comments = [];
 
   DiscussionBlock(this.data);
 
-  void update(String title, String description){
+  void update(String title, String description) {
     this.data.update(title, description);
   }
 
-  void updateComments(String description, int index){
+  void updateComments(String description, int index) {
     this.comments[index].update(description);
   }
 
-  void upvoteData(Key key){
+  void upvoteData(Key key) {
     this.data.increase(key);
   }
 
-  void downvoteData(Key key){
-    this.data.decrease(key);
-  }
-
-  void addComments(CommentData d){
+  void addComments(CommentData d) {
     this.comments.add(d);
   }
 
-  void removeComments(int index){
+  void removeComments(int index) {
     this.comments.removeAt(index);
   }
 
-  void upvoteComment(int index, Key key){
+  void upvoteComment(int index, Key key) {
     this.comments[index].increase(key);
-  }
-
-  void downvoteComment(int index, Key key){
-    this.comments[index].decrease(key);
   }
 }

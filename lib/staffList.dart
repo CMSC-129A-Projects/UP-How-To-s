@@ -40,17 +40,19 @@ class _StaffListState extends State<StaffList> {
       padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
       margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-          ]),
-      child: Row(children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Column(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(10.0),
+        ),
+        boxShadow: [
+          BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
+        ],
+      ),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 8,
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
@@ -78,46 +80,48 @@ class _StaffListState extends State<StaffList> {
                     color: Colors.grey[850],
                   ),
                 ),
-              ]),
-        ),
-        Expanded(
-          flex: 1,
-          child: PopupMenuButton<int>(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ],
             ),
-            onSelected: (item) {
-              switch (item) {
-                case 0:
-                  //Edit Item
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => EditStaff(
-                                newStaff,
-                                user,
-                                contactKey: contact['key'],
-                              )));
-                  break;
-                case 1:
-                  //Remove Item
-                  _showDeleteDialog(contact: contact);
-                  break;
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem<int>(
-                value: 0,
-                child: Text('Edit'),
-              ),
-              PopupMenuItem<int>(
-                value: 1,
-                child: Text('Remove'),
-              ),
-            ],
           ),
-        ),
-      ]),
+          Expanded(
+            flex: 1,
+            child: PopupMenuButton<int>(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ),
+              onSelected: (item) {
+                switch (item) {
+                  case 0:
+                    //Edit Item
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => EditStaff(
+                                  newStaff,
+                                  user,
+                                  contactKey: contact['key'],
+                                )));
+                    break;
+                  case 1:
+                    //Remove Item
+                    _showDeleteDialog(contact: contact);
+                    break;
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: Text('Edit'),
+                ),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: Text('Remove'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -132,33 +136,34 @@ class _StaffListState extends State<StaffList> {
 
   _showDeleteDialog({Map contact}) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Delete this staff record?'),
-            content: Text('Are you sure you want to delete?'),
-            actions: [
-              ElevatedButton(
-                //style: Colors.grey,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Cancel'),
-                style: ElevatedButton.styleFrom(primary: maroon),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  reference
-                      .child(contact['key'])
-                      .remove()
-                      .whenComplete(() => Navigator.pop(context));
-                },
-                child: Text('Delete'),
-                style: ElevatedButton.styleFrom(primary: maroon),
-              )
-            ],
-          );
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Delete this staff record?'),
+          content: Text('Are you sure you want to delete?'),
+          actions: [
+            ElevatedButton(
+              //style: Colors.grey,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Cancel'),
+              style: ElevatedButton.styleFrom(primary: maroon),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                reference
+                    .child(contact['key'])
+                    .remove()
+                    .whenComplete(() => Navigator.pop(context));
+              },
+              child: Text('Delete'),
+              style: ElevatedButton.styleFrom(primary: maroon),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -226,7 +231,7 @@ class _StaffListState extends State<StaffList> {
             backgroundColor: maroon,
           ),
         ),
-        preferredSize: Size.fromHeight(60.0), 
+        preferredSize: Size.fromHeight(60.0),
       ),
       body: Container(
         height: double.infinity,
