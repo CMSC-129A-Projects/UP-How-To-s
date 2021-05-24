@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:uphowtos1/orgs.dart';
+// import 'package:uphowtos1/orgs.dart'; //commented because it's currently not used, uncomment if ready to use -Marc
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN

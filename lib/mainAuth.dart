@@ -20,7 +20,7 @@ Future<User> signInWithGoogle() async {
   assert(!user.isAnonymous);
   assert(await user.getIdToken() != null);
 
-  final User currentUser = await _auth.currentUser;
+  final User currentUser = _auth.currentUser; //deleted await, add await lang kung dili jud siya muwork -Marc
   assert(currentUser.uid == user.uid);
 
   return user;

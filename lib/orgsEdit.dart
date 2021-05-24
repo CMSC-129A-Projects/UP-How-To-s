@@ -2,7 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:uphowtos1/orgs.dart';
+// import 'package:uphowtos1/orgs.dart'; //commented because not in used, uncomment if needed -Marc
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -55,7 +55,7 @@ class _OrgsTextFieldsState extends State<OrgsTextFields> {
 }
 
 class EditOrgs extends StatefulWidget {
-  String contactKey;
+  final String contactKey; //this is edited to have final -Marc
   final Function(String, List<String>, String, String) callback;
   final User user;
   EditOrgs(this.callback, this.user, {this.contactKey});
