@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'commentsDatabase.dart';
+// import 'commentsDatabase.dart'; /temporarily hidden, uncomment it so that it will work
 
 class Comment {
   String body;
@@ -37,6 +37,7 @@ class Comment {
       'body': this.body,
       'date': this.date,
       'edit': this.edit,
+      'ID': this._id //this is to make sure that _id is being used, but there's no need to use this, this just to make sure there's no error -Marc
     };
   }
 }

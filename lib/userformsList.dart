@@ -2,7 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart'; //import not in use, uncomment if needed -Marc
 import 'package:url_launcher/url_launcher.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON

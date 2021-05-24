@@ -56,7 +56,7 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
 }
 
 class EditForms extends StatefulWidget {
-  String contactKey;
+  final String contactKey; //this is edited to have final -Marc
   final Function(String, List<String>, String, String) callback;
   final User user;
   EditForms(this.callback, this.user, {this.contactKey});
