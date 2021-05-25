@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'dart:async';
 
 Color maroon = Color(0xFF8A1538);
 
@@ -118,7 +117,7 @@ class _LogInPageState extends State<LogInPage> {
                 loginAndAunthenticate(context);
               }
             },
-            child: Text('Log In?'),
+            child: Text('Log In'),
           ),
           spacing(0, spc),
           Expanded(child: Divider(color: Colors.grey)),
@@ -142,18 +141,29 @@ class _LogInPageState extends State<LogInPage> {
       print(errMsg.toString() + "sssssssssssssssssssssssssss");
     }))
         .user;*/
-    User _user;
+    //User _user;
     try {
       //Create Get Firebase Auth User
-      await auth.signInWithEmailAndPassword(
+      /*   await auth.signInWithEmailAndPassword(
           email: emailController.text, password: passController.text);
-
+*/
+      final User _user = (await auth.signInWithEmailAndPassword(
+              email: emailController.text, password: passController.text))
+          .user;
       //Success
-      Navigator.of(context)
-          .pushNamed('/dashboard', arguments: _user); //); // student version
-
+      if (emailController.text == "uphowtosofc@gmail.com") {
+        Navigator.of(context)
+            .pushNamed('/dashboard', arguments: _user); //); // student version
+      } else {
+        Navigator.of(context)
+            .pushNamed('/userdashboard', arguments: _user); //);
+      }
     } on FirebaseAuthException catch (error) {
-      displayToastMessage("Error: " + error.toString(), context);
+      displayToastMessage(
+          "Error: " +
+              error.toString() +
+              " Or if this email is already registered, please check the spelling and try again.",
+          context);
     }
 
     /*

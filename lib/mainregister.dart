@@ -53,7 +53,8 @@ class _RegPageState extends State<RegPage> {
                       })
                     }),
             Flexible(
-              child: Text('I will use my UP mail upon creating an account',
+              child: Text(
+                  'Using my UP email upon creating an account, I will continue to uphold good conduct while using this application.',
                   style:
                       TextStyle(fontSize: 15, fontFamily: 'Helvetica-Light')),
             )
@@ -75,9 +76,12 @@ class _RegPageState extends State<RegPage> {
               if (passController.text.length < 7) {
                 displayToastMessage(
                     "Password must be greater than 7 characters", context);
-              } else if (!emailController.text.contains("@up.edu.ph") &&
+                /*} else if (!emailController.text.contains("@up.edu.ph") &&
                   emailController.text.toString() != "uphowtosofc@gmail.com") {
-                displayToastMessage("Use UPMail", context);
+                displayToastMessage("Use UPMail", context);*/
+              } else if (authCheck == false) {
+                displayToastMessage(
+                    "Agree to terms and conditions above.", context);
               } else {
                 registerNewUser(context);
               }
@@ -91,22 +95,59 @@ class _RegPageState extends State<RegPage> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   void registerNewUser(BuildContext context) async {
-    final User user = (await auth
-            .createUserWithEmailAndPassword(
-                email: emailController.text, password: passController.text)
-            .catchError((errMsg) {
-      displayToastMessage("Error: " + errMsg.toString(), context);
-    }))
-        .user;
-    if (user != null) {
-      Map userDataMap = {
-        "email": emailController.text.trim(),
-        "password": passController.text.trim()
-      };
-      usersRef.child(user.uid).set(userDataMap);
-      Navigator.of(context).pushNamed('/login'); // student version
+    try {
+      //Create Get Firebase Auth User
+      /*   await auth.signInWithEmailAndPassword(
+          email: emailController.text, password: passController.text);
+*/
+      final User user = (await auth.createUserWithEmailAndPassword(
+              email: emailController.text, password: passController.text))
+          .user;
+      if (user != null) {
+        Map userDataMap = {
+          "email": emailController.text.trim(),
+          "password": passController.text.trim()
+        };
+        usersRef.child(user.uid).set(userDataMap);
+        Navigator.of(context).pushNamed('/login'); // student version
+      }
+    } on FirebaseAuthException catch (error) {
+      displayToastMessage(
+          "Error: " + error.toString() + "Go to log in instead.", context);
     }
+
+    /*
+    */
   }
+
+  /*
+  void registerNewUser(BuildContext context) async {
+    //User _user;
+    try {
+      //Create Get Firebase Auth User
+      await auth.signInWithEmailAndPassword(
+          email: emailController.text, password: passController.text);
+
+      final User _user = (await auth.createUserWithEmailAndPassword(
+              email: emailController.text, password: passController.text)
+          /*.catchError((errMsg) {
+      displayToastMessage("Error: " + errMsg.toString(), context);
+    })*/
+          )
+          .user;
+
+      if (_user != null) {
+        Map userDataMap = {
+          "email": emailController.text.trim(),
+          "password": passController.text.trim()
+        };
+        usersRef.child(_user.uid).set(userDataMap);
+        Navigator.of(context).pushNamed('/login'); // student version
+      }
+    } on FirebaseAuthException catch (error) {
+      displayToastMessage("Error: " + error.toString(), context);
+    }
+  }*/
 
   displayToastMessage(String message, BuildContext context) {
     Fluttertoast.showToast(msg: message);
@@ -132,7 +173,7 @@ class _RegPageState extends State<RegPage> {
         decoration: InputDecoration(
             hintText: 'Password',
             border: OutlineInputBorder(),
-            errorText: 'Wrong password. Try Again',
+            // errorText: 'Wrong password. Try Again',
             suffixIcon: IconButton(
                 icon: isPasswordVisible
                     ? Icon(Icons.visibility_off)

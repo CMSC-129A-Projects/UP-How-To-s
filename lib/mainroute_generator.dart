@@ -35,10 +35,6 @@ class RouteGenerator {
         return _errorRoute();
       case '/forms':
         return MaterialPageRoute(builder: (context) => FormsList());
-      /* case '/edit':
-        return MaterialPageRoute(builder: (context) => LoginPage());
-      case '/add':
-        return MaterialPageRoute(builder: (context) => LoginPage());*/
       case '/staff':
         return MaterialPageRoute(builder: (context) => StaffList());
       case '/userforms':
