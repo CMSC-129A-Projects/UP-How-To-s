@@ -8,6 +8,7 @@ import 'userformsList.dart';
 import 'usermainDashboard.dart';
 import 'userstaffList.dart';
 import 'orgsList.dart';
+import 'postList.dart';
 import 'mainnewLogin.dart';
 import 'mainregister.dart';
 
@@ -49,6 +50,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => LogInPage());
       case '/orgs':
         return MaterialPageRoute(builder: (context) => OrgsList());
+      case '/post':
+        return MaterialPageRoute(builder: (context) => PostList());
       /*
       case '/disc':
         return MaterialPageRoute(builder: (context) => PostList());*/

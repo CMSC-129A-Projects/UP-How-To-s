@@ -132,7 +132,7 @@ class _EditOrgsState extends State<EditOrgs> {
                 bottomRight: Radius.circular(10.0),
               ),
             ),
-            backgroundColor: maroon,
+            backgroundColor: green,
           ),
         ),
         preferredSize: Size.fromHeight(60.0),
@@ -183,7 +183,7 @@ class _EditOrgsState extends State<EditOrgs> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               borderSide: BorderSide(
-                                color: maroon,
+                                color: green,
                                 width: 2.0,
                               ),
                             ),
@@ -240,7 +240,7 @@ class _EditOrgsState extends State<EditOrgs> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               borderSide: BorderSide(
-                                color: maroon,
+                                color: green,
                                 width: 2.0,
                               ),
                             ),
@@ -262,7 +262,7 @@ class _EditOrgsState extends State<EditOrgs> {
                 Padding(
                   padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    'Steps: ',
+                    'Officers:  ',
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Helvetica',
@@ -280,7 +280,7 @@ class _EditOrgsState extends State<EditOrgs> {
                 Padding(
                   padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    'Download Form Links Here: ',
+                    'Contant Info: ',
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Helvetica',
@@ -314,14 +314,14 @@ class _EditOrgsState extends State<EditOrgs> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               borderSide: BorderSide(
-                                color: maroon,
+                                color: green,
                                 width: 2.0,
                               ),
                             ),
                           ),
                           validator: (v) {
                             if (v.trim().isEmpty)
-                              return 'Please enter steps here';
+                              return 'Please enter officers here';
                             return null;
                           }),
                     ),
@@ -337,14 +337,14 @@ class _EditOrgsState extends State<EditOrgs> {
                   padding: EdgeInsets.only(top: 20, right: 20),
                   child: TextButton(
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(maroon),
-                      backgroundColor: MaterialStateProperty.all<Color>(maroon),
+                      foregroundColor: MaterialStateProperty.all<Color>(green),
+                      backgroundColor: MaterialStateProperty.all<Color>(green),
                     ),
                     onPressed: () {
                       this.click();
                     },
                     child: Text(
-                      'Edit Existing Form',
+                      'Update Existing Org',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -395,7 +395,7 @@ class _EditOrgsState extends State<EditOrgs> {
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color: (add) ? Colors.green : maroon,
+          color: (add) ? Colors.green : green,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(

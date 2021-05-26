@@ -8,8 +8,8 @@ DatabaseReference savePost(Post post) {
   return id;
 }
 
-void updatePost(Post post, DatabaseReference id) {
-  id.update(post.toJson());
+void updatePost(Post posts, DatabaseReference id) {
+  id.update(posts.toJson());
 }
 
 Future<List<Post>> getAllPosts() async {

@@ -135,7 +135,7 @@ class _OrgsListState extends State<OrgsList> {
                   Navigator.pop(context);
                 },
                 child: Text('Cancel'),
-                style: ElevatedButton.styleFrom(primary: maroon),
+                style: ElevatedButton.styleFrom(primary: green),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -145,7 +145,7 @@ class _OrgsListState extends State<OrgsList> {
                       .whenComplete(() => Navigator.pop(context));
                 },
                 child: Text('Delete'),
-                style: ElevatedButton.styleFrom(primary: maroon),
+                style: ElevatedButton.styleFrom(primary: green),
               )
             ],
           );
@@ -214,7 +214,7 @@ class _OrgsListState extends State<OrgsList> {
                 bottomRight: Radius.circular(10.0),
               ),
             ),
-            backgroundColor: maroon,
+            backgroundColor: green,
           ),
         ),
         preferredSize: Size.fromHeight(60.0),

@@ -115,7 +115,7 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
                 bottomRight: Radius.circular(10.0),
               ),
             ),
-            backgroundColor: maroon,
+            backgroundColor: green,
           ),
         ),
         preferredSize: Size.fromHeight(60.0),
@@ -163,7 +163,7 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               borderSide: BorderSide(
-                                color: maroon,
+                                color: green,
                                 width: 2.0,
                               ),
                             ),
@@ -218,7 +218,7 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               borderSide: BorderSide(
-                                color: maroon,
+                                color: green,
                                 width: 2.0,
                               ),
                             ),
@@ -290,14 +290,14 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8.0),
                               borderSide: BorderSide(
-                                color: maroon,
+                                color: green,
                                 width: 2.0,
                               ),
                             ),
                           ),
                           validator: (v) {
                             if (v.trim().isEmpty)
-                              return 'Please enter steps here';
+                              return 'Please enter officers here';
                             return null;
                           }),
                     ),
@@ -313,8 +313,8 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
                   padding: EdgeInsets.only(top: 20, right: 20),
                   child: TextButton(
                     style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(maroon),
-                      backgroundColor: MaterialStateProperty.all<Color>(maroon),
+                      foregroundColor: MaterialStateProperty.all<Color>(green),
+                      backgroundColor: MaterialStateProperty.all<Color>(green),
                     ),
                     onPressed: () {
                       this.click();
@@ -372,7 +372,7 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color: (add) ? Colors.green : maroon,
+          color: (add) ? Colors.green : green,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(
@@ -430,7 +430,7 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
             borderSide: BorderSide(
-              color: maroon,
+              color: green,
               width: 2.0,
             ),
           ),

@@ -64,10 +64,12 @@ class Post {
   String date;
   bool edit;
   Set usersLiked = {};
+  List<String> keywords;
   List<Comment> comments;
   DatabaseReference _id;
 
-  Post(this.title, this.body, this.author, this.date, this.edit, this.comments);
+  Post(this.author, this.body, this.comments, this.date, this.edit,
+      this.keywords, this.title);
 
   void likePost(User user) {
     if (this.usersLiked.contains(user.uid)) {
@@ -89,36 +91,43 @@ class Post {
   Map<dynamic, dynamic> toJson() {
     return {
       'author': this.author,
-      'usersLiked': this.usersLiked.toList(),
       'body': this.body,
-      'title': this.title,
+      'comments': this.comments,
       'date': this.date,
       'edit': this.edit,
-      'comments': this.comments
+      'keywords': this.keywords,
+      'title': this.title,
+      'usersLiked': this.usersLiked.toList(),
     };
   }
 }
 
 Post createPost(record) {
   List<Comment> comments;
+  List<String> keywords;
   Map<dynamic, dynamic> attributes = {
     'author': '',
-    'usersLiked': [],
     'body': '',
-    'title': '',
+    'comments': comments,
     'date': '',
     'edit': '',
-    'comments': comments
+    'keywords': keywords,
+    'title': '',
+    'usersLiked': [],
   };
 
   record.forEach((key, value) => {attributes[key] = value});
+
+  record.forEach((key, value) => {attributes[key] = value});
   Post post = new Post(
-      attributes['author'],
-      attributes['body'],
-      attributes['title'],
-      attributes['date'],
-      attributes['edit'],
-      attributes[comments]);
+    attributes['author'],
+    attributes['body'],
+    attributes[comments],
+    attributes['date'],
+    attributes['edit'],
+    attributes[keywords],
+    attributes['title'],
+  );
   post.usersLiked = new Set.from(attributes['usersLiked']);
   return post;
 }

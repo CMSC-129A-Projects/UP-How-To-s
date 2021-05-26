@@ -158,7 +158,7 @@ class _DashboardState extends State<Dashboard> {
               "Discussion Board",
               "Got questionds? See our discussion board for answers and more!",
               3,
-              "/disc",
+              "/post",
             ),
             myItems(
               'https://i.imgur.com/NdSHMGZ.png',
