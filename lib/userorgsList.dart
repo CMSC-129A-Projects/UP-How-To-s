@@ -225,6 +225,7 @@ class SearchResultListView extends StatelessWidget {
   Widget _buildContactItem(BuildContext context, {Map contact}) {
     return InkWell(
         onTap: () {
+          print(contact["url"]);
           Navigator.of(context)
               .pushNamed('/userformsview', arguments: contact); //adm
         },
@@ -364,9 +365,9 @@ List<Widget> _getSteps(List steps) {
   return stepsTextFields;
 }
 
-class ViewForms extends StatelessWidget {
+class ViewOrgs extends StatelessWidget {
   final Map contact;
-  ViewForms({
+  ViewOrgs({
     Key key,
     @required this.contact,
   }) : super(key: key);

@@ -34,6 +34,10 @@ class RouteGenerator {
           );
         }
         return _errorRoute();
+      case '/reg':
+        return MaterialPageRoute(builder: (context) => RegPage());
+      case '/login':
+        return MaterialPageRoute(builder: (context) => LogInPage());
       case '/forms':
         return MaterialPageRoute(builder: (context) => FormsList());
       case '/staff':
@@ -44,26 +48,18 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => UserStaffList());
       case '/orgs':
         return MaterialPageRoute(builder: (context) => OrgsList());
-      case '/reg':
-        return MaterialPageRoute(builder: (context) => RegPage());
-      case '/login':
-        return MaterialPageRoute(builder: (context) => LogInPage());
-      case '/orgs':
-        return MaterialPageRoute(builder: (context) => OrgsList());
       case '/post':
         return MaterialPageRoute(builder: (context) => PostList());
-      /*
-      case '/disc':
-        return MaterialPageRoute(builder: (context) => PostList());*/
       case '/userformsview':
         return MaterialPageRoute(
             builder: (context) => ViewForms(
                   contact: args,
                 ));
-      case '/userstaffview':
-        return MaterialPageRoute(builder: (context) => UserStaffList());
-
-        return _errorRoute();
+      case '/userorgsview':
+        return MaterialPageRoute(
+            builder: (context) => ViewOrgs(
+                  contact: args,
+                ));
       default:
         return _errorRoute();
     }
