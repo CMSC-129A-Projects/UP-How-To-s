@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:uphowtos1/comments.dart';
+import 'package:intl/intl.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -368,15 +369,24 @@ class _EditPostsState extends State<EditPosts> {
   }
 
   void click() {
-    widget.callback(
-      "Iskt hot wo get name",
-      body.text,
-      comments,
-      "Ikdsdksdks how to get date",
-      true,
-      stepsList,
-      title.text,
-    );
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User user = auth.currentUser;
+
+    String name = user.displayName;
+    String date = DateFormat("yyyy-MM-dd hh:mm:ss").format(DateTime.now());
+    print(name +
+        "dddddddddddd-----------------------------------------------------------------------------------------------------------------------------------------------------------" +
+        date);
+    if (name != null)
+      widget.callback(
+        name,
+        body.text,
+        comments,
+        date,
+        true,
+        stepsList,
+        title.text,
+      );
     FocusScope.of(context).unfocus();
     title.clear();
     _nameController.clear();

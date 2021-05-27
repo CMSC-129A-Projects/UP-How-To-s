@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:uphowtos1/comments.dart';
+import 'package:intl/intl.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -9,19 +10,19 @@ final yellow = const Color(0xFFFFB81C); // UP YELLOW
 final spotblack = const Color(0xFF000000); // UP Spotblack
 
 class PostsInputWidget extends StatefulWidget {
+  final User user;
+
   final Function(
           String, String, List<Comment>, String, bool, List<String>, String)
       callback;
   PostsInputWidget(this.callback, this.user);
-
-  final User user;
 
   @override
   _PostInputWidgetState createState() => _PostInputWidgetState();
 }
 
 class _PostInputWidgetState extends State<PostsInputWidget> {
-  User user;
+  //User user;
   final _formKey = GlobalKey<FormState>();
   TextEditingController _nameController;
   static List<String> stepsList = [
@@ -46,7 +47,12 @@ class _PostInputWidgetState extends State<PostsInputWidget> {
   }
 
   void click() {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User user = auth.currentUser;
+    List<Comment> commentss = [];
     bool flag = false;
+    String name = user.displayName;
+    String date = DateFormat("yyyy-MM-dd hh:mm:ss").format(DateTime.now());
     for (int i = 0; i < stepsList.length; i++) {
       if (stepsList[i] == null) flag = true;
     }
@@ -56,10 +62,10 @@ class _PostInputWidgetState extends State<PostsInputWidget> {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } else {
       widget.callback(
-        "Iskt hot wo get name",
+        name,
         body.text,
-        comments,
-        "Ikdsdksdks how to get date",
+        commentss,
+        date,
         false,
         stepsList,
         title.text,

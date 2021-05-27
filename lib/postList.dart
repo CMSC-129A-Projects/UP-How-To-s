@@ -64,7 +64,8 @@ import 'postEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'post.dart';
 
-final maroon = const Color(0xFF8A1538); // UP MAROON
+final maroon = const Color(0xFF8A1538); // UP yellow
+
 final green = const Color(0xFF228b22); // UP GREEN
 final yellow = const Color(0xFFFFB81C); // UP YELLOW
 final spotblack = const Color(0xFF000000); // UP Spotblack
@@ -92,81 +93,88 @@ class _PostListState extends State<PostList> {
   }
 
   Widget _buildContactItem({Map contact}) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-          ]),
-      child: Row(children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  contact['title'],
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: 'Helvetica-Bold',
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                Text(
-                  contact['date'],
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
-                  ),
-                ),
-                SizedBox(height: 2.0),
-              ]),
-        ),
-        Expanded(
-          flex: 1,
-          child: PopupMenuButton<int>(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed('/userpostview', arguments: contact); //adm
+      },
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
             ),
-            onSelected: (item) {
-              switch (item) {
-                case 0:
-                  //Edit Item
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => EditPosts(
-                                newPosts,
-                                user,
-                                contactKey: contact['key'],
-                              )));
-                  break;
-                case 1:
-                  //Remove Item
-                  _showDeleteDialog(contact: contact);
-                  break;
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem<int>(
-                value: 0,
-                child: Text('Edit'),
-              ),
-              PopupMenuItem<int>(
-                value: 1,
-                child: Text('Remove'),
-              ),
-            ],
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
+            ]),
+        child: Row(children: <Widget>[
+          Expanded(
+            flex: 8,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    contact['title'],
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: 'Helvetica-Bold',
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  Text(
+                    contact['date'],
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontFamily: 'Helvetica',
+                      color: Colors.grey[850],
+                    ),
+                  ),
+                  SizedBox(height: 2.0),
+                ]),
           ),
-        ),
-      ]),
+          Expanded(
+            flex: 1,
+            child: PopupMenuButton<int>(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ),
+              onSelected: (item) {
+                switch (item) {
+                  case 0:
+                    //Edit Item
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => EditPosts(
+                                  newPosts,
+                                  user,
+                                  contactKey: contact['key'],
+                                )));
+                    break;
+                  case 1:
+                    //Remove Item
+                    _showDeleteDialog(contact: contact);
+                    break;
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: Text('Edit'),
+                ),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: Text('Remove'),
+                ),
+              ],
+            ),
+          ),
+        ]),
+      ),
     );
   }
 
@@ -289,6 +297,263 @@ class _PostListState extends State<PostList> {
             contact['key'] = snapshot.key;
             return _buildContactItem(contact: contact);
           },
+        ),
+      ),
+    );
+  }
+}
+
+List<Widget> _getSteps(List steps) {
+  List<Widget> stepsTextFields = [];
+  for (int i = 0; i < steps.length; i++) {
+    if (steps[i] != null) {
+      stepsTextFields.add(
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 20, left: 20),
+                        child: Text(
+                          steps[i],
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helvetica',
+                            fontWeight: FontWeight.bold,
+                            color: yellow,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+  }
+  return stepsTextFields;
+}
+
+class ViewPost extends StatelessWidget {
+  final Map contact;
+  ViewPost({
+    Key key,
+    @required this.contact,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 2.0),
+              blurRadius: 4.0,
+            )
+          ]),
+          child: AppBar(
+            shadowColor: Colors.grey,
+            elevation: 12.0,
+            centerTitle: true,
+            title: Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Text(
+                "Discussion Board",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontFamily: 'Helvetica',
+                ),
+              ),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
+              ),
+            ),
+            backgroundColor: yellow,
+          ),
+        ),
+        preferredSize: Size.fromHeight(60.0),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          // key: _formKey,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Title:',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                      color: yellow,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    contact["title"],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      //fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Download Forms Text
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Body:',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                      color: yellow,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                // Padding(
+                //padding: EdgeInsets.only(top: 20, left: 20),
+                Container(
+                  child: Flexible(
+                    child: Text(
+                      contact["body"],
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Helvetica',
+                        //fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                //),
+              ],
+            ),
+            Row(
+              //Steps Row
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Author: ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                      color: yellow,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Steps Row
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    contact["author"],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                      color: yellow,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Steps Row
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Date: ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                      color: yellow,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Steps Row
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    contact["date"],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                      color: yellow,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              //Steps Row
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20),
+                  child: Text(
+                    'Tags: ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Helvetica',
+                      fontWeight: FontWeight.bold,
+                      color: yellow,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            ..._getSteps(contact["keywords"]),
+            if (contact["comments"] != null) ..._getSteps(contact["comments"]),
+          ],
         ),
       ),
     );

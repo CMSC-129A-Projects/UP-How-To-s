@@ -60,6 +60,11 @@ class RouteGenerator {
             builder: (context) => ViewOrgs(
                   contact: args,
                 ));
+      case '/userpostview':
+        return MaterialPageRoute(
+            builder: (context) => ViewPost(
+                  contact: args,
+                ));
       default:
         return _errorRoute();
     }
