@@ -53,17 +53,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => new DiscussionList(),
-        child: MaterialApp(
-          title: 'UP How Tos',
-          theme: ThemeData(
-            primaryColor: maroon,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-          ),
-          home: DiscussionPage(),
-          // initialRoute: '/',
-          // onGenerateRoute: RouteGenerator.generateRoute,
+      create: (context) => new DiscussionList(),
+      child: MaterialApp(
+        title: 'UP How Tos',
+        theme: ThemeData(
+          primaryColor: maroon,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          scaffoldBackgroundColor: Colors.white,
         ),
+        home: DiscussionPage(),
+        // initialRoute: '/',
+        // onGenerateRoute: RouteGenerator.generateRoute,
+      ),
     );
   }
 }

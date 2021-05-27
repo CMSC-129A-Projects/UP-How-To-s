@@ -4,7 +4,7 @@ class DiscussionData {
   String title;
   String description;
   bool edited = false;
-  List<Key> upVote;
+  List<Key> upVote = [];
   int popularity = 0;
   DateTime latest = DateTime.now();
   String authorName;
@@ -20,10 +20,16 @@ class DiscussionData {
   }
 
   void increase(Key key) {
-    if (upVote.indexOf(key) != -1) {
+    if (!doesExist(key)) {
       upVote.add(key);
+      this.popularity++;
     } else {
       upVote.remove(key);
+      this.popularity--;
     }
+  }
+
+  bool doesExist(Key key) {
+    return upVote.indexOf(key) != -1;
   }
 }

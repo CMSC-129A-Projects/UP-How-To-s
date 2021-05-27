@@ -1,5 +1,10 @@
 import "package:flutter/material.dart";
 
+Key admin = UniqueKey();
+
+//Pseudo Admin Key
+Key adminPseudoKey() => admin;
+
 TextStyle subHeader01(Color c) => TextStyle(
       fontFamily: 'Helvetica',
       fontSize: 15,
@@ -27,5 +32,11 @@ TextStyle header01(Color c) => TextStyle(
 TextStyle header02(Color c) => TextStyle(
       fontFamily: 'Helvetica-Bold',
       fontSize: 20,
+      color: c,
+    );
+
+TextStyle subHeader03(Color c) => TextStyle(
+      fontFamily: 'Helvetica-Bold',
+      fontSize: 10,
       color: c,
     );

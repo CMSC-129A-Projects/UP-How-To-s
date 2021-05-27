@@ -26,13 +26,20 @@ class DiscussionAddPost extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: maroon),
-              onPressed: () {
-                Navigator.pop(context);
-              })),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: maroon),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        centerTitle: true,
+        title: Text(
+          ttl == null ? "Add Post" : "Edit Post",
+          style: subHeader01(maroon),
+        ),
+      ),
       body: SingleChildScrollView(child: _body(context, dis)),
     );
   }
@@ -54,14 +61,13 @@ class DiscussionAddPost extends StatelessWidget {
     );
   }
 
-  ElevatedButton _submitButton(BuildContext context, DiscussionList dis) {
-    return ElevatedButton(
+  Widget _submitButton(BuildContext context, DiscussionList dis) {
+    return OutlinedButton(
       child: Text(
         "UPDATE",
         style: subHeader01(maroon),
       ),
       onPressed: () {
-        print("ASD");
         print(user.key);
         if (title.text.length > 0 && dscrp.text.length > 0 && ttl == null) {
           DiscussionData d = new DiscussionData(
@@ -72,16 +78,14 @@ class DiscussionAddPost extends StatelessWidget {
           );
           dis.addDiscussion(DiscussionBlock(d));
         } else {
-          dis.discussions[index].update(title.text, dscrp.text);
+          print("EDIT ENTERED");
+          dis.update(title.text, dscrp.text, index);
         }
         Navigator.pop(context);
       },
-      style: ElevatedButton.styleFrom(
-        primary: Colors.white,
-        padding: EdgeInsets.all(10),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
+      style: OutlinedButton.styleFrom(
+        side: BorderSide(color: maroon),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       ),
     );
   }
@@ -124,29 +128,38 @@ class DiscussionAddPost extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          CircleAvatar(
-            child: Text("JE"),
-            backgroundColor: Colors.grey.shade400,
-            foregroundColor: Colors.white,
-            radius: 35.0,
+          Expanded(
+            flex: 1,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              child: CircleAvatar(
+                child: Text("JE"),
+                backgroundColor: Colors.grey.shade400,
+                foregroundColor: Colors.white,
+                radius: 35.0,
+              ),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  user.name,
-                  style: subHeader01(maroon),
-                  maxLines: null,
-                ),
-                SizedBox(height: 10),
-                Text(
-                  DateTime.now().toString(),
-                  style: subHeader02(maroon),
-                ),
-              ],
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    user.name,
+                    style: subHeader01(maroon),
+                    maxLines: null,
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    DateTime.now().toString(),
+                    style: subHeader02(maroon),
+                  ),
+                ],
+              ),
             ),
           )
         ],

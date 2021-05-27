@@ -8,6 +8,10 @@ class DiscussionBlock {
 
   DiscussionBlock(this.data);
 
+  bool doesExist(Key key) {
+    return this.data.doesExist(key);
+  }
+
   void update(String title, String description) {
     this.data.update(title, description);
   }
@@ -30,5 +34,12 @@ class DiscussionBlock {
 
   void upvoteComment(int index, Key key) {
     this.comments[index].increase(key);
+  }
+
+  void printUpvote() {
+    print("UPvote");
+    for (var x in this.comments) {
+      print(x);
+    }
   }
 }
