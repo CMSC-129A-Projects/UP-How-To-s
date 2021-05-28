@@ -13,7 +13,7 @@ class DiscussionPage extends StatefulWidget {
 class _DiscussionPageState extends State<DiscussionPage> {
   TextEditingController searchCtrl = TextEditingController();
   User testUser = User(
-    name: "asdasdsadzxzxvvcbxbweufhasoihdlvkahwbouhaofhsaf",
+    name: "Ethan Job",
     key: UniqueKey(),
   );
 

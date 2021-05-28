@@ -5,6 +5,7 @@ import 'package:uphowtos1/pseudoUser.dart';
 import 'package:uphowtos1/copy.dart';
 import 'package:uphowtos1/projTextStyles.dart';
 import 'package:uphowtos1/disPostPage.dart';
+import 'package:uphowtos1/disNewPost.dart';
 
 class PostWidget extends StatefulWidget {
   final int index;
@@ -32,8 +33,8 @@ class _PostWidgetState extends State<PostWidget> {
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          // _moreMenu(discussion),
           _details(discussion),
           _bottomRow(discussion),
         ],
@@ -106,68 +107,132 @@ class _PostWidgetState extends State<PostWidget> {
   Widget _details(DiscussionList discussion) {
     double spacing = 5;
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Expanded(
-          flex: 1,
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            child: CircleAvatar(
-              child: Text("JE"),
-              backgroundColor: Colors.grey.shade400,
-              foregroundColor: Colors.white,
-              radius: 35.0,
-            ),
+          child: Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(left: 5, right: 10),
+                child: CircleAvatar(
+                  child: Text("JE"),
+                  backgroundColor: Colors.grey.shade400,
+                  foregroundColor: Colors.white,
+                  radius: 30.0,
+                ),
+              ),
+              Expanded(
+                flex: 10,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DiscussionPostPage(
+                                user: widget.user,
+                                index: widget.index,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.all(0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          discussion.discussions[widget.index].data.title,
+                          style: header02(Colors.white),
+                        ),
+                        SizedBox(height: spacing),
+                        Text(
+                          "by " +
+                              discussion
+                                  .discussions[widget.index].data.authorName,
+                          maxLines: null,
+                          style: subHeader01(Colors.white),
+                        ),
+                        SizedBox(height: spacing),
+                        Text(
+                          discussion.discussions[widget.index].data.edited
+                              ? "Edited " +
+                                  discussion
+                                      .discussions[widget.index].data.latest
+                                      .toString()
+                              : discussion.discussions[widget.index].data.latest
+                                  .toString(),
+                          maxLines: null,
+                          style: subHeader02(Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              _moreMenu(discussion),
+            ],
           ),
         ),
-        Expanded(
-          flex: 4,
-          child: TextButton(
-            onPressed: () {
-              setState(
-                () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DiscussionPostPage(
-                        user: widget.user,
-                        index: widget.index,
-                      ),
-                    ),
-                  );
-                },
-              );
-            },
-            onLongPress: () {},
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.all(0),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  discussion.discussions[widget.index].data.title,
-                  style: header02(Colors.white),
+      ],
+    );
+  }
+
+  Widget _moreMenu(DiscussionList discussion) {
+    return PopupMenuButton<int>(
+      icon: Icon(
+        Icons.keyboard_arrow_down,
+        color: Colors.white,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+      ),
+      onSelected: (item) {
+        switch (item) {
+          case 0:
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DiscussionAddPost.toEdit(
+                  user: widget.user,
+                  index: widget.index,
+                  ttl: discussion.discussions[widget.index].data.title,
+                  des: discussion.discussions[widget.index].data.description,
                 ),
-                SizedBox(height: spacing),
-                Text(
-                  "by " + discussion.discussions[widget.index].data.authorName,
-                  maxLines: null,
-                  style: subHeader01(Colors.white),
-                ),
-                SizedBox(height: spacing),
-                Text(
-                  discussion.discussions[widget.index].data.edited
-                      ? "Edited " +
-                          discussion.discussions[widget.index].data.latest
-                              .toString()
-                      : discussion.discussions[widget.index].data.latest
-                          .toString(),
-                  maxLines: null,
-                  style: subHeader02(Colors.white),
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+            break;
+          case 1:
+            discussion.remove(widget.index);
+            break;
+        }
+      },
+      itemBuilder: (context) => [
+        // edit is only open to the author of the comment
+        PopupMenuItem<int>(
+          enabled: discussion.discussions[widget.index].data.author ==
+                  widget.user.key
+              ? true
+              : false,
+          value: 0,
+          child: Text('Edit'),
+        ),
+        // remove is enabled only to the author of the comment, post and admin
+        PopupMenuItem<int>(
+          enabled: (discussion.discussions[widget.index].data.author ==
+                      widget.user.key) ||
+                  (adminPseudoKey() == widget.user.key)
+              ? true
+              : false,
+          value: 1,
+          child: Text('Remove'),
         ),
       ],
     );

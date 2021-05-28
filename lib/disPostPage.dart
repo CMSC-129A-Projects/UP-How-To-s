@@ -164,7 +164,7 @@ class _DiscussionPostPageState extends State<DiscussionPostPage> {
 
   Widget _bottomDetails(DiscussionList dis) {
     return Container(
-      margin: EdgeInsets.only(left: 25, right: 25),
+      margin: EdgeInsets.symmetric(horizontal: 15),
       padding: EdgeInsets.all(0),
       child: Row(
         children: <Widget>[
