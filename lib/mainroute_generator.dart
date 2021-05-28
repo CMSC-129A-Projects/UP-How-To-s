@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:uphowtos1/disPage.dart';
 import 'package:uphowtos1/formsList.dart';
 import 'package:uphowtos1/mainDashBoard.dart';
 import 'staffList.dart';
@@ -8,7 +9,7 @@ import 'userformsList.dart';
 import 'usermainDashboard.dart';
 import 'userstaffList.dart';
 import 'orgsList.dart';
-import 'postList.dart';
+import 'postLists.dart';
 import 'mainnewLogin.dart';
 import 'mainregister.dart';
 
@@ -49,7 +50,7 @@ class RouteGenerator {
       case '/orgs':
         return MaterialPageRoute(builder: (context) => OrgsList());
       case '/post':
-        return MaterialPageRoute(builder: (context) => PostList());
+        return MaterialPageRoute(builder: (context) => DiscussionPage());
       case '/userformsview':
         return MaterialPageRoute(
             builder: (context) => ViewForms(

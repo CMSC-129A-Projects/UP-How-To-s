@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/orgsHomePage.dart';
+import 'package:uphowtos1/orgsHomePagee.dart';
 import 'orgsDatabase.dart';
 import 'orgsEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
