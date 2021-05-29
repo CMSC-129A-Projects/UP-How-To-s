@@ -76,7 +76,7 @@ class _LogInPageState extends State<LogInPage> {
         decoration: InputDecoration(
             hintText: 'Password',
             border: OutlineInputBorder(),
-            errorText: validatePassword(passController.text),
+            errorText: validatePassword(),
             suffixIcon: IconButton(
                 icon: isPasswordVisible
                     ? Icon(Icons.visibility_off)
@@ -86,8 +86,8 @@ class _LogInPageState extends State<LogInPage> {
         keyboardType: TextInputType.visiblePassword,
         obscureText: isPasswordVisible,
       );
-  String validatePassword(String value) {
-    if (!(value.length > 8) && value.isNotEmpty) {
+  String validatePassword() {
+    if (passController.text.length < 8 && passController.text.length != 0) {
       return "Password should contain more than 7 characters";
     }
     return null;
@@ -133,30 +133,21 @@ class _LogInPageState extends State<LogInPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   void loginAndAunthenticate(BuildContext context) async {
-    /* final User _user = (await auth
-            .signInWithEmailAndPassword(
-                email: emailController.text, password: passController.text)
-            .catchError((errMsg) {
-      displayToastMessage("Error: " + errMsg.toString(), context);
-      print(errMsg.toString() + "sssssssssssssssssssssssssss");
-    }))
-        .user;*/
-    //User _user;
     try {
-      //Create Get Firebase Auth User
-      /*   await auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passController.text);
-*/
       final User _user = (await auth.signInWithEmailAndPassword(
               email: emailController.text, password: passController.text))
           .user;
       //Success
-      if (emailController.text == "uphowtosofc@gmail.com") {
-        Navigator.of(context)
-            .pushNamed('/dashboard', arguments: _user); //); // student version
+      if (_user != null) {
+        if (emailController.text == "uphowtosofc@gmail.com") {
+          Navigator.of(context).pushNamed('/dashboard',
+              arguments: _user); //); // student version
+        } else {
+          Navigator.of(context)
+              .pushNamed('/userdashboard', arguments: _user); //);
+        }
       } else {
-        Navigator.of(context)
-            .pushNamed('/userdashboard', arguments: _user); //);
+        displayToastMessage("Go register your account first.", context);
       }
     } on FirebaseAuthException catch (error) {
       displayToastMessage(
@@ -165,24 +156,6 @@ class _LogInPageState extends State<LogInPage> {
               " Or if this email is already registered, please check the spelling and try again.",
           context);
     }
-
-    /*
-    .catch((error)=> {
-            console.error('Error signInWithEmailAndPassword', email, password, error.name, error.message);
-            throw new Error(error.message);
-        });
-    */
-/*
-    if (_user != null) {
-      usersRef.child(_user.uid).once().then((DataSnapshot snap) {
-        if (snap.value != null) {
-          Navigator.of(context).pushNamed('/dashboard',
-              arguments: _user); //); // student version
-        }
-      });
-    } else {
-      auth.signOut();
-    }*/
   }
 }
 
