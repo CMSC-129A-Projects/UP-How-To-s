@@ -16,6 +16,7 @@ class _RegPageState extends State<RegPage> {
   double spc = 15;
   final emailController = TextEditingController();
   final passController = TextEditingController();
+  final nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,8 @@ class _RegPageState extends State<RegPage> {
                     AppTitle(),
                     spacing(0, spc),
                     authorizationCheck(),
+                    spacing(0, spc),
+                    nameInput(),
                     spacing(0, spc),
                     emailInput(),
                     spacing(0, spc),
@@ -96,15 +99,15 @@ class _RegPageState extends State<RegPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   void registerNewUser(BuildContext context) async {
     try {
-      //Create Get Firebase Auth User
-      /*   await auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passController.text);
-*/
+      await FirebaseAuth.instance.currentUser
+          .updateProfile(displayName: nameController.text);
+
       final User user = (await auth.createUserWithEmailAndPassword(
               email: emailController.text, password: passController.text))
           .user;
       if (user != null) {
         Map userDataMap = {
+          "name": nameController.text.trim(),
           "email": emailController.text.trim(),
           "password": passController.text.trim()
         };
@@ -168,6 +171,20 @@ class _RegPageState extends State<RegPage> {
         textInputAction: TextInputAction.done,
       );
   bool isPasswordVisible = true;
+  Widget nameInput() => TextField(
+        controller: nameController,
+        decoration: InputDecoration(
+            hintText: 'Name',
+            border: OutlineInputBorder(),
+            suffixIcon: emailController.text.isEmpty
+                ? Container(width: 0)
+                : IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () => emailController.clear(),
+                  )),
+        keyboardType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.done,
+      );
   Widget passwordInput() => TextField(
         controller: passController,
         decoration: InputDecoration(

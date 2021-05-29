@@ -33,91 +33,203 @@ class _StaffListState extends State<StaffList> {
         .child('staff')
         .orderByChild('name');
   }
-
-  Widget _buildContactItem({Map contact}) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-          ]),
-      child: Row(children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+  _showStaffInfo(context, {Map contact}) {
+    showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            scrollable: true,
+            elevation: 6.0,
+            backgroundColor: Colors.white,
+            title: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Staff Information',
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      fontFamily: 'Helvetica-Bold',
+                      color: maroon,
+                    ),
+                  ),
+                ]),
+            content: Column(
+              children: [
+                Text(
+                  'Name: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
                 Text(
                   contact['name'],
                   style: TextStyle(
                     fontSize: 18.0,
+                    fontFamily: 'Helvetica',
+                    color: spotblack,
+                  ),
+                ),
+                Text(
+                  'Department: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
                     fontFamily: 'Helvetica-Bold',
-                    color: Theme.of(context).primaryColor,
+                    color: maroon,
                   ),
                 ),
                 Text(
                   contact['department'],
                   style: TextStyle(
-                    fontSize: 12.0,
+                    fontSize: 18.0,
                     fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
+                    color: spotblack,
                   ),
                 ),
-                SizedBox(height: 2.0),
+                Text(
+                  'Position: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
                 Text(
                   contact['position'],
                   style: TextStyle(
-                    fontSize: 12.0,
+                    fontSize: 18.0,
                     fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
+                    color: spotblack,
                   ),
                 ),
-              ]),
-        ),
-        Expanded(
-          flex: 1,
-          child: PopupMenuButton<int>(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                Text(
+                  'Office Location: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
+                Text(
+                  contact['location'],
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica',
+                    color: spotblack,
+                  ),
+                ),
+                Text(
+                  'UP Email: ',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica-Bold',
+                    color: maroon,
+                  ),
+                ),
+                Text(
+                  contact['email'],
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: 'Helvetica',
+                    color: spotblack,
+                  ),
+                ),
+              ],
             ),
-            onSelected: (item) {
-              switch (item) {
-                case 0:
-                  //Edit Item
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => EditStaff(
-                                newStaff,
-                                user,
-                                contactKey: contact['key'],
-                              )));
-                  break;
-                case 1:
-                  //Remove Item
-                  _showDeleteDialog(contact: contact);
-                  break;
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem<int>(
-                value: 0,
-                child: Text('Edit'),
-              ),
-              PopupMenuItem<int>(
-                value: 1,
-                child: Text('Remove'),
-              ),
-            ],
+          );
+        });
+  }
+
+  Widget _buildContactItem({Map contact}) {
+    return InkWell(
+        onTap: () {
+        _showStaffInfo(context, contact: contact);
+      },
+          child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+            boxShadow: [
+              BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
+            ]),
+        child: Row(children: <Widget>[
+          Expanded(
+            flex: 8,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    contact['name'],
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: 'Helvetica-Bold',
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  Text(
+                    contact['department'],
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontFamily: 'Helvetica',
+                      color: Colors.grey[850],
+                    ),
+                  ),
+                  SizedBox(height: 2.0),
+                  Text(
+                    contact['position'],
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontFamily: 'Helvetica',
+                      color: Colors.grey[850],
+                    ),
+                  ),
+                ]),
           ),
-        ),
-      ]),
+          Expanded(
+            flex: 1,
+            child: PopupMenuButton<int>(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ),
+              onSelected: (item) {
+                switch (item) {
+                  case 0:
+                    //Edit Item
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => EditStaff(
+                                  newStaff,
+                                  user,
+                                  contactKey: contact['key'],
+                                )));
+                    break;
+                  case 1:
+                    //Remove Item
+                    _showDeleteDialog(contact: contact);
+                    break;
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: Text('Edit'),
+                ),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: Text('Remove'),
+                ),
+              ],
+            ),
+          ),
+        ]),
+      ),
     );
   }
 

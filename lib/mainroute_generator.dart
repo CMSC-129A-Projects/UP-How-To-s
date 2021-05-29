@@ -50,7 +50,7 @@ class RouteGenerator {
       case '/orgs':
         return MaterialPageRoute(builder: (context) => OrgsList());
       case '/post':
-        return MaterialPageRoute(builder: (context) => DiscussionPage());
+        return MaterialPageRoute(builder: (context) => PostList());
       case '/userformsview':
         return MaterialPageRoute(
             builder: (context) => ViewForms(

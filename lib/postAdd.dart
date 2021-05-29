@@ -389,8 +389,6 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
             ),
           ),
           contentPadding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-          //border: OutlineInputBorder(),
-          //hintText: 'Step n',
         ),
         validator: (v) {
           if (v.trim().isEmpty) return 'Please enter a keyword here';

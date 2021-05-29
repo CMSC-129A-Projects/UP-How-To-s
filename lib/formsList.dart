@@ -35,81 +35,87 @@ class _FormsListState extends State<FormsList> {
   }
 
   Widget _buildContactItem({Map contact}) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-      margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(10.0),
-          ),
-          boxShadow: [
-            BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
-          ]),
-      child: Row(children: <Widget>[
-        Expanded(
-          flex: 8,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  contact['title'],
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: 'Helvetica-Bold',
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                Text(
-                  contact['desc'],
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    fontFamily: 'Helvetica',
-                    color: Colors.grey[850],
-                  ),
-                ),
-                SizedBox(height: 2.0),
-              ]),
-        ),
-        Expanded(
-          flex: 1,
-          child: PopupMenuButton<int>(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed('/userformsview', arguments: contact);
+      },
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        margin: EdgeInsets.fromLTRB(10, 3, 10, 3),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
             ),
-            onSelected: (item) {
-              switch (item) {
-                case 0:
-                  //Edit Item
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => EditForms(
-                                newForms,
-                                user,
-                                contactKey: contact['key'],
-                              )));
-                  break;
-                case 1:
-                  //Remove Item
-                  _showDeleteDialog(contact: contact);
-                  break;
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem<int>(
-                value: 0,
-                child: Text('Edit'),
-              ),
-              PopupMenuItem<int>(
-                value: 1,
-                child: Text('Remove'),
-              ),
-            ],
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey, blurRadius: 6, offset: Offset(0, 4)),
+            ]),
+        child: Row(children: <Widget>[
+          Expanded(
+            flex: 8,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    contact['title'],
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: 'Helvetica-Bold',
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  Text(
+                    contact['desc'],
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontFamily: 'Helvetica',
+                      color: Colors.grey[850],
+                    ),
+                  ),
+                  SizedBox(height: 2.0),
+                ]),
           ),
-        ),
-      ]),
+          Expanded(
+            flex: 1,
+            child: PopupMenuButton<int>(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ),
+              onSelected: (item) {
+                switch (item) {
+                  case 0:
+                    //Edit Item
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => EditForms(
+                                  newForms,
+                                  user,
+                                  contactKey: contact['key'],
+                                )));
+                    break;
+                  case 1:
+                    //Remove Item
+                    _showDeleteDialog(contact: contact);
+                    break;
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: Text('Edit'),
+                ),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: Text('Remove'),
+                ),
+              ],
+            ),
+          ),
+        ]),
+      ),
     );
   }
 

@@ -139,4 +139,37 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}*/
+}*/ /*
+import 'package:flutter/material.dart';
+import 'package:uphowtos1/disPage.dart';
+import 'mainroute_generator.dart';
+import 'package:provider/provider.dart';
+import 'package:uphowtos1/disList.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+final maroon = const Color(0xFF8A1538); // UP MAROON
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => new DiscussionList(),
+      child: MaterialApp(
+        title: 'UP How Tos',
+        theme: ThemeData(
+          primaryColor: maroon,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        home: DiscussionPage(),
+        // initialRoute: '/',
+        // onGenerateRoute: RouteGenerator.generateRoute,
+      ),
+    );
+  }
+}
+*/
