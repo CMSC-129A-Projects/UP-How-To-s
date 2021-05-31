@@ -1,9 +1,5 @@
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
+/*import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/staffHomePage.dart';
-import 'staffDatabase.dart';
-import 'staffEdit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'staff.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
@@ -63,20 +59,20 @@ class _UserStaffListState extends State<UserStaffList> {
   FloatingSearchBarController controller;
 
   User user;
-  Query _ref;
+ 
   List<Staff> staffs = [];
   DatabaseReference reference =
       FirebaseDatabase.instance.reference().child('staff');
-
+ //Query _ref;
   @override
   void initState() {
     super.initState();
     controller = FloatingSearchBarController();
     filteredSearchHistory = filterSearchTerms(filter: null);
-    _ref = FirebaseDatabase.instance
+    /*_ref = FirebaseDatabase.instance
         .reference()
         .child('staff')
-        .orderByChild('name');
+        .orderByChild('name');*/
   }
 
   @override
@@ -333,3 +329,4 @@ class SearchResultListView extends StatelessWidget {
     ); //This will be edited to get the firebase, but for now this is a dummy search result
   }
 }
+*/
