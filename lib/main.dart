@@ -41,7 +41,7 @@ import 'mainroute_generator.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
-
+final ss = const Color(0xFF8A1538); // UP MAROO
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
