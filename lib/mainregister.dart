@@ -3,6 +3,7 @@ import 'mainnewLogin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:async';
 
 class RegPage extends StatefulWidget {
   @override
@@ -79,9 +80,10 @@ class _RegPageState extends State<RegPage> {
               if (passController.text.length < 7) {
                 displayToastMessage(
                     "Password must be greater than 7 characters", context);
-                /*} else if (!emailController.text.contains("@up.edu.ph") &&
+              } else if (!emailController.text.contains("@up.edu.ph") &&
                   emailController.text.toString() != "uphowtosofc@gmail.com") {
-                displayToastMessage("Use UPMail", context);*/
+                displayToastMessage(
+                    "Use UPmail and check your spelling!", context);
               } else if (authCheck == false) {
                 displayToastMessage(
                     "Agree to terms and conditions above.", context);
@@ -97,22 +99,36 @@ class _RegPageState extends State<RegPage> {
       );
 
   final FirebaseAuth auth = FirebaseAuth.instance;
+  Timer timer;
   void registerNewUser(BuildContext context) async {
     try {
-      await FirebaseAuth.instance.currentUser
-          .updateProfile(displayName: nameController.text);
-
       final User user = (await auth.createUserWithEmailAndPassword(
               email: emailController.text, password: passController.text))
           .user;
+      await FirebaseAuth.instance.currentUser
+          .updateProfile(displayName: nameController.text);
+      user.sendEmailVerification();
+      displayToastMessage(
+          "If your email exists, a verification mail has been sent to you. Click the link provided to verify email and wait to be redirected to Log In Page.",
+          context);
+      List<Key> x = [];
+      List<Key> y = [];
       if (user != null) {
         Map userDataMap = {
           "name": nameController.text.trim(),
           "email": emailController.text.trim(),
-          "password": passController.text.trim()
+          "password": passController.text.trim(),
+          "posts": x,
+          "comments": y,
+          "avatarnumber": 1
         };
-        usersRef.child(user.uid).set(userDataMap);
-        Navigator.of(context).pushNamed('/login'); // student version
+
+        timer = Timer.periodic(Duration(seconds: 15), (timer) {
+          displayToastMessage(
+              "If your email exists, a verification mail has been sent to you. Click the link provided to verify email and wait to be redirected to Log In Page.",
+              context);
+          checkEmailVerified(userDataMap);
+        });
       }
     } on FirebaseAuthException catch (error) {
       displayToastMessage(
@@ -121,6 +137,18 @@ class _RegPageState extends State<RegPage> {
 
     /*
     */
+  }
+
+  Future<void> checkEmailVerified(Map userDataMap) async {
+    User suser = auth.currentUser;
+
+    await suser.reload();
+
+    if (suser.emailVerified) {
+      usersRef.child(suser.uid).set(userDataMap);
+      timer.cancel();
+      Navigator.of(context).pushNamed('/login');
+    }
   }
 
   /*
@@ -153,7 +181,7 @@ class _RegPageState extends State<RegPage> {
   }*/
 
   displayToastMessage(String message, BuildContext context) {
-    Fluttertoast.showToast(msg: message);
+    Fluttertoast.showToast(msg: message, toastLength: Toast.LENGTH_LONG);
   }
 
   Widget emailInput() => TextField(
@@ -182,7 +210,7 @@ class _RegPageState extends State<RegPage> {
                     icon: Icon(Icons.close),
                     onPressed: () => emailController.clear(),
                   )),
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.name,
         textInputAction: TextInputAction.done,
       );
   Widget passwordInput() => TextField(
