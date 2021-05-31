@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uphowtos1/disList.dart';
 import 'package:uphowtos1/pseudoUser.dart';
-import 'package:uphowtos1/copy.dart';
 import 'package:uphowtos1/projTextStyles.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
