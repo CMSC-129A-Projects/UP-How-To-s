@@ -11,7 +11,6 @@ final spotblack = const Color(0xFF000000); // UP Spotblack
 
 class PostsInputWidget extends StatefulWidget {
   final User user;
-
   final Function(
           String, String, List<Comment>, String, bool, List<String>, String)
       callback;

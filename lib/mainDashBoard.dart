@@ -15,7 +15,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  User user;
+  //User user;
   Material myItems(
       String image, String heading, String desc, int sasa, String route) {
     return Material(
@@ -179,7 +179,7 @@ class _DashboardState extends State<Dashboard> {
               "User Profile",
               "Manage your account and past posts.",
               5,
-              "/staff",
+              "/prof",
             )
           ],
           staggeredTiles: [

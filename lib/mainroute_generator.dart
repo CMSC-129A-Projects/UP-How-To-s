@@ -11,6 +11,7 @@ import 'orgsList.dart';
 import 'postLists.dart';
 import 'mainnewLogin.dart';
 import 'mainregister.dart';
+import 'profile.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -34,6 +35,14 @@ class RouteGenerator {
           );
         }
         return _errorRoute();
+      /* case '/prof':
+        {}
+        if (args is User) {
+          return MaterialPageRoute(
+            builder: (context) => Profile(args),
+          );
+        }
+        return _errorRoute();*/
       case '/reg':
         return MaterialPageRoute(builder: (context) => RegPage());
       case '/login':
@@ -50,6 +59,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => OrgsList());
       case '/post':
         return MaterialPageRoute(builder: (context) => PostList());
+      case '/prof':
+        return MaterialPageRoute(builder: (context) => Profile(args));
       case '/userformsview':
         return MaterialPageRoute(
             builder: (context) => ViewForms(

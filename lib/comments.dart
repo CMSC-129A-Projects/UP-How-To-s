@@ -21,12 +21,6 @@ class Comment {
     //this.update();
   }
 
-/*
-
-  void update() {
-    updateComment(this, this._id);
-  }
-*/
   void setId(DatabaseReference id) {
     this._id = id;
   }

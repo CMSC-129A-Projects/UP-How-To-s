@@ -15,7 +15,7 @@ class PostWidget extends StatefulWidget {
   final int index;
   final User user;
   PostWidget({this.index, this.user});
-
+//yahoooooooo
   @override
   _PostWidgetState createState() => _PostWidgetState();
 }
