@@ -57,11 +57,14 @@ class _ProfileState extends State<Profile> {
             content: Column(
               children: [
                 Container(
-                  child: Image.asset(
-                    "assets/1.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    padding: EdgeInsets.all(7),
+                    decoration: BoxDecoration(
+                        color: Colors.white, shape: BoxShape.circle),
+                    child: CircleAvatar(
+                      radius: 65,
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage("assets/0.jpg"),
+                    )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -271,18 +274,21 @@ class _ProfileState extends State<Profile> {
               ],
             ),
             Container(
-              child: Image.asset(
-                "assets/1.jpg",
-                fit: BoxFit.cover,
-              ),
-            ),
+                padding: EdgeInsets.all(7),
+                decoration:
+                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                child: CircleAvatar(
+                  radius: 65,
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage("assets/0.jpg"),
+                )),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 20, left: 20),
                   child: Text(
-                    'Posts',
+                    'Postsss',
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Helvetica',
