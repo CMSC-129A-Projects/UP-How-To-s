@@ -42,7 +42,7 @@ jobs:
 
   flutter_test:
     name: Run flutter test and analyze
-    needs: [build_and_preview]
+    needs: [deploy]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
