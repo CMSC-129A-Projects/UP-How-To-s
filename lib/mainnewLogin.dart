@@ -171,10 +171,12 @@ class AppTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       //mainAxisSize: MainAxisSize.min,
       children: [
-        ConstrainedBox(
-            constraints: BoxConstraints(
-                maxHeight: logoDimensions, maxWidth: logoDimensions),
-            child: Image(image: AssetImage('assets/UP_Cebu_logo_1.png'))),
+        Flexible(
+          child: ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxHeight: logoDimensions, maxWidth: logoDimensions),
+              child: Image(image: AssetImage('assets/UP_Cebu_logo_1.png'))),
+        ),
         Text(
           "UP\nHow To's",
           style: TextStyle(
