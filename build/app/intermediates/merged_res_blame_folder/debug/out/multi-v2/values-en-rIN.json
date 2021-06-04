@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\DeLL\\Documents\\GitHub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
+            "outputFile": "D:\\UPHowTosGithub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DeLL\\.gradle\\caches\\transforms-2\\files-2.1\\39d921845324917a2757bbe4714039dc\\core-1.1.0\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "source": "C:\\Users\\Ein\\.gradle\\caches\\transforms-2\\files-2.1\\39d921845324917a2757bbe4714039dc\\core-1.1.0\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

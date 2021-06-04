@@ -5,8 +5,20 @@ on:
       - main
 
 jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          expires: 30d
+          projectId: your-Firebase-project-ID
+
   flutter_test:
     name: Run flutter test and analyze
+    needs: [build_and_preview]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
