@@ -43,9 +43,21 @@ class _OrgsTextFieldsState extends State<OrgsTextFields> {
         maxLines: null,
         onChanged: (v) => _EditOrgsState.officersList[widget.index] = v,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-          border: OutlineInputBorder(),
-          hintText: 'Step n',
+          labelText: 'Sample: President: John Paul Cruz',
+          contentPadding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: spotblack,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(
+              color: green,
+              width: 2.0,
+            ),
+          ),
         ),
         validator: (v) {
           if (v.trim().isEmpty) return 'Please enter step here';
@@ -79,7 +91,7 @@ class _EditOrgsState extends State<EditOrgs> {
   @override
   void initState() {
     super.initState();
-    officersList = [null];
+    officersList = [];
     _ref = FirebaseDatabase.instance.reference().child('orgs');
     name = TextEditingController();
     contactinfo = TextEditingController();
@@ -361,7 +373,7 @@ class _EditOrgsState extends State<EditOrgs> {
 
   List<Widget> _getSteps() {
     List<Widget> stepsTextFields = [];
-    for (int i = 1; i < officersList.length; i++) {
+    for (int i = 0; i < officersList.length; i++) {
       stepsTextFields.add(
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -429,6 +441,7 @@ class _EditOrgsState extends State<EditOrgs> {
     _nameController.clear();
     contactinfo.clear();
     desc.clear();
+    officersList = [null];
     _ref.child(widget.contactKey).remove();
     Navigator.of(context).pushNamed('/orgs');
     final snackBar = SnackBar(content: Text('Org record edited'));

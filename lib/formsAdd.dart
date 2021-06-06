@@ -64,6 +64,7 @@ class _AcadsTInputWidgetState extends State<AcadsTInputWidget> {
       _nameController.clear();
       url.clear();
       desc.clear();
+      stepsList = [null];
       Navigator.of(context).pushNamed('/forms');
       final snackBar = SnackBar(content: Text('Form added'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);

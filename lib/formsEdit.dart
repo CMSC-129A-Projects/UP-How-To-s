@@ -78,7 +78,7 @@ class _EditFormsState extends State<EditForms> {
   @override
   void initState() {
     super.initState();
-    stepsList = [null];
+    stepsList = [];
     _ref = FirebaseDatabase.instance.reference().child('forms');
     title = TextEditingController();
     url = TextEditingController();
@@ -429,6 +429,7 @@ class _EditFormsState extends State<EditForms> {
     _nameController.clear();
     url.clear();
     desc.clear();
+    stepsList = [null];
     _ref.child(widget.contactKey).remove();
     Navigator.of(context).pushNamed('/forms');
     final snackBar = SnackBar(content: Text('Form edited'));
