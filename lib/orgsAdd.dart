@@ -66,6 +66,7 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
       _nameController.clear();
       contactinfo.clear();
       desc.clear();
+      officersList = [null];
       Navigator.of(context).pushNamed('/orgs');
       final snackBar = SnackBar(content: Text('Organization added'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -420,6 +421,7 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
         onChanged: (v) => _OrgsInputWidgetState.officersList[widget.index] = v,
         decoration: InputDecoration(
           labelText: "Sample: President: John Paul Cruz",
+          contentPadding: EdgeInsets.fromLTRB(10, 20, 10, 20),
           fillColor: Colors.white,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -434,9 +436,6 @@ class _StepsTextFieldsState extends State<StepsTextFields> {
               width: 2.0,
             ),
           ),
-          contentPadding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-          //border: OutlineInputBorder(),
-          //hintText: 'Step n',
         ),
         validator: (v) {
           if (v.trim().isEmpty) return 'Please enter step here';

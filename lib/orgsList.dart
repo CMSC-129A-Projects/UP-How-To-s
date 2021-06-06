@@ -335,26 +335,36 @@ class ViewOrgs extends StatelessWidget {
                         children: [
                           Center(
                             child: Row(
-                              // mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                // Flexible(
-                                Center(
-                                  child: Container(
-                                    width: 75,
-                                    height: 75,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/658/600',
-                                    ),
+                                Icon(
+                                  Icons.circle,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                                Container(
+                                  width: 75,
+                                  height: 75,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
                                   ),
+                                  child: Image.network(
+                                    'https://picsum.photos/seed/658/600',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.circle,
+                                  color: Colors.white,
+                                  size: 24,
                                 ),
                               ],
                             ),
+                          ),
+                          Divider(
+                            height: 20,
+                            thickness: 3,
+                            color: Colors.white,
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -372,6 +382,11 @@ class ViewOrgs extends StatelessWidget {
                                 ),
                               )
                             ],
+                          ),
+                          Divider(
+                            height: 10,
+                            thickness: 2,
+                            color: Colors.white,
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
