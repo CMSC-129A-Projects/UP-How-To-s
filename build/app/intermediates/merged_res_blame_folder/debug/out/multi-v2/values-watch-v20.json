@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\DeLL\\Documents\\GitHub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "D:\\UPHowTosGithub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DeLL\\.gradle\\caches\\transforms-2\\files-2.1\\c81727be489927f9ce823835d6e1927c\\jetified-play-services-auth-19.0.0\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\Ein\\.gradle\\caches\\transforms-2\\files-2.1\\c81727be489927f9ce823835d6e1927c\\jetified-play-services-auth-19.0.0\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
