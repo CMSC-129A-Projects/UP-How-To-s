@@ -44,7 +44,7 @@ final maroon = const Color(0xFF8A1538); // UP MAROON
 final ss = const Color(0xFF8A1538); // UP MAROO
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  Firebase.initializeApp();
   runApp(MyApp());
 }
 /*
