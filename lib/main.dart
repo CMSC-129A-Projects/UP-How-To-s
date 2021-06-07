@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
 import 'package:flutter/material.dart';
 import 'mainroute_generator.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final ss = const Color(0xFF8A1538); // UP MAROO
