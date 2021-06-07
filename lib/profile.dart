@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+//import 'package:firebase_database/firebase_database.dart'; commented
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -15,7 +15,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  DatabaseReference _ref;
+  //DatabaseReference _ref; commented
   int ava = 1;
   User cuser;
   @override
@@ -23,7 +23,7 @@ class _ProfileState extends State<Profile> {
     super.initState();
     final FirebaseAuth auth = FirebaseAuth.instance;
     cuser = auth.currentUser;
-    _ref = FirebaseDatabase.instance.reference().child('forms');
+  //  _ref = FirebaseDatabase.instance.reference().child('forms'); commented
   }
 
 /*
