@@ -36,16 +36,23 @@ class MyApp extends StatelessWidget {
   }
 }
 */
-
 import 'package:flutter/material.dart';
 import 'mainroute_generator.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final ss = const Color(0xFF8A1538); // UP MAROO
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
+/*
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  runApp(MyApp());
+}*/
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -62,42 +69,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-//Start from here
-// import 'package:flutter/material.dart';
-// import 'mainroute_generator.dart';
-// import 'package:firebase_core/firebase_core.dart';
-
-// final maroon = const Color(0xFF8A1538); // UP MAROON
-// final ss = const Color(0xFF8A1538); // UP MAROO
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   runApp(MyApp());
-// }
-// /*
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-//   runApp(MyApp());
-// }*/
-
-// class MyApp extends StatelessWidget {
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'UP How Tos',
-//       theme: ThemeData(
-//         primaryColor: maroon,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       initialRoute: '/',
-//       onGenerateRoute: RouteGenerator.generateRoute,
-//     );
-//   }
-// }
-//Until here
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Navigator.of(context).pushNamed('/second, arguments: 'dsdsdsd');
