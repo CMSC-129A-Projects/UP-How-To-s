@@ -8,14 +8,13 @@ final yellow = const Color(0xFFFFB81C); // UP YELLOW
 final spotblack = const Color(0xFF000000); // UP Spotblack
 
 class Dashboard extends StatefulWidget {
-  final User user;
-  Dashboard(this.user);
+  Dashboard();
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-  //User user;
+  User user;
   Material myItems(
       String image, String heading, String desc, int sasa, String route) {
     return Material(
@@ -183,11 +182,11 @@ class _DashboardState extends State<Dashboard> {
             )
           ],
           staggeredTiles: [
-            StaggeredTile.extent(1, 165.0),
-            StaggeredTile.extent(1, 165.0),
-            StaggeredTile.extent(1, 165.0),
-            StaggeredTile.extent(1, 165.0),
-            StaggeredTile.extent(2, 165.0),
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
           ],
         ),
       ),
