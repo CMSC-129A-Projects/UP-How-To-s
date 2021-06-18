@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.uphowtos1">
    <application
-        android:label="uphowtos1"
+        android:label="UP How To's"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
