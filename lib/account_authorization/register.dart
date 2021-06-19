@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'log_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:uphowtos1/colors_fonts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:async';
 

@@ -1,209 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:uphowtos1/colors_fonts.dart';
 
 class Profile extends StatefulWidget {
-  final User user;
-  Profile(this.user);
+  Profile();
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
-  DatabaseReference _ref;
   User cuser;
-  String cuid;
-  String savatar = "";
-  String avatar = "";
   @override
   void initState() {
     final FirebaseAuth auth = FirebaseAuth.instance;
     cuser = auth.currentUser;
-    cuid = cuser.uid;
     super.initState();
-  }
-
-  getFormsDetail() async {
-    _ref = FirebaseDatabase.instance.reference().child('users');
-    DataSnapshot snapshot = await _ref.child(cuid).once();
-    Map contact = snapshot.value;
-    avatar = contact['avatarnumber'].toString();
-    savatar = "assets/" + avatar + ".png";
-    return savatar;
-  }
-
-  /*
-Future <LoginPage> _signOut()  async{
-    await FirebaseAuth.instance.signOut();
-}
-FlatButton(
-  onPressed: () {
-  setState(() {});
-signOut(),
-Navigator.of(context)
-  .pushAndRemoveUntil(
-    Profile(
-      builder: (context) => LoginPage()
-    ),
-  () => false,
-); },
-  child: Text(
-                      Logout,
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ),*/
-  picwidget() {
-    getFormsDetail();
-    if (savatar != "assets/0.png") print("YEAHHHH");
-    return Container(
-        padding: EdgeInsets.all(7),
-        decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-        child: CircleAvatar(
-          radius: 65,
-          backgroundColor: Colors.white,
-          backgroundImage: AssetImage(savatar),
-        ));
-  }
-
-  _showStaffInfo(context) {
-    showDialog(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            scrollable: true,
-            elevation: 6.0,
-            backgroundColor: Colors.white,
-            title: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Change Avatar',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      fontFamily: 'Helvetica-Bold',
-                      color: maroon,
-                    ),
-                  ),
-                ]),
-            content: Column(
-              children: [
-                Container(
-                    padding: EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
-                    child: CircleAvatar(
-                      radius: 65,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage(savatar),
-                    )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 20, right: 20),
-                      child: TextButton(
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(maroon),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(maroon),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context, true);
-                          this.save();
-                        },
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                            fontFamily: 'Helvetica',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 20, right: 20),
-                      child: TextButton(
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(maroon),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(maroon),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context, true);
-                          this.next();
-                        },
-                        child: Text(
-                          'Prev',
-                          style: TextStyle(
-                            fontFamily: 'Helvetica',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 20, right: 20),
-                      child: TextButton(
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(maroon),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(maroon),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context, true);
-                          this.prev();
-                        },
-                        child: Text(
-                          'Next',
-                          style: TextStyle(
-                            fontFamily: 'Helvetica',
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
-  void click() {
-    _showStaffInfo(context);
-  }
-
-  void pclick() {
-    _showStaffInfo(context);
-  }
-
-  void cclick() {
-    _showStaffInfo(context);
-  }
-
-  void save() {}
-
-  void prev() {
-    _showStaffInfo(context);
-  }
-
-  void next() {
-    _showStaffInfo(context);
   }
 
   @override
@@ -229,7 +40,7 @@ Navigator.of(context)
                     "User Profile",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 20,
                       fontFamily: 'Helvetica',
                     ),
                   ),
@@ -246,17 +57,7 @@ Navigator.of(context)
           ),
           preferredSize: Size.fromHeight(60.0),
         ),
-        body:
-            /*
-      Container(
-        child: FutureBuilder(
-        future: getFormsDetail()),
-      ),
-      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-        if (snapshot.hasData) {
-            return 
-      */
-            SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Row(
@@ -307,105 +108,200 @@ Navigator.of(context)
                   ),
                 ],
               ),
-              picwidget(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 20, left: 20),
-                    child: Text(
-                      'Postsss',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Helvetica',
-                        fontWeight: FontWeight.bold,
+              Padding(
+                padding: EdgeInsets.fromLTRB(30, 50, 30, 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      height: 50,
+                      width: 50,
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 24,
+                        color: Colors.black54,
                       ),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black54),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
-                  ),
-                ],
+                    Text(
+                      'Profiles details',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    Container(height: 24, width: 24)
+                  ],
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+              Stack(
+                children: <Widget>[
+                  Image.network(
+                    'https://cdn.pixabay.com/photo/2015/03/26/09/41/phone-690091_960_720.jpg',
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    fit: BoxFit.cover,
+                  ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20, right: 20),
-                    child: TextButton(
-                      style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(maroon),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(maroon),
-                      ),
-                      onPressed: () {
-                        print(savatar);
-                        print("==================================+===");
-                        this.click();
-                      },
-                      child: Text(
-                        'Change Avatar',
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          color: Colors.white,
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 50),
+                    child: Stack(
+                      children: <Widget>[
+                        CircleAvatar(
+                          radius: 70,
+                          child: ClipOval(
+                            child: Image.asset(
+                              'images/girl.jpg',
+                              height: 150,
+                              width: 150,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
+                        Positioned(
+                            bottom: 1,
+                            right: 1,
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              child: Icon(
+                                Icons.add_a_photo,
+                                color: Colors.white,
+                              ),
+                              decoration: BoxDecoration(
+                                  color: Colors.deepOrange,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                            ))
+                      ],
                     ),
                   ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 20, right: 20),
-                    child: TextButton(
-                      style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(maroon),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(maroon),
-                      ),
-                      onPressed: () {
-                        this.pclick();
-                      },
-                      child: Text(
-                        'Posts',
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          color: Colors.white,
+                  Expanded(
+                      child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30)),
+                        gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                              Colors.black54,
+                              Color.fromRGBO(0, 41, 102, 1)
+                            ])),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 25, 20, 4),
+                          child: Container(
+                            height: 60,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Name',
+                                  style: TextStyle(color: Colors.white70),
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                border: Border.all(
+                                    width: 1.0, color: Colors.white70)),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 20, right: 20),
-                    child: TextButton(
-                      style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(maroon),
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(maroon),
-                      ),
-                      onPressed: () {
-                        this.cclick();
-                      },
-                      child: Text(
-                        'Comments',
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          color: Colors.white,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
+                          child: Container(
+                            height: 60,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Email',
+                                  style: TextStyle(color: Colors.white70),
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                border: Border.all(
+                                    width: 1.0, color: Colors.white70)),
+                          ),
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
+                          child: Container(
+                            height: 60,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Type something about yourself',
+                                  style: TextStyle(color: Colors.white70),
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                border: Border.all(
+                                    width: 1.0, color: Colors.white70)),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 4),
+                          child: Container(
+                            height: 60,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Phone number',
+                                  style: TextStyle(color: Colors.white70),
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                border: Border.all(
+                                    width: 1.0, color: Colors.white70)),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                  ))
                 ],
-              ),
+              )
             ],
           ),
         ));
   }
+
+  /*
+Future <LoginPage> _signOut()  async{
+    await FirebaseAuth.instance.signOut();
+}
+FlatButton(
+  onPressed: () {
+  setState(() {});
+signOut(),
+Navigator.of(context)
+  .pushAndRemoveUntil(
+    Profile(
+      builder: (context) => LoginPage()
+    ),
+  () => false,
+); },
+  child: Text(
+                      Logout,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),*/
 }

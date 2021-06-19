@@ -53,7 +53,6 @@ class _NewPostHomePageState extends State<NewPostHomePage> {
   // @override
 
   //FOR DISPLAYING DATA
-  Query _ref;
   DatabaseReference reference =
       FirebaseDatabase.instance.reference().child('posts');
 
@@ -102,11 +101,6 @@ class _NewPostHomePageState extends State<NewPostHomePage> {
   void initState() {
     super.initState();
     updatePosts();
-    _ref = FirebaseDatabase.instance
-        .reference()
-        .child('posts')
-        .orderByChild('title');
-
     controller = FloatingSearchBarController();
     filteredSearchHistory = filterSearchTerms(filter: null);
   }

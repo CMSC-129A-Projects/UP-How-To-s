@@ -1,13 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'post.dart';
 import 'dart:async';
 import 'package:mailer/smtp_server.dart';
 import 'package:mailer/mailer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'postAdd.dart';
-import 'postDatabase.dart';
 import 'pnComments.dart';
 import 'package:uphowtos1/colors_fonts.dart';
 
@@ -73,7 +70,7 @@ class _ViewPostNewState extends State<ViewPostNew> {
     String username = 'uphowtosreport@gmail.com';
     String password = 'Uphowtos1.';
 
-    final smtpServer = gmail(username, password);
+    final smtpServer = gmailRelaySaslXoauth2(username, password);
     final message = Message()
       ..from = Address(username, 'Automated Flagged Post Sender [UP How Tos]')
       ..recipients.add('uphowtosofc@gmail.com')

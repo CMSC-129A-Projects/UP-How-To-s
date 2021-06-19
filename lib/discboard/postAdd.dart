@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'post.dart';
 import 'package:uphowtos1/colors_fonts.dart';
 
 class PostsInputWidget extends StatefulWidget {
