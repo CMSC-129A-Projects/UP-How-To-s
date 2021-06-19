@@ -52,8 +52,7 @@ class RouteGenerator {
       case '/orgs':
         return MaterialPageRoute(builder: (context) => OrgsList());
       case '/orgsview':
-        return MaterialPageRoute(
-            builder: (context) => ViewOrgs(contact: args));
+        return MaterialPageRoute(builder: (context) => ViewOrgs(contact: args));
       case '/orgsedit':
         return MaterialPageRoute(builder: (context) => EditOrgs(args));
 
@@ -66,7 +65,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => ViewPostNew(args, args));
 
       case '/prof':
-        return MaterialPageRoute(builder: (context) => Profile(args));
+        return MaterialPageRoute(builder: (context) => Profile());
       default:
         return _errorRoute();
     }

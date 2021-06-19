@@ -92,102 +92,106 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        child: Container(
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              offset: Offset(0, 2.0),
-              blurRadius: 4.0,
-            )
-          ]),
-          child: AppBar(
-            shadowColor: Colors.grey,
-            elevation: 12.0,
-            centerTitle: true,
-            title: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "UP How to's",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontFamily: 'Helvetica-Bold',
+    return new WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: PreferredSize(
+          child: Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                offset: Offset(0, 2.0),
+                blurRadius: 4.0,
+              )
+            ]),
+            child: AppBar(
+              automaticallyImplyLeading: false,
+              shadowColor: Colors.grey,
+              elevation: 12.0,
+              centerTitle: true,
+              title: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "UP How to's",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontFamily: 'Helvetica-Bold',
+                    ),
                   ),
-                ),
-                Text(
-                  'Administrator Mode',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
+                  Text(
+                    'Administrator Mode',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10.0),
-                bottomRight: Radius.circular(10.0),
+                ],
               ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
+                ),
+              ),
+              backgroundColor: maroon,
             ),
-            backgroundColor: maroon,
           ),
+          preferredSize: Size.fromHeight(60.0),
         ),
-        preferredSize: Size.fromHeight(60.0),
-      ),
-      body: Padding(
-        padding: EdgeInsets.only(top: 20.0),
-        child: StaggeredGridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 8.0,
-          mainAxisSpacing: 8.0,
-          padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-          children: <Widget>[
-            myItems(
-              'https://i.imgur.com/NdSHMGZ.png',
-              "Forms & Processes",
-              "Find formats and guides for academic and non academic forms here.",
-              1,
-              "/forms",
-            ),
-            myItems(
-              'https://i.imgur.com/NdSHMGZ.png',
-              "Discussion Board",
-              "Got questionds? See our discussion board for answers and more!",
-              3,
-              "/post",
-            ),
-            myItems(
-              'https://i.imgur.com/NdSHMGZ.png',
-              "Personnel Directory",
-              "Get to know our very own UPC people here.",
-              2,
-              "/staff",
-            ),
-            myItems(
-              'https://i.imgur.com/NdSHMGZ.png',
-              "Organization Board",
-              "Check out existing organizations and what they have in store!",
-              4,
-              "/orgs",
-            ),
-            myItems(
-              'https://i.imgur.com/NdSHMGZ.png',
-              "User Profile",
-              "Manage your account and past posts.",
-              5,
-              "/prof",
-            )
-          ],
-          staggeredTiles: [
-            StaggeredTile.extent(2, 110.0),
-            StaggeredTile.extent(2, 110.0),
-            StaggeredTile.extent(2, 110.0),
-            StaggeredTile.extent(2, 110.0),
-            StaggeredTile.extent(2, 110.0),
-          ],
+        body: Padding(
+          padding: EdgeInsets.only(top: 20.0),
+          child: StaggeredGridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8.0,
+            mainAxisSpacing: 8.0,
+            padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+            children: <Widget>[
+              myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Forms & Processes",
+                "Find formats and guides for academic and non academic forms here.",
+                1,
+                "/forms",
+              ),
+              myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Discussion Board",
+                "Got questionds? See our discussion board for answers and more!",
+                3,
+                "/post",
+              ),
+              myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Personnel Directory",
+                "Get to know our very own UPC people here.",
+                2,
+                "/staff",
+              ),
+              myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "Organization Board",
+                "Check out existing organizations and what they have in store!",
+                4,
+                "/orgs",
+              ),
+              myItems(
+                'https://i.imgur.com/NdSHMGZ.png',
+                "User Profile",
+                "Manage your account and past posts.",
+                5,
+                "/prof",
+              )
+            ],
+            staggeredTiles: [
+              StaggeredTile.extent(2, 110.0),
+              StaggeredTile.extent(2, 110.0),
+              StaggeredTile.extent(2, 110.0),
+              StaggeredTile.extent(2, 110.0),
+              StaggeredTile.extent(2, 110.0),
+            ],
+          ),
         ),
       ),
     );

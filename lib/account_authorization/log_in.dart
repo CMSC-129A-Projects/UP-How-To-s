@@ -45,7 +45,7 @@ class _LogInPageState extends State<LogInPage> {
                 spacing(spc, 0),
                 loginButton(),
                 spacing(spc, 0),
-                signUpButton()
+                signUpButton(),
               ]),
             ),
           ),

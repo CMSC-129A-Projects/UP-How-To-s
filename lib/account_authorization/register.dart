@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'log_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:uphowtos1/colors_fonts.dart';
+//import 'package:uphowtos1/colors_fonts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:async';
 
@@ -15,6 +15,7 @@ class _RegPageState extends State<RegPage> {
   DatabaseReference usersRef =
       FirebaseDatabase.instance.reference().child("users");
   bool authCheck = false;
+  bool flag = false;
   double spc = 15;
   final emailController = TextEditingController();
   final passController = TextEditingController();
@@ -22,27 +23,30 @@ class _RegPageState extends State<RegPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: Center(
-          child: SingleChildScrollView(
-              child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Column(children: <Widget>[
-                    AppTitle(),
-                    spacing(0, spc),
-                    authorizationCheck(),
-                    spacing(0, spc),
-                    nameInput(),
-                    spacing(0, spc),
-                    emailInput(),
-                    spacing(0, spc),
-                    passwordInput(),
-                    spacing(0, spc),
-                    loginButton()
-                  ])))),
-    ));
+    return new WillPopScope(
+      onWillPop: () async => false,
+      child: SafeArea(
+          child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: Center(
+            child: SingleChildScrollView(
+                child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Column(children: <Widget>[
+                      AppTitle(),
+                      spacing(0, spc),
+                      authorizationCheck(),
+                      spacing(0, spc),
+                      nameInput(),
+                      spacing(0, spc),
+                      emailInput(),
+                      spacing(0, spc),
+                      passwordInput(),
+                      spacing(0, spc),
+                      loginButton(),
+                    ])))),
+      )),
+    );
   }
 
   Widget authorizationCheck() => Padding(
