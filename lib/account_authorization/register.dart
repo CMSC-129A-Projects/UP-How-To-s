@@ -21,10 +21,16 @@ class _RegPageState extends State<RegPage> {
   final passController = TextEditingController();
   final nameController = TextEditingController();
 
+  Future<bool> check() {
+    if (flag == false) {
+      Navigator.pop(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return new WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: check,
       child: SafeArea(
           child: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -116,6 +122,7 @@ class _RegPageState extends State<RegPage> {
       displayToastMessage(
           "If your email exists, a verification mail has been sent to you. Click the link provided to verify email and wait to be redirected to Log In Page.",
           context);
+      flag = false;
       List<Key> x = [];
       List<Key> y = [];
       if (user != null) {
@@ -128,7 +135,7 @@ class _RegPageState extends State<RegPage> {
           "avatarnumber": "0"
         };
 
-        timer = Timer.periodic(Duration(seconds: 15), (timer) {
+        timer = Timer.periodic(Duration(seconds: 4), (timer) {
           displayToastMessage(
               "If your email exists, a verification mail has been sent to you. Click the link provided to verify email and wait to be redirected to Log In Page.",
               context);
