@@ -21,14 +21,10 @@ import 'dart:async';
 import 'package:mailer/smtp_server.dart';
 import 'package:mailer/mailer.dart';
 import 'pnCommentEdit.dart';
+import 'package:uphowtos1/colors_fonts.dart';
 
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:uphowtos1/discboard/pnPostView.dart';
-
-final maroon = const Color(0xFF8A1538); // UP MAROON
-final green = const Color(0xFF228b22); // UP GREEN
-final yellow = const Color(0xFFFFB81C); // UP YELLOW
-final spotblack = const Color(0xFF000000); // UP Spotblackf
 
 class CommentsList extends StatefulWidget {
   final User user;

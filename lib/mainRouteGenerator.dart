@@ -61,10 +61,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => NewPostHomePage(args));
       case '/postinput':
         return MaterialPageRoute(
-            builder: (context) => PostsInputWidget(args, args));
+            builder: (context) => PostsInputWidget(args));
       case '/postview':
         return MaterialPageRoute(builder: (context) => ViewPostNew(args, args));
-
+        
       case '/prof':
         return MaterialPageRoute(builder: (context) => Profile(args));
       default:

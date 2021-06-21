@@ -1,11 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-final maroon = const Color(0xFF8A1538); // UP MAROON
-final green = const Color(0xFF228b22); // UP GREEN
-final yellow = const Color(0xFFFFB81C); // UP YELLOW
-final spotblack = const Color(0xFF000000); // UP Spotblack
+import 'package:uphowtos1/colors_fonts.dart';
 
 class EditPosts extends StatefulWidget {
   final String contactKey;

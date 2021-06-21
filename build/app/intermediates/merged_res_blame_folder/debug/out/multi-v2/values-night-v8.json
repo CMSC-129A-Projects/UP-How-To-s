@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\UPHowTosGithub\\UP-How-To-s\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\flutter proj\\UP-How-To-s_01\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ein\\.gradle\\caches\\transforms-2\\files-2.1\\212cc3ec13b7dd3f06ce53b800dec9c3\\appcompat-1.1.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\Ethel\\.gradle\\caches\\transforms-2\\files-2.1\\212cc3ec13b7dd3f06ce53b800dec9c3\\appcompat-1.1.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "D:\\UPHowTosGithub\\UP-How-To-s\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\flutter proj\\UP-How-To-s_01\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

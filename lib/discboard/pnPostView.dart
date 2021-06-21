@@ -11,11 +11,6 @@ import 'postDatabase.dart';
 import 'pnComments.dart';
 import 'package:uphowtos1/colors_fonts.dart';
 
-final maroon = const Color(0xFF8A1538); // UP MAROON
-final green = const Color(0xFF228b22); // UP GREEN
-final yellow = const Color(0xFFFFB81C); // UP YELLOW
-final spotblack = const Color(0xFF000000); // UP Spotblack
-
 class ViewPostNew extends StatefulWidget {
   final String contactKey;
   final Post post;
