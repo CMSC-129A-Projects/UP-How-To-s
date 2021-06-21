@@ -1,29 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:uphowtos1/discboard/pnPostView.dart';
+// import 'package:uphowtos1/discboard/pnPostView.dart';
 import 'postDatabase.dart';
 import 'post.dart';
 import 'postAdd.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'pnEdit.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:uphowtos1/discboard/pnPostView.dart';
-import 'postDatabase.dart';
-import 'post.dart';
-import 'postAdd.dart';
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'pnEdit.dart';
+// import 'pnEdit.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/material.dart';
+// import 'package:uphowtos1/discboard/pnPostView.dart';
+// import 'postDatabase.dart';
+// import 'post.dart';
+// import 'postAdd.dart';
+// import 'package:firebase_database/ui/firebase_animated_list.dart';
+// import 'package:firebase_database/firebase_database.dart';
 import 'pnCommentEdit.dart';
 import 'dart:async';
 import 'package:mailer/smtp_server.dart';
 import 'package:mailer/mailer.dart';
-import 'pnCommentEdit.dart';
+// import 'pnCommentEdit.dart';
 
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:uphowtos1/discboard/pnPostView.dart';
 
 final maroon = const Color(0xFF8A1538); // UP MAROON
 final green = const Color(0xFF228b22); // UP GREEN
@@ -66,7 +64,6 @@ class _CommentsListState extends State<CommentsList> {
   FloatingSearchBarController controller;
 
   //FOR DISPLAYING DATA
-  Query _ref;
   DatabaseReference reference;
   @override
   void dispose() {
@@ -113,12 +110,6 @@ class _CommentsListState extends State<CommentsList> {
   void initState() {
     super.initState();
     updateComments();
-    _ref = FirebaseDatabase.instance
-        .reference()
-        .child('posts')
-        .child(widget.contactKey)
-        .child('comments')
-        .orderByChild('date');
     reference = FirebaseDatabase.instance
         .reference()
         .child('posts')

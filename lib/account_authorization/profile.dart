@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uphowtos1/colors_fonts.dart';
-import 'package:uphowtos1/account_authorization/log_in.dart';
+// import 'package:uphowtos1/account_authorization/log_in.dart';
 
 class Profile extends StatefulWidget {
   Profile();

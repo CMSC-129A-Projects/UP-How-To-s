@@ -14,6 +14,7 @@ final green = const Color(0xFF228b22); // UP GREEN
 final yellow = const Color(0xFFFFB81C); // UP YELLOW
 final spotblack = const Color(0xFF000000); // UP Spotblackf
 
+
 class NewPostHomePage extends StatefulWidget {
   final User user;
 
@@ -53,7 +54,6 @@ class _NewPostHomePageState extends State<NewPostHomePage> {
   // @override
 
   //FOR DISPLAYING DATA
-  Query _ref;
   DatabaseReference reference =
       FirebaseDatabase.instance.reference().child('posts');
 
@@ -102,10 +102,6 @@ class _NewPostHomePageState extends State<NewPostHomePage> {
   void initState() {
     super.initState();
     updatePosts();
-    _ref = FirebaseDatabase.instance
-        .reference()
-        .child('posts')
-        .orderByChild('title');
 
     controller = FloatingSearchBarController();
     filteredSearchHistory = filterSearchTerms(filter: null);
