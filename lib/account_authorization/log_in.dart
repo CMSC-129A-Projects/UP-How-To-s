@@ -171,7 +171,7 @@ class AppTitle extends StatelessWidget {
           "UP\nHow To's",
           style: TextStyle(
             fontFamily: 'Helvetica-Bold',
-            fontSize: 45,
+            fontSize: 40,
             fontWeight: FontWeight.w800,
             color: maroon,
             shadows: [

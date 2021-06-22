@@ -246,6 +246,22 @@ class _FormsInputWidgetState extends State<FormsInputWidget> {
                     ),
                   ),
                 ),
+                Row(
+                  //Download Forms Text
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 5, left: 20),
+                      child: Text(
+                        '(optional)',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontFamily: 'Helvetica',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             Row(

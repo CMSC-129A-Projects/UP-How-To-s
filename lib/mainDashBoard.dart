@@ -14,7 +14,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  User user;
+  User cuser;
+  @override
+  void initState() {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    cuser = auth.currentUser;
+    super.initState();
+  }
+
   Material myItems(
       String image, String heading, String desc, int sasa, String route) {
     return Material(
@@ -92,34 +99,32 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        appBar: PreferredSize(
-          child: Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                color: Colors.black,
-                offset: Offset(0, 2.0),
-                blurRadius: 4.0,
-              )
-            ]),
-            child: AppBar(
-              automaticallyImplyLeading: false,
-              shadowColor: Colors.grey,
-              elevation: 12.0,
-              centerTitle: true,
-              title: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "UP How to's",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontFamily: 'Helvetica-Bold',
-                    ),
+    return Scaffold(
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, 2.0),
+              blurRadius: 4.0,
+            )
+          ]),
+          child: AppBar(
+            shadowColor: Colors.grey,
+            elevation: 12.0,
+            centerTitle: true,
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "UP How To's",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontFamily: 'Helvetica-Bold',
                   ),
+                ),
+                if (cuser.email == 'uphowtosofc@gmail.com')
                   Text(
                     'Administrator Mode',
                     style: TextStyle(
@@ -127,12 +132,13 @@ class _DashboardState extends State<Dashboard> {
                       fontSize: 10,
                     ),
                   ),
-                ],
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
+              ],
+            ),
+            leading: Container(),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0),
                 ),
               ),
               backgroundColor: maroon,
@@ -184,14 +190,13 @@ class _DashboardState extends State<Dashboard> {
                 "/prof",
               )
             ],
-            staggeredTiles: [
-              StaggeredTile.extent(2, 110.0),
-              StaggeredTile.extent(2, 110.0),
-              StaggeredTile.extent(2, 110.0),
-              StaggeredTile.extent(2, 110.0),
-              StaggeredTile.extent(2, 110.0),
-            ],
-          ),
+          staggeredTiles: [
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
+            StaggeredTile.extent(2, 110.0),
+          ],
         ),
       ),
     );

@@ -19,6 +19,18 @@ TextStyle subHeader02(Color c) => TextStyle(
       color: c,
     );
 
+TextStyle pageTitle(Color c) => TextStyle(
+      fontFamily: 'Helvetica',
+      fontSize: 23,
+      color: c,
+    );
+
+TextStyle pageSubTitle(Color c) => TextStyle(
+      fontFamily: 'Helvetica-Light',
+      fontSize: 10,
+      color: c,
+    );
+
 TextStyle bodyText(Color c) => TextStyle(
       fontFamily: 'Helvetica-Light',
       fontSize: 15,

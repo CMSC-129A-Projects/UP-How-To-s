@@ -117,7 +117,7 @@ class _FormsHomePageState extends State<FormsHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Add New Form",
+                  "Forms & Processes",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -301,6 +301,8 @@ class SearchResultListView extends StatelessWidget {
                       .child(contact['key'])
                       .remove()
                       .whenComplete(() => Navigator.pop(context));
+                  final snackBar = SnackBar(content: Text('Form deleted'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 child: Text('Delete'),
                 style: ElevatedButton.styleFrom(primary: maroon),

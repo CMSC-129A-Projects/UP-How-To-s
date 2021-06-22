@@ -19,7 +19,7 @@ class OrgsList extends StatefulWidget {
 }
 
 class _OrgsListState extends State<OrgsList> {
-  User user;
+  User cuser;
   Query _ref;
   List<Orgs> orgs = [];
   DatabaseReference reference =
@@ -28,6 +28,8 @@ class _OrgsListState extends State<OrgsList> {
   @override
   void initState() {
     super.initState();
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    cuser = auth.currentUser;
     _ref = FirebaseDatabase.instance
         .reference()
         .child('orgs')
@@ -61,7 +63,7 @@ class _OrgsListState extends State<OrgsList> {
                   Text(
                     contact['name'],
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 20.0,
                       fontFamily: 'Helvetica-Bold',
                       color: Theme.of(context).primaryColor,
                     ),
@@ -69,7 +71,7 @@ class _OrgsListState extends State<OrgsList> {
                   Text(
                     contact['desc'],
                     style: TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 15.0,
                       fontFamily: 'Helvetica',
                       color: Colors.grey[850],
                     ),
@@ -77,41 +79,42 @@ class _OrgsListState extends State<OrgsList> {
                   SizedBox(height: 2.0),
                 ]),
           ),
-          Expanded(
-            flex: 1,
-            child: PopupMenuButton<int>(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          if (cuser.email == 'uphowtosofc@gmail.com')
+            Expanded(
+              flex: 1,
+              child: PopupMenuButton<int>(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                ),
+                onSelected: (item) {
+                  switch (item) {
+                    case 0:
+                      //Edit Item
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => EditOrgs(
+                                    contact['key'],
+                                  )));
+                      break;
+                    case 1:
+                      //Remove Item
+                      _showDeleteDialog(contact: contact);
+                      break;
+                  }
+                },
+                itemBuilder: (context) => [
+                  PopupMenuItem<int>(
+                    value: 0,
+                    child: Text('Edit'),
+                  ),
+                  PopupMenuItem<int>(
+                    value: 1,
+                    child: Text('Remove'),
+                  ),
+                ],
               ),
-              onSelected: (item) {
-                switch (item) {
-                  case 0:
-                    //Edit Item
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => EditOrgs(
-                                  contact['key'],
-                                )));
-                    break;
-                  case 1:
-                    //Remove Item
-                    _showDeleteDialog(contact: contact);
-                    break;
-                }
-              },
-              itemBuilder: (context) => [
-                PopupMenuItem<int>(
-                  value: 0,
-                  child: Text('Edit'),
-                ),
-                PopupMenuItem<int>(
-                  value: 1,
-                  child: Text('Remove'),
-                ),
-              ],
             ),
-          ),
         ]),
       ),
     );
@@ -184,33 +187,35 @@ class _OrgsListState extends State<OrgsList> {
                     fontFamily: 'Helvetica',
                   ),
                 ),
-                Text(
-                  'Administrator Mode',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
+                if (cuser.email == 'uphowtosofc@gmail.com')
+                  Text(
+                    'Administrator Mode',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
                   ),
-                ),
               ],
             ),
             actions: [
-              Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OrgsHomePage(user)));
-                  },
-                  icon: Icon(
-                    Icons.add_circle_outline,
-                    color: Colors.white,
+              if (cuser.email == 'uphowtosofc@gmail.com')
+                Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => OrgsHomePage(cuser)));
+                    },
+                    icon: Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.white,
+                    ),
+                    splashRadius: 24.0,
+                    tooltip: 'Add Staff',
                   ),
-                  splashRadius: 24.0,
-                  tooltip: 'Add Staff',
                 ),
-              ),
             ],
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
@@ -295,7 +300,7 @@ class ViewOrgs extends StatelessWidget {
                   "Organizations",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 23,
                     fontFamily: 'Helvetica',
                   ),
                 ),

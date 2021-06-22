@@ -74,7 +74,7 @@ class _ProfileState extends State<Profile> {
                   color: Colors.white,
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage('assets/girl.png'),
+                    image: AssetImage('assets/avatar.png'),
                   ),
                 ),
               ),
@@ -102,7 +102,7 @@ class _ProfileState extends State<Profile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 20, left: 20),
+                padding: EdgeInsets.only(top: 10, left: 20),
                 child: Text(
                   "Email: ${cuser.email}",
                   style: TextStyle(
@@ -165,7 +165,6 @@ class _ProfileState extends State<Profile> {
         spacing(0, 10),
         ElevatedButton(
           onPressed: () {
-            print("IAM HERE");
             _signOut();
             Navigator.of(context).pushNamedAndRemoveUntil(
                 '/login', (Route<dynamic> route) => false);

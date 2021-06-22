@@ -235,6 +235,22 @@ class _EditFormsState extends State<EditForms> {
               ],
             ),
             Row(
+              //Download Forms Text
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 5, left: 20),
+                  child: Text(
+                    '(optional)',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontFamily: 'Helvetica',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
               //Download Forms Textbox
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -307,7 +323,7 @@ class _EditFormsState extends State<EditForms> {
 //gettins steps and its widgets
   List<Widget> _getSteps() {
     List<Widget> stepsTextFields = [];
-    for (int i = 1; i < newStepsList.length; i++) {
+    for (int i = 0; i < newStepsList.length; i++) {
       stepsTextFields.add(
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),

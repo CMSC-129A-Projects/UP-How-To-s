@@ -11,8 +11,6 @@ class EditStaff extends StatefulWidget {
 }
 
 class _EditStaffState extends State<EditStaff> {
-  final _formKey = GlobalKey<FormState>();
-
   TextEditingController name;
   TextEditingController position;
   TextEditingController location;

@@ -30,7 +30,7 @@ class ViewForms extends StatelessWidget {
                 "Form Details",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: 20,
                   fontFamily: 'Helvetica',
                 ),
               ),
@@ -74,7 +74,7 @@ class ViewForms extends StatelessWidget {
                           contact["title"],
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 35,
+                            fontSize: 20,
                             fontFamily: 'Helvetica',
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -91,7 +91,7 @@ class ViewForms extends StatelessWidget {
                 ),
                 Divider(
                   height: 10,
-                  thickness: 3,
+                  thickness: 2,
                   color: Colors.white,
                 ),
                 Row(
