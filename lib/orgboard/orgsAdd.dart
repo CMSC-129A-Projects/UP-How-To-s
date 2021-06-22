@@ -82,13 +82,6 @@ class _OrgsInputWidgetState extends State<OrgsInputWidget> {
                     fontFamily: 'Helvetica',
                   ),
                 ),
-                Text(
-                  'Administrator Mode',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                  ),
-                ),
               ],
             ),
             shape: RoundedRectangleBorder(

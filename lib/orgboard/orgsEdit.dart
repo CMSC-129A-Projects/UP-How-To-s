@@ -302,7 +302,7 @@ class _EditOrgsState extends State<EditOrgs> {
 
   List<Widget> _getSteps() {
     List<Widget> stepsTextFields = [];
-    for (int i = 1; i < officersList.length; i++) {
+    for (int i = 0; i < officersList.length; i++) {
       stepsTextFields.add(
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),

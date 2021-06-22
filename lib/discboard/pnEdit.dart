@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -21,9 +22,13 @@ class _EditPostsState extends State<EditPosts> {
   TextEditingController body = TextEditingController();
   TextEditingController tags = TextEditingController();
   DatabaseReference _ref;
+  User cuser;
 
   @override
   void initState() {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    cuser = auth.currentUser;
+
     super.initState();
     _ref = FirebaseDatabase.instance.reference().child('posts');
     title = TextEditingController();
@@ -59,6 +64,7 @@ class _EditPostsState extends State<EditPosts> {
                       fontFamily: 'Helvetica',
                     ),
                   ),
+                  if (cuser.email == 'uphowtosofc@gmail.com')
                   Text(
                     'Administrator Mode',
                     style: TextStyle(

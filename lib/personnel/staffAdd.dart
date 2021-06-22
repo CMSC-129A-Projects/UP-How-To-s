@@ -10,8 +10,6 @@ class StaffInputWidget extends StatefulWidget {
 }
 
 class _StaffInputWidgetState extends State<StaffInputWidget> {
-  final _formKey = GlobalKey<FormState>();
-
   final name = TextEditingController();
   final position = TextEditingController();
   final location = TextEditingController();

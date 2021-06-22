@@ -118,7 +118,7 @@ class _StaffHomePageState extends State<StaffHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Add New Staff Record",
+                  "Personnel Directory",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -354,6 +354,10 @@ class SearchResultListView extends StatelessWidget {
                     color: spotblack,
                   ),
                 ),
+                Divider(
+                  thickness: 10,
+                  color: Colors.white,
+                ),
                 Text(
                   'Department: ',
                   style: TextStyle(
@@ -369,6 +373,10 @@ class SearchResultListView extends StatelessWidget {
                     fontFamily: 'Helvetica',
                     color: spotblack,
                   ),
+                ),
+                Divider(
+                  thickness: 10,
+                  color: Colors.white,
                 ),
                 Text(
                   'Position: ',
@@ -386,6 +394,10 @@ class SearchResultListView extends StatelessWidget {
                     color: spotblack,
                   ),
                 ),
+                Divider(
+                  thickness: 10,
+                  color: Colors.white,
+                ),
                 Text(
                   'Office Location: ',
                   style: TextStyle(
@@ -401,6 +413,10 @@ class SearchResultListView extends StatelessWidget {
                     fontFamily: 'Helvetica',
                     color: spotblack,
                   ),
+                ),
+                Divider(
+                  thickness: 10,
+                  color: Colors.white,
                 ),
                 Text(
                   'UP Email: ',

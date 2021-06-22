@@ -8,7 +8,6 @@ import 'forms/formsHomePage.dart';
 import 'forms/formsView.dart';
 import 'forms/formsEdit.dart';
 
-import 'orgboard/orgsHomePage.dart';
 //import 'orgboard/orgsView.dart';
 import 'orgboard/orgsEdit.dart';
 import 'orgboard/orgsList.dart';
@@ -16,9 +15,9 @@ import 'personnel/staffHomePage.dart';
 //import 'personnel/staffView.dart';
 import 'personnel/staffEdit.dart';
 
-import 'discboard/pnHomePage.dart';
+import 'discboard/postHomePage.dart';
 import 'discboard/postAdd.dart';
-import 'discboard/pnPostView.dart';
+import 'discboard/postView.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -59,8 +58,7 @@ class RouteGenerator {
       case '/post':
         return MaterialPageRoute(builder: (context) => NewPostHomePage(args));
       case '/postinput':
-        return MaterialPageRoute(
-            builder: (context) => PostsInputWidget(args, args));
+        return MaterialPageRoute(builder: (context) => PostsInputWidget(args));
       case '/postview':
         return MaterialPageRoute(builder: (context) => ViewPostNew(args, args));
 
